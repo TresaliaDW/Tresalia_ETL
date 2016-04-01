@@ -2,7 +2,7 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>Tresalia_ETL</Name>
-    <LastWriteTime>2016-04-01T08:48:38.467458Z</LastWriteTime>
+    <LastWriteTime>2016-04-01T11:12:59.6608753Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
@@ -68,7 +68,7 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_Tresalia_Stg_DW_AssetType.dtsx</Name>
-      <LastWriteTime>2016-03-31T19:05:21.6906133Z</LastWriteTime>
+      <LastWriteTime>2016-04-01T10:56:26.8971735Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
@@ -163,7 +163,62 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_Tresalia_Excel_Stg_Rating.dtsx</Name>
-      <LastWriteTime>2016-04-01T08:48:37.5482032Z</LastWriteTime>
+      <LastWriteTime>2016-04-01T08:50:03.022155Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Pkg_Tresalia_Stg_DW_IndexReturns.dtsx</Name>
+      <LastWriteTime>2016-04-01T10:59:24.6606377Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Pkg_Tresalia_Stg_DW_AssetAllocation.dtsx</Name>
+      <LastWriteTime>2016-04-01T11:04:19.5764688Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Pkg_Tresalia_Stg_DW_CompositeAsset.dtsx</Name>
+      <LastWriteTime>2016-04-01T11:04:19.5604682Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Pkg_Tresalia_Stg_DW_Country.dtsx</Name>
+      <LastWriteTime>2016-04-01T11:10:25.7460069Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Pkg_Tresalia_Stg_DW_Rating.dtsx</Name>
+      <LastWriteTime>2016-04-01T11:05:48.5132074Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Pkg_Tresalia_Stg_DW_EqSurface.dtsx</Name>
+      <LastWriteTime>2016-04-01T11:10:25.7310049Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Pkg_Tresalia_Stg_DW_Futures.dtsx</Name>
+      <LastWriteTime>2016-04-01T11:10:25.7160071Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Pkg_Tresalia_Stg_DW_SwapCurve.dtsx</Name>
+      <LastWriteTime>2016-04-01T11:10:25.7009985Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Pkg_Tresalia_Stg_DW_PortfolioMaster.dtsx</Name>
+      <LastWriteTime>2016-04-01T11:10:25.6839947Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Pkg_Tresalia_Stg_DW_EuroDollarSwapCurve.dtsx</Name>
+      <LastWriteTime>2016-04-01T11:10:44.5356481Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Pkg_Tresalia_Stg_DW_IRSurface.dtsx</Name>
+      <LastWriteTime>2016-04-01T11:11:39.8644166Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>

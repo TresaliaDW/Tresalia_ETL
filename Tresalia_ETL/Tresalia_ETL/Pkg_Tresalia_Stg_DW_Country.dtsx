@@ -5,22 +5,22 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="DELPMAITR46622"
   DTS:CreatorName="SAPIENT\pmaitr"
-  DTS:DTSID="{C49DDC22-88CC-4B49-B607-D4426348BE1E}"
+  DTS:DTSID="{EBF3311D-8C04-450B-9B06-60C7A344E06D}"
   DTS:EnableConfig="True"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="12.0.4100.1"
   DTS:LocaleID="1033"
-  DTS:ObjectName="Pkg_Tresalia_Stg_DW_AssetType"
+  DTS:ObjectName="Pkg_Tresalia_Stg_DW_Country"
   DTS:PackageType="5"
-  DTS:VersionBuild="204"
-  DTS:VersionGUID="{3021252F-33E5-4476-A0A2-2C5515905C9F}">
+  DTS:VersionBuild="205"
+  DTS:VersionGUID="{CE19B18D-063B-4F53-9900-0F64D8A5E0BF}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[ConnectionManager_DW]"
       DTS:CreationName="OLEDB"
-      DTS:DTSID="{46890A89-8CBA-464A-9FF8-2B49C0648CB3}"
+      DTS:DTSID="{F1CC8D63-0E15-4F8E-8439-408943AD53AB}"
       DTS:ObjectName="ConnectionManager_DW">
       <DTS:PropertyExpression
         DTS:Name="ConnectionString">@[User::ConnectionMgr_DW]</DTS:PropertyExpression>
@@ -32,7 +32,7 @@
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[ConnectionManager_Stage]"
       DTS:CreationName="OLEDB"
-      DTS:DTSID="{F1DF022B-DD42-4C37-804E-B3F4247B1763}"
+      DTS:DTSID="{344C7AC1-ACCD-43FF-AACD-BAE84E5D0D50}"
       DTS:ObjectName="ConnectionManager_Stage">
       <DTS:PropertyExpression
         DTS:Name="ConnectionString">@[User::ConnectionMgr_Stage]</DTS:PropertyExpression>
@@ -47,13 +47,13 @@
       DTS:ConfigurationString="D:\Tresalia\Anupam\Tresalia_ETL\Config\Tresalia_ConnectionStrings.dtsConfig"
       DTS:ConfigurationType="1"
       DTS:CreationName=""
-      DTS:DTSID="{FF7895AA-D964-439F-8B3F-69D906870A5B}"
+      DTS:DTSID="{3398BD11-11E1-4614-B5C5-32217B7EF718}"
       DTS:ObjectName="Configuration 1" />
   </DTS:Configurations>
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{E328E8B1-4747-4DE4-90E2-C4557B551A86}"
+      DTS:DTSID="{F75ABEFD-D0F0-469D-8E78-44BFDA3F849E}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="ArchiveFolderPath">
@@ -62,7 +62,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{28D36182-4284-4888-AC46-84CCC6EB977C}"
+      DTS:DTSID="{CB112ADD-BB68-4573-81E1-9946E30ADA3F}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="BatchDate">
@@ -71,7 +71,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{15566D87-F906-4C77-83F5-69B1520D3607}"
+      DTS:DTSID="{F2B1AACD-6C8E-425A-9763-CD1571A633C6}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="ConnectionMgr_DW">
@@ -80,7 +80,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{523E6363-EF0B-47DF-A864-8A9ACE16D337}"
+      DTS:DTSID="{8B290339-5684-458F-A5F7-43945961BC47}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="ConnectionMgr_Stage">
@@ -89,7 +89,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{86322A9A-215A-4AA7-9B90-854F8C276C61}"
+      DTS:DTSID="{3083C1BE-9466-4C39-AA32-940FA5903FAD}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="ErrorFolderPath">
@@ -98,7 +98,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{C3FE2D35-1413-41BA-A162-1ACD95ACF1DF}"
+      DTS:DTSID="{EFE292B8-5B38-4A67-8D07-B99A474FC40A}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="FileMask_AssetType">
@@ -107,7 +107,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{0C3388B2-085D-4712-91C6-E1B6B6FC9341}"
+      DTS:DTSID="{5455A81C-FE11-4FA4-8940-5C5CC62B35F8}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="InputFolderPath_AssetType">
@@ -116,7 +116,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{2ACC3E7C-4157-4F88-87AF-23F95051C6B2}"
+      DTS:DTSID="{CAFA3173-89EE-4DED-AFFD-E5AA3EBDCB09}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="ProcessedRecordsInFile">
@@ -125,7 +125,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{B6EB6F93-3BD0-4E30-9A2B-9B5A75078921}"
+      DTS:DTSID="{B523818F-1112-4ED3-84F3-E928EA2030DD}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="ProcessingStatus">
@@ -134,7 +134,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{2DECFACE-644C-4576-B3E2-17C8F935FD51}"
+      DTS:DTSID="{26CD00A8-B6A1-4AC1-9B40-B95BA4089735}"
       DTS:EvaluateAsExpression="True"
       DTS:Expression="&quot;Select * from Stg.AssetType Order By CreatedDate&quot;"
       DTS:IncludeInDebugDump="2345"
@@ -145,7 +145,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{F77EF71F-E8F2-4EDF-A5C9-BB7357262686}"
+      DTS:DTSID="{ABDEA337-8EBD-4E67-BDB4-D117CBCF865A}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="SelectedColumnRange_AssetType">
@@ -154,7 +154,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{98E0D9E6-EAE4-4B8A-B827-468B06265CDD}"
+      DTS:DTSID="{1B555547-4F3F-44F6-B01F-2D0E7C5F708F}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="SheetList">
@@ -172,7 +172,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{FE9C1CD5-FA28-430D-B002-1D45865503C7}"
+      DTS:DTSID="{3C79ED08-C80B-432C-B652-D1BC0ABE468C}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="SourceFileDateTime">
@@ -181,7 +181,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{BACFC269-3225-427A-AAE5-92162A46E60F}"
+      DTS:DTSID="{3A4C8A5F-2E64-4464-A167-73548326E773}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="SourceFileList">
@@ -199,7 +199,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{AD7F5F32-9DA3-4439-89DD-D403E22178A1}"
+      DTS:DTSID="{417F36E7-B96D-4102-BA07-FB03CCFC10D9}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="SourceFileName_AssetType">
@@ -208,7 +208,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{89D9AD11-A0C5-4925-A62D-091DE56F23DD}"
+      DTS:DTSID="{9A2C8D73-EE93-415E-BEC8-E4E8706FD809}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="SourceFolderPath">
@@ -217,7 +217,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{36E5AED4-3748-4ACD-A38C-C2C3F6F2B3C2}"
+      DTS:DTSID="{B8653C8D-4193-4AA2-9D2B-437CEAC003B1}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="StartDate">
@@ -226,7 +226,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{0D22544C-83A9-42BF-8E6A-96E8199CB149}"
+      DTS:DTSID="{095231F7-312B-4D23-8164-CC73CDF344B3}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="TabName_AssetType">
@@ -235,7 +235,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{F72EF991-44A8-4134-ACA3-0CE8461A424C}"
+      DTS:DTSID="{8B4FF502-3BC8-4E86-80A0-709672D951A6}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="TotalRecordsInFile">
@@ -248,7 +248,7 @@
       DTS:refId="Package\Create TresaliaJobLog"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{01A46DA3-92CD-45E4-82F6-271D96B4A12C}"
+      DTS:DTSID="{C9403105-68F7-446F-B0B5-E98E160F555E}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Create TresaliaJobLog"
@@ -257,7 +257,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{F1DF022B-DD42-4C37-804E-B3F4247B1763}"
+          SQLTask:Connection="{344C7AC1-ACCD-43FF-AACD-BAE84E5D0D50}"
           SQLTask:SqlStatementSource="exec stg.spLogPackageExecutionHistory ?,?,'AssetTypeJobName','S'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ParameterBinding
             SQLTask:ParameterName="@PackageID"
@@ -279,7 +279,7 @@
       DTS:CreationName="Microsoft.Pipeline"
       DTS:DelayValidation="True"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{3E9E26C5-CD6A-47AF-9780-8F5627A195DB}"
+      DTS:DTSID="{CA3469EA-3E4B-4669-B9F3-3807C6D38846}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
       DTS:ObjectName="Loading Data From Stage to DW"
@@ -289,7 +289,7 @@
         <DTS:EventHandler
           DTS:refId="Package\Loading Data From Stage to DW.EventHandlers[OnError]"
           DTS:CreationName="OnError"
-          DTS:DTSID="{2771F6FD-7B91-4632-B004-EBAB4F79191D}"
+          DTS:DTSID="{A436D70C-6C95-4C88-8F49-A136E79357BC}"
           DTS:EventID="0"
           DTS:EventName="OnError"
           DTS:LocaleID="-1">
@@ -297,7 +297,7 @@
             <DTS:Variable
               DTS:CreationName=""
               DTS:Description="The propagate property of the event"
-              DTS:DTSID="{21A412D3-0151-4A92-A9A3-24C089928324}"
+              DTS:DTSID="{96FCC8F5-E4E0-45C7-B936-D45DFF4C7E35}"
               DTS:IncludeInDebugDump="6789"
               DTS:Namespace="System"
               DTS:ObjectName="Propagate">
@@ -2155,11 +2155,11 @@
       DTS:CreationName="Microsoft.ScriptTask"
       DTS:Description="Script Task"
       DTS:Disabled="True"
-      DTS:DTSID="{32F329C7-9975-4D7F-80B1-3860D4EED6E3}"
+      DTS:DTSID="{DD2F8C00-5654-4880-9AD9-34670BB61BFA}"
       DTS:ExecutableType="Microsoft.ScriptTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Logging Error"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <ScriptProject
@@ -2168,6 +2168,15 @@
           VSTAMinorVersion="0"
           Language="CSharp"
           ReadOnlyVariables="System::ErrorCode,System::ErrorDescription">
+          <ProjectItem
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
           <ProjectItem
             Name="ST_b525a5b6bafb448b994d0bc0800f043f.csproj"
             Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
@@ -2380,35 +2389,6 @@
   </resheader>
 </root>]]></ProjectItem>
           <ProjectItem
-            Name="Properties\Settings.Designer.cs"
-            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
-// <auto-generated>
-//     This code was generated by a tool.
-//
-//     Changes to this file may cause incorrect behavior and will be lost if
-//     the code is regenerated.
-// </auto-generated>
-//------------------------------------------------------------------------------
-
-[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_b525a5b6bafb448b994d0bc0800f043f.Properties.Settings.get_Default():ST_b525a5b6bafb448b994d0bc0800f043f.Properties.Sett" +
-    "ings")]
-
-namespace ST_b525a5b6bafb448b994d0bc0800f043f.Properties {
-    
-    
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
-        
-        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-        private static Settings defaultInstance = new Settings();
-        
-        public static Settings Default {
-            get {
-                return defaultInstance;
-            }
-        }
-    }
-}]]></ProjectItem>
-          <ProjectItem
             Name="ScriptMain.cs"
             Encoding="UTF8"><![CDATA[#region Help:  Introduction to the script task
 /* The Script Task allows you to perform virtually any operation that can be accomplished in
@@ -2547,6 +2527,35 @@ namespace ST_b525a5b6bafb448b994d0bc0800f043f
 	</msb:ItemGroup>
 </c:Project>]]></ProjectItem>
           <ProjectItem
+            Name="Properties\Settings.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_b525a5b6bafb448b994d0bc0800f043f.Properties.Settings.get_Default():ST_b525a5b6bafb448b994d0bc0800f043f.Properties.Sett" +
+    "ings")]
+
+namespace ST_b525a5b6bafb448b994d0bc0800f043f.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <ProjectItem
             Name="Properties\AssemblyInfo.cs"
             Encoding="UTF8"><![CDATA[using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -2576,15 +2585,6 @@ using System.Runtime.CompilerServices;
 // by using the '*' as shown below:
 
 [assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
-          <ProjectItem
-            Name="Properties\Settings.settings"
-            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
-</SettingsFile>]]></ProjectItem>
           <ProjectItem
             Name="Properties\Resources.Designer.cs"
             Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
@@ -2778,16 +2778,16 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       DTS:refId="Package\Update StartDate"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{C8529E2D-9E4A-42B3-85D4-77A9815FC0AA}"
+      DTS:DTSID="{217170E2-D1F3-4AD0-8B65-A0A68CDC0981}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Update StartDate"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{F1DF022B-DD42-4C37-804E-B3F4247B1763}"
+          SQLTask:Connection="{344C7AC1-ACCD-43FF-AACD-BAE84E5D0D50}"
           SQLTask:SqlStatementSource="exec stg.spUpdateStartDate ?,'AssetTypeStartDate'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ParameterBinding
             SQLTask:ParameterName="@PackageName"
@@ -2802,16 +2802,16 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       DTS:refId="Package\Update TresaliaJobLog"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{75CA12B0-7A45-4318-99DE-90E9B6F7C8C7}"
+      DTS:DTSID="{06F38F7F-F790-4C05-9690-31E7FE0418FF}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Update TresaliaJobLog"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{F1DF022B-DD42-4C37-804E-B3F4247B1763}"
+          SQLTask:Connection="{344C7AC1-ACCD-43FF-AACD-BAE84E5D0D50}"
           SQLTask:SqlStatementSource="exec stg.spLogPackageExecutionHistory ?,?,'AssetTypeJobName','U'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ParameterBinding
             SQLTask:ParameterName="@PackageID"
@@ -2833,7 +2833,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{E7B969BF-F27E-49AF-8927-C5709C9C2488}"
+      DTS:DTSID="{C3109386-DF75-4531-8B11-D69DF8FAC322}"
       DTS:From="Package\Create TresaliaJobLog"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
@@ -2841,7 +2841,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
-      DTS:DTSID="{5701EADB-C57D-4085-9E12-F8097A73C62A}"
+      DTS:DTSID="{DA080DAE-16FF-4772-A488-351B25F8BEAA}"
       DTS:From="Package\Loading Data From Stage to DW"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
@@ -2849,7 +2849,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
-      DTS:DTSID="{C6B1C917-8266-47BE-AD87-F26FBE9AC094}"
+      DTS:DTSID="{24CF3CF2-1863-4B5E-A5D3-30A9ECB2C2D7}"
       DTS:From="Package\Update TresaliaJobLog"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 2"
@@ -2857,7 +2857,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 21]"
       DTS:CreationName=""
-      DTS:DTSID="{E08AAB9E-D622-4FA9-9B16-55085A91E517}"
+      DTS:DTSID="{C61213AB-DC79-4E2C-83CB-C26C04CF1E14}"
       DTS:From="Package\Loading Data From Stage to DW"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 2"
@@ -2868,7 +2868,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
     <DTS:EventHandler
       DTS:refId="Package.EventHandlers[OnError]"
       DTS:CreationName="OnError"
-      DTS:DTSID="{0F72C271-ACE1-471D-88E5-B66EB6355315}"
+      DTS:DTSID="{7B5A8266-719E-4C5B-821A-32507C84E56A}"
       DTS:EventID="0"
       DTS:EventName="OnError"
       DTS:LocaleID="-1">
@@ -2876,7 +2876,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         <DTS:Variable
           DTS:CreationName=""
           DTS:Description="The propagate property of the event"
-          DTS:DTSID="{51DFB564-425C-43D3-ACEB-8B272B6B7485}"
+          DTS:DTSID="{8D520583-6CA5-4B02-B40B-CDFABFEFC775}"
           DTS:IncludeInDebugDump="6789"
           DTS:Namespace="System"
           DTS:ObjectName="Propagate">
@@ -2889,7 +2889,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           DTS:refId="Package.EventHandlers[OnError]\Error HandellingTask"
           DTS:CreationName="Microsoft.ScriptTask"
           DTS:Description="Script Task"
-          DTS:DTSID="{76AD73C2-367B-4538-A97E-70E13F5C1BE7}"
+          DTS:DTSID="{AD9A0BBE-8B9B-4491-B369-C32976E7B265}"
           DTS:ExecutableType="Microsoft.ScriptTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Error HandellingTask">
@@ -2906,7 +2906,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           DTS:refId="Package.EventHandlers[OnError]\Update TresaliaJobLog"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
-          DTS:DTSID="{F6B3A0C4-FC5C-479E-BC45-4A2D3EC46278}"
+          DTS:DTSID="{FD4C5E4D-D16A-49CB-83EE-F40947BF0F3B}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Update TresaliaJobLog"
@@ -2914,7 +2914,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F1DF022B-DD42-4C37-804E-B3F4247B1763}"
+              SQLTask:Connection="{344C7AC1-ACCD-43FF-AACD-BAE84E5D0D50}"
               SQLTask:SqlStatementSource="exec stg.spLogPackageExecutionHistory ?,?,'AssetTypeJobName','E'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
                 SQLTask:ParameterName="@PackageID"
@@ -3369,7 +3369,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         <Value
           type="q2:string">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SCDWizardMetadata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionID&gt;{46890A89-8CBA-464A-9FF8-2B49C0648CB3}&lt;/ConnectionID&gt;
+  &lt;ConnectionID&gt;{F1CC8D63-0E15-4F8E-8439-408943AD53AB}&lt;/ConnectionID&gt;
   &lt;TableName&gt;[dw].[Asset_Type1]&lt;/TableName&gt;
   &lt;InputToColumnsCollection&gt;
     &lt;InputColumnToDBColumn&gt;
