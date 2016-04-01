@@ -1,0 +1,1994 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/18/2016 4:54:05 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DELPMAITR46622"
+  DTS:CreatorName="SAPIENT\pmaitr"
+  DTS:DTSID="{1B847FD8-CE3F-4061-9FD7-950699F56304}"
+  DTS:EnableConfig="True"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="12.0.4100.1"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Pkg_Tresalia_Excel_Stg_PotentialManagersCodeIndex"
+  DTS:PackageType="5"
+  DTS:VersionBuild="178"
+  DTS:VersionGUID="{91357071-5E48-4F37-A2F3-1042645A37C5}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ConnectionManager_Stage]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{00246B9A-391E-4FE5-BD45-0808B4047D7D}"
+      DTS:ObjectName="ConnectionManager_Stage">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=Tresalia;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DelayValidation="True"
+      DTS:DTSID="{B9573801-4C8B-4DBB-AC3E-B6C49A59B5CB}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:PropertyExpression
+        DTS:Name="ExcelFilePath">@[User::SourceFolderPath] + @[User::SourceFileName_PotentialManagersCodeIndex]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=D:\Tresalia\Anupam\Tresalia_ETL\Source\Monthly_Returns_Potential_SPAR_Upload.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Configurations>
+    <DTS:Configuration
+      DTS:ConfigurationString="D:\Tresalia\Anupam\Tresalia_ETL\Config\Tresalia_ConnectionStrings.dtsConfig"
+      DTS:ConfigurationType="1"
+      DTS:CreationName=""
+      DTS:DTSID="{9FE55F37-CC1C-4168-BA91-56FA05CABD5B}"
+      DTS:ObjectName="Configuration 1" />
+  </DTS:Configurations>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{309D5157-AFE4-4A91-9E83-53B4F9077A1E}"
+      DTS:ObjectName="ConnectionMgr_Stage">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">Data Source=DELPMAITR46622;Integrated Security=True;Application Name=SSIS-TresaliaPackage2-{FB10F292-6740-4CD4-80EB-5167217BA1B1}DELPMAITR46622;</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4414EC27-2884-4853-BC07-D45D774571A5}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ArchiveFolderPath">
+      <DTS:VariableValue
+        DTS:DataType="8">D:\Tresalia\Anupam\Tresalia_ETL\Archive\</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{38C603DE-DF31-4EBB-8A3E-78444682D463}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="BatchDate">
+      <DTS:VariableValue
+        DTS:DataType="7">12:00:00 AM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{740B4E4A-575D-45E2-8B1C-BF56E8A23BEE}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ConnectionMgr_Stage">
+      <DTS:VariableValue
+        DTS:DataType="8">Data Source=TRES-DEV;Initial Catalog=Tresalia;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{53BE8DF5-B4C4-46EA-8FB8-A2B76F93BE3A}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ErrorFolderPath">
+      <DTS:VariableValue
+        DTS:DataType="8">D:\Tresalia\Anupam\Tresalia_ETL\Error\</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C03A78DC-CE2C-4F76-AC87-49D3E67E4E76}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FileMask_PotentialManagersCodeIndex">
+      <DTS:VariableValue
+        DTS:DataType="8">Monthly_Returns_Potential_SPAR_Upload.xlsx</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{0D53C41F-1A7E-4D4E-9F60-CC797BCDE808}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="InputFolderPath_PotentialManagersCodeIndex">
+      <DTS:VariableValue
+        DTS:DataType="8">D:\Tresalia\Anupam\Tresalia_ETL\Input\</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{FB3D0A29-D95A-452C-AE6A-1E6AD5BBEFA3}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ProcessedRecordsInFile">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{94ACADFB-2FF4-4FE8-A239-3B68F9AF5676}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ProcessingStatus">
+      <DTS:VariableValue
+        DTS:DataType="8">SUCCESS</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{BE9614DA-C038-4853-AD5F-F2011A8AD555}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;Select * from [&quot; +  @[User::TabName_PotentialManagersCodeIndex] +  @[User::SelectedColumnRange_PotentialManagersCodeIndex] + &quot;]&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Query_PotentialManagersCodeIndex">
+      <DTS:VariableValue
+        DTS:DataType="8">Select * from [Code index$A:C]</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F6A1BF63-E046-4515-B14E-01ADAFC45AF1}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SelectedColumnRange_PotentialManagersCodeIndex">
+      <DTS:VariableValue
+        DTS:DataType="8">A:C</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E823512B-BB5E-45FE-8142-70F766F80E5B}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="SheetList">
+      <DTS:VariableValue
+        DTS:DataSubType="ManagedSerializable"
+        DTS:DataType="13">
+        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+          <SOAP-ENV:Body>
+            <xsd:anyType
+              id="ref-1"></xsd:anyType>
+          </SOAP-ENV:Body>
+        </SOAP-ENV:Envelope>
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4168C356-4329-413E-B7A7-2B43E94E2708}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="SourceFileDateTime">
+      <DTS:VariableValue
+        DTS:DataType="7">12:00:00 AM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{2AADC31E-EB9A-41BF-BB23-42D63A9E2518}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="SourceFileList">
+      <DTS:VariableValue
+        DTS:DataSubType="ManagedSerializable"
+        DTS:DataType="13">
+        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+          <SOAP-ENV:Body>
+            <xsd:anyType
+              id="ref-1"></xsd:anyType>
+          </SOAP-ENV:Body>
+        </SOAP-ENV:Envelope>
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{CD1A8750-AB58-4AC1-9C25-93B78CE02E24}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SourceFileName_PotentialManagersCodeIndex">
+      <DTS:VariableValue
+        DTS:DataType="8">Monthly_Returns_Potential_SPAR_Upload.xlsx</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{BD05345E-8AFA-42E1-9A62-8E88BF9F817A}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SourceFolderPath">
+      <DTS:VariableValue
+        DTS:DataType="8">D:\Tresalia\Anupam\Tresalia_ETL\Source\</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B5FD7137-E8FD-4EF2-9F4C-D8300007FC58}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="StartDate">
+      <DTS:VariableValue
+        DTS:DataType="7">3/24/2016 6:02:54 AM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{43343700-4D15-43E6-938A-C6EBFC515868}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="TabName_PotentialManagersCodeIndex">
+      <DTS:VariableValue
+        DTS:DataType="8">Code index$</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{9AB968D6-90E4-490E-9D3F-74524B01EAA9}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="TotalRecordsInFile">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Clear Staging Table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{1B763349-3809-4446-8CE6-1040C5C97291}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Clear Staging Table"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{00246B9A-391E-4FE5-BD45-0808B4047D7D}"
+          SQLTask:SqlStatementSource="exec stg.spClearStageTable 'PotentialManagers'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Create TresaliaJobLog"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{508EDDCB-83B0-4DEB-9596-1C85CDAB1CF0}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Create TresaliaJobLog"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{00246B9A-391E-4FE5-BD45-0808B4047D7D}"
+          SQLTask:SqlStatementSource="exec stg.spLogPackageExecutionHistory ?,?,'PotentialManagersJobName','S'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@PackageID"
+            SQLTask:DtsVariableName="System::PackageID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="255" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@PackageName"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="255" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Foreach Loop Container"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{F2319208-6D5C-48D3-9830-DBCEEE9F440D}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Foreach Loop Container">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachFromVarEnumerator"
+        DTS:DTSID="{47CBB306-92C7-4154-8B74-180A2F07A9B3}"
+        DTS:ObjectName="{47CBB306-92C7-4154-8B74-180A2F07A9B3}">
+        <DTS:ObjectData>
+          <FEEFVE
+            VariableName="User::SourceFileList" />
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\Archive"
+          DTS:CreationName="Microsoft.ScriptTask"
+          DTS:Description="Script Task"
+          DTS:DTSID="{BC0BDEBF-B593-4451-A6B2-112669EE057E}"
+          DTS:ExecutableType="Microsoft.ScriptTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Archive"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData />
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\Create FillHistory"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{BE186701-B393-4CC6-9C69-0D90A70DFA14}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Create FillHistory"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{00246B9A-391E-4FE5-BD45-0808B4047D7D}"
+              SQLTask:SqlStatementSource="exec stg.spCreateFileHistory ?,?,?,?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@SourceFilePath"
+                SQLTask:DtsVariableName="User::SourceFolderPath"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="100" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@SourceFileName"
+                SQLTask:DtsVariableName="User::SourceFileName_PotentialManagersCodeIndex"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="100" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@TabName"
+                SQLTask:DtsVariableName="User::TabName_PotentialManagersCodeIndex"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="100" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@TotalRecordsInFile"
+                SQLTask:DtsVariableName="User::TotalRecordsInFile"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="20"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:DelayValidation="True"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{B1DE469A-2652-4ECC-BFDB-D1F3E8F4CEB2}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Loading Excel Sheet Data To Table"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:EventHandlers>
+            <DTS:EventHandler
+              DTS:refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table.EventHandlers[OnError]"
+              DTS:CreationName="OnError"
+              DTS:DTSID="{8914FF89-3D45-4E31-825C-A0FF610AC266}"
+              DTS:EventID="0"
+              DTS:EventName="OnError"
+              DTS:LocaleID="-1">
+              <DTS:Variables>
+                <DTS:Variable
+                  DTS:CreationName=""
+                  DTS:Description="The propagate property of the event"
+                  DTS:DTSID="{6DCBC665-6751-4CB5-B379-9DA8149B6152}"
+                  DTS:IncludeInDebugDump="6789"
+                  DTS:Namespace="System"
+                  DTS:ObjectName="Propagate">
+                  <DTS:VariableValue
+                    DTS:DataType="11">-1</DTS:VariableValue>
+                </DTS:Variable>
+              </DTS:Variables>
+              <DTS:Executables />
+            </DTS:EventHandler>
+          </DTS:EventHandlers>
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Data Conversion"
+                  componentClassID="Microsoft.DataConvert"
+                  contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Data Conversion"
+                  name="Data Conversion"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Data Conversion.Inputs[Data Conversion Input]"
+                      name="Data Conversion Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Data Conversion.Inputs[Data Conversion Input].Columns[Code]"
+                          cachedDataType="r8"
+                          cachedName="Code"
+                          lineageId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Excel Source.Outputs[Excel Source Output].Columns[Code]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Data Conversion.Inputs[Data Conversion Input].Columns[Name]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Name"
+                          lineageId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Excel Source.Outputs[Excel Source Output].Columns[Name]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Data Conversion.Inputs[Data Conversion Input].Columns[Source]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Source"
+                          lineageId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Excel Source.Outputs[Excel Source Output].Columns[Source]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Data Conversion.Outputs[Data Conversion Output]"
+                      exclusionGroup="1"
+                      name="Data Conversion Output"
+                      synchronousInputId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Data Conversion.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Data Conversion.Outputs[Data Conversion Output].Columns[DC.Code]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="100"
+                          lineageId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Data Conversion.Outputs[Data Conversion Output].Columns[DC.Code]"
+                          name="DC.Code"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Excel Source.Outputs[Excel Source Output].Columns[Code]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Data Conversion.Outputs[Data Conversion Output].Columns[DC.Name]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="100"
+                          lineageId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Data Conversion.Outputs[Data Conversion Output].Columns[DC.Name]"
+                          name="DC.Name"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Excel Source.Outputs[Excel Source Output].Columns[Name]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Data Conversion.Outputs[Data Conversion Output].Columns[DC.Source]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="100"
+                          lineageId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Data Conversion.Outputs[Data Conversion Output].Columns[DC.Source]"
+                          name="DC.Source"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Excel Source.Outputs[Excel Source Output].Columns[Source]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Data Conversion.Outputs[Data Conversion Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Data Conversion Error Output"
+                      synchronousInputId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Data Conversion.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Derived Column"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Derived Column"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Derived Column.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Derived Column.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Derived Column.Outputs[Derived Column Output].Columns[FileName]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="100"
+                          lineageId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Derived Column.Outputs[Derived Column Output].Columns[FileName]"
+                          name="FileName"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_STR,100,1252)@[User::SourceFileName_PotentialManagersCodeIndex]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_STR,100,1252)@[User::SourceFileName_PotentialManagersCodeIndex]</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Derived Column.Outputs[Derived Column Output].Columns[Filepath]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="100"
+                          lineageId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Derived Column.Outputs[Derived Column Output].Columns[Filepath]"
+                          name="Filepath"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_STR,100,1252)@[User::SourceFolderPath]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_STR,100,1252)@[User::SourceFolderPath]</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Derived Column.Outputs[Derived Column Output].Columns[TabName]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="100"
+                          lineageId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Derived Column.Outputs[Derived Column Output].Columns[TabName]"
+                          name="TabName"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_STR,100,1252)@[User::TabName_PotentialManagersCodeIndex]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_STR,100,1252)@[User::TabName_PotentialManagersCodeIndex]</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Derived Column.Outputs[Derived Column Output].Columns[BatchDate]"
+                          dataType="date"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Derived Column.Outputs[Derived Column Output].Columns[BatchDate]"
+                          name="BatchDate"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[User::BatchDate]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[User::BatchDate]</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Derived Column.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Excel Source"
+                  componentClassID="Microsoft.ExcelSource"
+                  contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Excel Source"
+                  name="Excel Source"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">Master$</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable">User::Query_PotentialManagersCodeIndex</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.String"
+                      description="The mapping from parameters in the SQL command to variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Excel Source.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                      connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Excel Source.Outputs[Excel Source Output]"
+                      name="Excel Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Excel Source.Outputs[Excel Source Output].Columns[Code]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[Code]"
+                          lineageId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Excel Source.Outputs[Excel Source Output].Columns[Code]"
+                          name="Code"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Excel Source.Outputs[Excel Source Output].Columns[Name]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[Name]"
+                          length="255"
+                          lineageId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Excel Source.Outputs[Excel Source Output].Columns[Name]"
+                          name="Name"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Excel Source.Outputs[Excel Source Output].Columns[Source]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[Source]"
+                          length="255"
+                          lineageId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Excel Source.Outputs[Excel Source Output].Columns[Source]"
+                          name="Source"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[Code]"
+                          dataType="r8"
+                          name="Code" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[Name]"
+                          dataType="wstr"
+                          length="255"
+                          name="Name" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[Source]"
+                          dataType="wstr"
+                          length="255"
+                          name="Source" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Excel Source.Outputs[Excel Source Error Output]"
+                      isErrorOut="true"
+                      name="Excel Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Excel Source.Outputs[Excel Source Error Output].Columns[Code]"
+                          dataType="r8"
+                          lineageId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Excel Source.Outputs[Excel Source Error Output].Columns[Code]"
+                          name="Code" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Excel Source.Outputs[Excel Source Error Output].Columns[Name]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Excel Source.Outputs[Excel Source Error Output].Columns[Name]"
+                          name="Name" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Excel Source.Outputs[Excel Source Error Output].Columns[Source]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Excel Source.Outputs[Excel Source Error Output].Columns[Source]"
+                          name="Source" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[stg].[PotentialManagersCodeIndex]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[ConnectionManager_Stage]"
+                      connectionManagerRefId="Package.ConnectionManagers[ConnectionManager_Stage]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FileName]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="FileName"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FileName]"
+                          lineageId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Derived Column.Outputs[Derived Column Output].Columns[FileName]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Filepath]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="Filepath"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FilePath]"
+                          lineageId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Derived Column.Outputs[Derived Column Output].Columns[Filepath]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TabName]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="TabName"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TabName]"
+                          lineageId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Derived Column.Outputs[Derived Column Output].Columns[TabName]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[BatchDate]"
+                          cachedDataType="date"
+                          cachedName="BatchDate"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BatchDate]"
+                          lineageId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Derived Column.Outputs[Derived Column Output].Columns[BatchDate]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DC.Code]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="DC.Code"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Code]"
+                          lineageId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Data Conversion.Outputs[Data Conversion Output].Columns[DC.Code]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DC.Name]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="DC.Name"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                          lineageId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Data Conversion.Outputs[Data Conversion Output].Columns[DC.Name]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DC.Source]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="DC.Source"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Source]"
+                          lineageId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Data Conversion.Outputs[Data Conversion Output].Columns[DC.Source]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FileName]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="FileName" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FilePath]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="FilePath" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TabName]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="TabName" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CreatedDate]"
+                          dataType="dbTimeStamp"
+                          name="CreatedDate" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CreatedBy]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="CreatedBy" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BatchDate]"
+                          dataType="dbDate"
+                          name="BatchDate" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Code]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="Code" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="Name" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Source]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="Source" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Row Count"
+                  componentClassID="Microsoft.RowCount"
+                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+                  name="Row Count">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable to hold the row count."
+                      name="VariableName">User::TotalRecordsInFile</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Row Count.Inputs[Row Count Input 1]"
+                      hasSideEffects="true"
+                      name="Row Count Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Row Count.Outputs[Row Count Output 1]"
+                      name="Row Count Output 1"
+                      synchronousInputId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Row Count.Inputs[Row Count Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table.Paths[Data Conversion Output]"
+                  endId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="Data Conversion Output"
+                  startId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Data Conversion.Outputs[Data Conversion Output]" />
+                <path
+                  refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table.Paths[Derived Column Output]"
+                  endId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Derived Column Output"
+                  startId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Derived Column.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table.Paths[Excel Source Output]"
+                  endId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Row Count.Inputs[Row Count Input 1]"
+                  name="Excel Source Output"
+                  startId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Excel Source.Outputs[Excel Source Output]" />
+                <path
+                  refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table.Paths[Row Count Output 1]"
+                  endId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Derived Column.Inputs[Derived Column Input]"
+                  name="Row Count Output 1"
+                  startId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Row Count.Outputs[Row Count Output 1]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\Logging Error"
+          DTS:CreationName="Microsoft.ScriptTask"
+          DTS:Description="Script Task"
+          DTS:Disabled="True"
+          DTS:DTSID="{C0A8952C-1F7A-43FE-9506-13BD54F84164}"
+          DTS:ExecutableType="Microsoft.ScriptTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Logging Error"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData />
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\Update FileHistory"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{F6B80667-2297-420F-8585-F23987D2D7BB}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Update FileHistory"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{00246B9A-391E-4FE5-BD45-0808B4047D7D}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="exec stg.spUpdateFileHistory ?,?,?,?,?,?, 'PotentialManagersCodeIndex'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@ArchivedFilePath"
+                SQLTask:DtsVariableName="User::ArchiveFolderPath"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="100" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@ArchivedFileName"
+                SQLTask:DtsVariableName="User::SourceFileName_PotentialManagersCodeIndex"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="100" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@ProcessingStatus"
+                SQLTask:DtsVariableName="User::ProcessingStatus"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="100" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@SourceFilePath"
+                SQLTask:DtsVariableName="User::SourceFolderPath"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="100" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@TabName"
+                SQLTask:DtsVariableName="User::TabName_PotentialManagersCodeIndex"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="100" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@TotalRecordsInFile"
+                SQLTask:DtsVariableName="User::TotalRecordsInFile"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="20"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{8A7DD075-A7E8-4057-B63A-C08A48F0E86F}"
+          DTS:From="Package\Foreach Loop Container\Create FillHistory"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Foreach Loop Container\Loading Excel Sheet Data To Table" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{A84D09FC-E8B4-40A7-B80E-20DA009BEA4B}"
+          DTS:From="Package\Foreach Loop Container\Loading Excel Sheet Data To Table"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Foreach Loop Container\Archive" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{3E44FEF1-6790-406E-8AFF-1A71C2D0E8DB}"
+          DTS:From="Package\Foreach Loop Container\Loading Excel Sheet Data To Table"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Foreach Loop Container\Logging Error"
+          DTS:Value="1" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{4ABD0AD0-0224-4F20-ACCE-2AEDF16866A1}"
+          DTS:From="Package\Foreach Loop Container\Archive"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\Foreach Loop Container\Update FileHistory" />
+      </DTS:PrecedenceConstraints>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{FA67E334-6C20-4B2F-AA01-363DE0473DEA}"
+          DTS:ObjectName="{FA67E334-6C20-4B2F-AA01-363DE0473DEA}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::SourceFileName_PotentialManagersCodeIndex" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Get List of Files To Be Processed"
+      DTS:CreationName="Microsoft.ScriptTask"
+      DTS:Description="Script Task"
+      DTS:DTSID="{BE64D581-BE3F-4C52-8297-709A9DBA0CDC}"
+      DTS:ExecutableType="Microsoft.ScriptTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Get List of Files To Be Processed"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData />
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Get StartDate"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{E707B2CD-D7B5-462B-83E7-BB97A0C4E95B}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Get StartDate"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{00246B9A-391E-4FE5-BD45-0808B4047D7D}"
+          SQLTask:SqlStatementSource="Select Stg.fnGetStartDate('PotentialManagersStartDate') AS 'StartDate'"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="StartDate"
+            SQLTask:DtsVariableName="User::StartDate" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update StartDate"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{FDF80FFC-F1F9-4914-BA50-8BC653689315}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update StartDate"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{00246B9A-391E-4FE5-BD45-0808B4047D7D}"
+          SQLTask:SqlStatementSource="exec stg.spUpdateStartDate ?,'PotentialManagersStartDate'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@PackageName"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="255" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update TresaliaJobLog"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{3E304566-9316-471B-903E-C04EB7498B1E}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update TresaliaJobLog"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{00246B9A-391E-4FE5-BD45-0808B4047D7D}"
+          SQLTask:SqlStatementSource="exec stg.spLogPackageExecutionHistory ?,?,'PotentialManagersJobName','U'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@PackageID"
+            SQLTask:DtsVariableName="System::PackageID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="255" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@PackageName"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="255" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{D0B95DA3-3C2E-44C2-8A8B-AE7AC7507391}"
+      DTS:From="Package\Get List of Files To Be Processed"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Foreach Loop Container" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{2208CA51-0653-4621-BC05-C5A7942ADBF0}"
+      DTS:From="Package\Create TresaliaJobLog"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Get StartDate" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{20A3A536-470B-491F-9A4E-DA3F3EDB40CC}"
+      DTS:From="Package\Get StartDate"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Clear Staging Table" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{7304558C-F2E0-4528-9E00-A73381941257}"
+      DTS:From="Package\Clear Staging Table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Get List of Files To Be Processed" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{43A25627-18B1-466E-B17F-AC3F8F141C01}"
+      DTS:From="Package\Foreach Loop Container"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\Update TresaliaJobLog" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{EABD9781-5C70-4B1F-A04E-A99C149BD7FD}"
+      DTS:From="Package\Update TresaliaJobLog"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 5"
+      DTS:To="Package\Update StartDate" />
+  </DTS:PrecedenceConstraints>
+  <DTS:EventHandlers>
+    <DTS:EventHandler
+      DTS:refId="Package.EventHandlers[OnError]"
+      DTS:CreationName="OnError"
+      DTS:DTSID="{B8B6E811-87EF-47D8-9E6A-D569CB8791E2}"
+      DTS:EventID="0"
+      DTS:EventName="OnError"
+      DTS:LocaleID="-1">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:Description="The propagate property of the event"
+          DTS:DTSID="{DF9CECC2-7FEC-4FCB-A840-970ABB85B013}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="System"
+          DTS:ObjectName="Propagate">
+          <DTS:VariableValue
+            DTS:DataType="11">-1</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnError]\Error HandellingTask"
+          DTS:CreationName="Microsoft.ScriptTask"
+          DTS:Description="Script Task"
+          DTS:DTSID="{5886DE7C-E6B8-4797-BF59-57298F21C087}"
+          DTS:ExecutableType="Microsoft.ScriptTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Error HandellingTask">
+          <DTS:Variables />
+          <DTS:ObjectData />
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnError]\Update TresaliaJobLog"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{29202B37-1653-45C5-A25F-A9DD1E4B2E7C}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Update TresaliaJobLog"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{00246B9A-391E-4FE5-BD45-0808B4047D7D}"
+              SQLTask:SqlStatementSource="exec stg.spLogPackageExecutionHistory ?,?,'PotentialManagersJobName','E'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@PackageID"
+                SQLTask:DtsVariableName="System::PackageID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="255" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@PackageName"
+                SQLTask:DtsVariableName="System::PackageName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="255" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:EventHandler>
+  </DTS:EventHandlers>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Clear Staging Table"
+          TopLeft="566.25,77" />
+        <NodeLayout
+          Size="183,42"
+          Id="Package\Create TresaliaJobLog"
+          TopLeft="134.5,0.5" />
+        <NodeLayout
+          Size="115,42"
+          Id="Package\Foreach Loop Container\Archive"
+          TopLeft="5.50000000000003,209.5" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\Foreach Loop Container\Create FillHistory"
+          TopLeft="98,24" />
+        <NodeLayout
+          Size="243,42"
+          Id="Package\Foreach Loop Container\Loading Excel Sheet Data To Table"
+          TopLeft="131.5,107.5" />
+        <NodeLayout
+          Size="143,42"
+          Id="Package\Foreach Loop Container\Logging Error"
+          TopLeft="181.5,209.5" />
+        <NodeLayout
+          Size="165,42"
+          Id="Package\Foreach Loop Container\Update FileHistory"
+          TopLeft="19,356" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint]"
+          TopLeft="178.5,66">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="74.5,41.5"
+              Start="0,0"
+              End="74.5,34">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.75"
+                    Point2="0,20.75"
+                    Point3="4,20.75" />
+                  <mssgle:LineSegment
+                    End="70.5,20.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="70.5,20.75"
+                    Point2="74.5,20.75"
+                    Point3="74.5,24.75" />
+                  <mssgle:LineSegment
+                    End="74.5,34" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 1]"
+          TopLeft="213.833333333333,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-150.833333333333,60"
+              Start="0,0"
+              End="-150.833333333333,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2354865085854" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2354865085854"
+                    Point2="0,24.2354865085854"
+                    Point3="-4,24.2354865085854" />
+                  <mssgle:LineSegment
+                    End="-146.833333333333,24.2354865085854" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-146.833333333333,24.2354865085854"
+                    Point2="-150.833333333333,24.2354865085854"
+                    Point3="-150.833333333333,28.2354865085854" />
+                  <mssgle:LineSegment
+                    End="-150.833333333333,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 2]"
+          TopLeft="292.166666666667,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-39.1666666666666,60"
+              Start="0,0"
+              End="-39.1666666666666,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2354865085855" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2354865085855"
+                    Point2="0,24.2354865085855"
+                    Point3="-4,24.2354865085855" />
+                  <mssgle:LineSegment
+                    End="-35.1666666666666,24.2354865085855" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-35.1666666666666,24.2354865085855"
+                    Point2="-39.1666666666666,24.2354865085855"
+                    Point3="-39.1666666666666,28.2354865085855" />
+                  <mssgle:LineSegment
+                    End="-39.1666666666666,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-34.8246809895833,29.2354865085855,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 3]"
+          TopLeft="63,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="38.5,104.5"
+              Start="0,0"
+              End="38.5,97">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,48.25"
+                    Point2="0,52.25"
+                    Point3="4,52.25" />
+                  <mssgle:LineSegment
+                    End="34.5,52.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="34.5,52.25"
+                    Point2="38.5,52.25"
+                    Point3="38.5,56.25" />
+                  <mssgle:LineSegment
+                    End="38.5,97" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="444,453"
+          Size="444,496"
+          Id="Package\Foreach Loop Container"
+          TopLeft="134.5,208.5" />
+        <NodeLayout
+          Size="232,42"
+          Id="Package\Get List of Files To Be Processed"
+          TopLeft="172.5,124.5" />
+        <NodeLayout
+          Size="143,42"
+          Id="Package\Get StartDate"
+          TopLeft="555,4" />
+        <NodeLayout
+          Size="160,42"
+          Id="Package\Update StartDate"
+          TopLeft="231.25,784.75" />
+        <NodeLayout
+          Size="186,42"
+          Id="Package\Update TresaliaJobLog"
+          TopLeft="344.75,739.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="288.5,166.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="68,42"
+              Start="0,0"
+              End="68,34.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17"
+                    Point2="0,21"
+                    Point3="4,21" />
+                  <mssgle:LineSegment
+                    End="64,21" />
+                  <mssgle:CubicBezierSegment
+                    Point1="64,21"
+                    Point2="68,21"
+                    Point3="68,25" />
+                  <mssgle:LineSegment
+                    End="68,34.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="317.5,23.25">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="237.5,0"
+              Start="0,0"
+              End="230,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="230,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="626.5,46">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="25.25,31"
+              Start="0,0"
+              End="25.25,23.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.5"
+                    Point2="0,15.5"
+                    Point3="4,15.5" />
+                  <mssgle:LineSegment
+                    End="21.25,15.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="21.25,15.5"
+                    Point2="25.25,15.5"
+                    Point3="25.25,19.5" />
+                  <mssgle:LineSegment
+                    End="25.25,23.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="566.25,98">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-161.75,47.5"
+              Start="0,0"
+              End="-154.25,47.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-76.875,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-76.875,0"
+                    Point2="-80.875,0"
+                    Point3="-80.875,4" />
+                  <mssgle:LineSegment
+                    End="-80.875,43.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-80.875,43.5"
+                    Point2="-80.875,47.5"
+                    Point3="-84.875,47.5" />
+                  <mssgle:LineSegment
+                    End="-154.25,47.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="356.5,704.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="81.25,35"
+              Start="0,0"
+              End="81.25,27.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.5"
+                    Point2="0,17.5"
+                    Point3="4,17.5" />
+                  <mssgle:LineSegment
+                    End="77.25,17.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="77.25,17.5"
+                    Point2="81.25,17.5"
+                    Point3="81.25,21.5" />
+                  <mssgle:LineSegment
+                    End="81.25,27.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="344.75,760.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-33.5,24.25"
+              Start="0,0"
+              End="-33.5,16.75">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-29.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-29.5,0"
+                    Point2="-33.5,0"
+                    Point3="-33.5,4" />
+                  <mssgle:LineSegment
+                    End="-33.5,16.75" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnError]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="177,42"
+          Id="Package.EventHandlers[OnError]\Error HandellingTask"
+          TopLeft="NaN,NaN" />
+        <NodeLayout
+          Size="186,42"
+          Id="Package.EventHandlers[OnError]\Update TresaliaJobLog"
+          TopLeft="NaN,NaN" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <TaskHost
+    design-time-name="Package\Foreach Loop Container\Loading Excel Sheet Data To Table">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="173,42"
+          Id="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\OLE DB Destination"
+          TopLeft="140,318" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Row Count"
+          TopLeft="244,68" />
+        <NodeLayout
+          Size="141,42"
+          Id="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Excel Source"
+          TopLeft="8,40" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Derived Column"
+          TopLeft="205,144" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\Loading Excel Sheet Data To Table.Paths[Row Count Output 1]"
+          TopLeft="309,110">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-27,34"
+              Start="0,0"
+              End="-27,26.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13"
+                    Point2="0,17"
+                    Point3="-4,17" />
+                  <mssgle:LineSegment
+                    End="-23,17" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-23,17"
+                    Point2="-27,17"
+                    Point3="-27,21" />
+                  <mssgle:LineSegment
+                    End="-27,26.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\Loading Excel Sheet Data To Table.Paths[Excel Source Output]"
+          TopLeft="149,61">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="95,28"
+              Start="0,0"
+              End="87.5,28">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="43.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="43.5,0"
+                    Point2="47.5,0"
+                    Point3="47.5,4" />
+                  <mssgle:LineSegment
+                    End="47.5,24" />
+                  <mssgle:CubicBezierSegment
+                    Point1="47.5,24"
+                    Point2="47.5,28"
+                    Point3="51.5,28" />
+                  <mssgle:LineSegment
+                    End="87.5,28" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Data Conversion"
+          TopLeft="512,218" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\Loading Excel Sheet Data To Table.Paths[Derived Column Output]"
+          TopLeft="282,186">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="308,32"
+              Start="0,0"
+              End="308,24.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12"
+                    Point2="0,16"
+                    Point3="4,16" />
+                  <mssgle:LineSegment
+                    End="304,16" />
+                  <mssgle:CubicBezierSegment
+                    Point1="304,16"
+                    Point2="308,16"
+                    Point3="308,20" />
+                  <mssgle:LineSegment
+                    End="308,24.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\Loading Excel Sheet Data To Table.Paths[Data Conversion Output]"
+          TopLeft="590,260">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-363.5,58"
+              Start="0,0"
+              End="-363.5,50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25"
+                    Point2="0,29"
+                    Point3="-4,29" />
+                  <mssgle:LineSegment
+                    End="-359.5,29" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-359.5,29"
+                    Point2="-363.5,29"
+                    Point3="-363.5,33" />
+                  <mssgle:LineSegment
+                    End="-363.5,50.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Excel Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
