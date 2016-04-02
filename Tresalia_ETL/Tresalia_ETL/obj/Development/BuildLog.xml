@@ -2,7 +2,7 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>Tresalia_ETL</Name>
-    <LastWriteTime>2016-04-02T02:36:25.323893Z</LastWriteTime>
+    <LastWriteTime>2016-04-02T04:30:00.5940032Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
@@ -128,7 +128,7 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_Tresalia_Excel_Stg_PortfolioMaster.dtsx</Name>
-      <LastWriteTime>2016-04-02T03:15:34.2861934Z</LastWriteTime>
+      <LastWriteTime>2016-04-02T04:33:48.5127982Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
