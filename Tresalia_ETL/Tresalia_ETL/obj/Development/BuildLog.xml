@@ -2,223 +2,223 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>Tresalia_ETL</Name>
-    <LastWriteTime>2016-04-01T11:12:59.6608753Z</LastWriteTime>
+    <LastWriteTime>2016-04-02T02:36:25.323893Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
     <ProjectBuildItemInfo>
       <Name>Package.dtsx</Name>
-      <LastWriteTime>2016-03-31T07:49:40.4017318Z</LastWriteTime>
+      <LastWriteTime>2016-04-01T09:33:00.951547Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_Tresalia_Excel_Stg_FX.dtsx</Name>
-      <LastWriteTime>2016-04-01T07:23:39.5566036Z</LastWriteTime>
+      <LastWriteTime>2016-04-01T09:33:01.0495517Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_Tresalia_Excel_Stg_IndexReturns.dtsx</Name>
-      <LastWriteTime>2016-03-31T09:23:45.0120776Z</LastWriteTime>
+      <LastWriteTime>2016-04-01T09:33:01.0875554Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_Tresalia_Excel_Stg_PotentialManagers.dtsx</Name>
-      <LastWriteTime>2016-03-31T10:52:19.0098874Z</LastWriteTime>
+      <LastWriteTime>2016-04-01T09:33:01.1275536Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_Tresalia_Excel_Stg_PotentialManagersCodeIndex.dtsx</Name>
-      <LastWriteTime>2016-03-31T07:52:26.6376743Z</LastWriteTime>
+      <LastWriteTime>2016-04-01T09:33:01.1365542Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_Tresalia_Excel_Stg_StoneMiliner.dtsx</Name>
-      <LastWriteTime>2016-03-31T09:44:06.2860093Z</LastWriteTime>
+      <LastWriteTime>2016-04-01T09:33:01.1915693Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_Tresalia_CSV_Stg_MasterETFData.dtsx</Name>
-      <LastWriteTime>2016-03-31T11:16:39.8417436Z</LastWriteTime>
+      <LastWriteTime>2016-04-01T09:33:00.9705421Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_Tresalia_Excel_Stg_AssetType.dtsx</Name>
-      <LastWriteTime>2016-03-31T11:32:10.4312704Z</LastWriteTime>
+      <LastWriteTime>2016-04-01T09:33:00.9795472Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_Tresalia_Excel_Stg_LFI.dtsx</Name>
-      <LastWriteTime>2016-03-31T11:41:32.0706624Z</LastWriteTime>
+      <LastWriteTime>2016-04-01T09:33:01.0995572Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_Tresalia_Excel_Stg_RefTable.dtsx</Name>
-      <LastWriteTime>2016-04-01T05:44:15.5815387Z</LastWriteTime>
+      <LastWriteTime>2016-04-01T09:33:01.1555557Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_Tresalia_CSV_Stg_BroadRidgeTrade.dtsx</Name>
-      <LastWriteTime>2016-03-31T11:43:40.4231214Z</LastWriteTime>
+      <LastWriteTime>2016-04-01T09:33:00.9595458Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_Tresalia_Excel_Stg_CompositeAsset.dtsx</Name>
-      <LastWriteTime>2016-04-01T05:27:56.2198355Z</LastWriteTime>
+      <LastWriteTime>2016-04-01T09:33:01.0225494Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_Tresalia_Stg_DW_AssetType.dtsx</Name>
-      <LastWriteTime>2016-04-01T10:56:26.8971735Z</LastWriteTime>
+      <LastWriteTime>2016-04-02T02:36:25.2288848Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_Tresalia_Stg_DW_FX.dtsx</Name>
-      <LastWriteTime>2016-03-31T19:14:40.2294807Z</LastWriteTime>
+      <LastWriteTime>2016-04-01T09:33:01.2385626Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_Tresalia_Excel_Stg_Futures.dtsx</Name>
-      <LastWriteTime>2016-04-01T06:09:26.2100744Z</LastWriteTime>
+      <LastWriteTime>2016-04-01T09:33:01.077552Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_Tresalia_Excel_Stg_Sector.dtsx</Name>
-      <LastWriteTime>2016-04-01T06:21:56.6318701Z</LastWriteTime>
+      <LastWriteTime>2016-04-01T09:33:01.1815614Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_Tresalia_Excel_Stg_TenorTnC.dtsx</Name>
-      <LastWriteTime>2016-04-01T06:15:28.1076967Z</LastWriteTime>
+      <LastWriteTime>2016-04-01T09:33:01.2155704Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_Tresalia_Excel_Stg_RiskMetricsTnc.dtsx</Name>
-      <LastWriteTime>2016-04-01T06:16:14.1000995Z</LastWriteTime>
+      <LastWriteTime>2016-04-01T09:33:01.1705657Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_Tresalia_Excel_Stg_SwapCurve.dtsx</Name>
-      <LastWriteTime>2016-04-01T08:13:17.9700755Z</LastWriteTime>
+      <LastWriteTime>2016-04-01T09:33:01.2015693Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>pkg_Tresalia_Excel_Stg_EqBenchmarks.dtsx</Name>
-      <LastWriteTime>2016-04-01T06:17:28.7432381Z</LastWriteTime>
+      <LastWriteTime>2016-04-01T09:33:01.6806019Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>pkg_Tresalia_Excel_Stg_FIBenchmarks.dtsx</Name>
-      <LastWriteTime>2016-04-01T06:18:23.6314944Z</LastWriteTime>
+      <LastWriteTime>2016-04-01T09:33:01.6936107Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_Tresalia_Excel_Stg_BNYCFReport.dtsx</Name>
-      <LastWriteTime>2016-04-01T07:40:22.8385954Z</LastWriteTime>
+      <LastWriteTime>2016-04-02T03:18:10.2088556Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_Tresalia_Excel_Stg_BNYMonthly.dtsx</Name>
-      <LastWriteTime>2016-04-01T08:01:32.7226966Z</LastWriteTime>
+      <LastWriteTime>2016-04-02T03:17:19.0832304Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_Tresalia_Excel_Stg_MrashallWace.dtsx</Name>
-      <LastWriteTime>2016-04-01T07:54:34.9206904Z</LastWriteTime>
+      <LastWriteTime>2016-04-01T09:33:01.1085573Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_Tresalia_Excel_Stg_PortfolioMaster.dtsx</Name>
-      <LastWriteTime>2016-04-01T07:31:13.425042Z</LastWriteTime>
+      <LastWriteTime>2016-04-02T03:15:34.2861934Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_Tresalia_Text_Stg_TenorPositions.dtsx</Name>
-      <LastWriteTime>2016-04-01T08:08:26.0930061Z</LastWriteTime>
+      <LastWriteTime>2016-04-02T03:14:40.7310416Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_Tresalia_Excel_Stg_BNYHoldings.dtsx</Name>
-      <LastWriteTime>2016-04-01T07:49:03.5344116Z</LastWriteTime>
+      <LastWriteTime>2016-04-02T03:13:48.4480352Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_Tresalia_Excel_Stg_Composites.dtsx</Name>
-      <LastWriteTime>2016-04-01T08:37:42.8871856Z</LastWriteTime>
+      <LastWriteTime>2016-04-01T09:33:01.0305471Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_Tresalia_Excel_Stg_Country.dtsx</Name>
-      <LastWriteTime>2016-04-01T08:39:00.4472936Z</LastWriteTime>
+      <LastWriteTime>2016-04-01T09:33:01.0395473Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_Tresalia_Excel_Stg_FactSetIntlFICoverage.dtsx</Name>
-      <LastWriteTime>2016-04-01T08:41:57.0187023Z</LastWriteTime>
+      <LastWriteTime>2016-04-01T09:33:01.0585489Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_Tresalia_Excel_Stg_FactSetUSFICoverage.dtsx</Name>
-      <LastWriteTime>2016-04-01T08:43:27.3933149Z</LastWriteTime>
+      <LastWriteTime>2016-04-01T09:33:01.0685496Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_Tresalia_Excel_Stg_Rating.dtsx</Name>
-      <LastWriteTime>2016-04-01T08:50:03.022155Z</LastWriteTime>
+      <LastWriteTime>2016-04-01T09:33:01.1465546Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_Tresalia_Stg_DW_IndexReturns.dtsx</Name>
-      <LastWriteTime>2016-04-01T10:59:24.6606377Z</LastWriteTime>
+      <LastWriteTime>2016-04-02T02:36:25.2899021Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_Tresalia_Stg_DW_AssetAllocation.dtsx</Name>
-      <LastWriteTime>2016-04-01T11:04:19.5764688Z</LastWriteTime>
+      <LastWriteTime>2016-04-02T02:36:25.2209901Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_Tresalia_Stg_DW_CompositeAsset.dtsx</Name>
-      <LastWriteTime>2016-04-01T11:04:19.5604682Z</LastWriteTime>
+      <LastWriteTime>2016-04-02T02:36:25.2378834Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_Tresalia_Stg_DW_Country.dtsx</Name>
-      <LastWriteTime>2016-04-01T11:10:25.7460069Z</LastWriteTime>
+      <LastWriteTime>2016-04-02T02:36:25.2458833Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_Tresalia_Stg_DW_Rating.dtsx</Name>
-      <LastWriteTime>2016-04-01T11:05:48.5132074Z</LastWriteTime>
+      <LastWriteTime>2016-04-02T02:36:25.3068853Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_Tresalia_Stg_DW_EqSurface.dtsx</Name>
-      <LastWriteTime>2016-04-01T11:10:25.7310049Z</LastWriteTime>
+      <LastWriteTime>2016-04-02T02:36:25.2548848Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_Tresalia_Stg_DW_Futures.dtsx</Name>
-      <LastWriteTime>2016-04-01T11:10:25.7160071Z</LastWriteTime>
+      <LastWriteTime>2016-04-02T02:36:25.2738861Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_Tresalia_Stg_DW_SwapCurve.dtsx</Name>
-      <LastWriteTime>2016-04-01T11:10:25.7009985Z</LastWriteTime>
+      <LastWriteTime>2016-04-02T02:36:25.3148923Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_Tresalia_Stg_DW_PortfolioMaster.dtsx</Name>
-      <LastWriteTime>2016-04-01T11:10:25.6839947Z</LastWriteTime>
+      <LastWriteTime>2016-04-02T02:36:25.2988895Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_Tresalia_Stg_DW_EuroDollarSwapCurve.dtsx</Name>
-      <LastWriteTime>2016-04-01T11:10:44.5356481Z</LastWriteTime>
+      <LastWriteTime>2016-04-02T02:36:25.2638936Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_Tresalia_Stg_DW_IRSurface.dtsx</Name>
-      <LastWriteTime>2016-04-01T11:11:39.8644166Z</LastWriteTime>
+      <LastWriteTime>2016-04-02T02:36:25.2818878Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>
