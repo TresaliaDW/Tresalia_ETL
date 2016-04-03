@@ -33,9 +33,6 @@ sqlcmd -S %ServerName% -d %DatabaseName% -E -m-1 -b -i "Schema\Create_Stg_Schema
 if %ERRORLEVEL% NEQ 0 goto errors
 @echo off
 
-@echo ########################################################################################################
-@echo ########## Tresalia Build:Creating Schema in %DatabaseServer%.%DatabaseName% DB.##########
-@echo ########################################################################################################
 sqlcmd -S %ServerName% -d %DatabaseName% -E -m-1 -b -i "Schema\Create_DW_Schema.sql"
 if %ERRORLEVEL% NEQ 0 goto errors
 @echo off
@@ -55,12 +52,11 @@ if %ERRORLEVEL% NEQ 0 goto errors
 @echo off
 
 @echo ########################################################################################################
-@echo ########## Tresalia Build:Creating Paramater in %DatabaseServer%.%DatabaseName% DB.##########
+@echo ########## Tresalia Build:Creating Paramater Table in %DatabaseServer%.%DatabaseName% DB.##########
 @echo ########################################################################################################
 sqlcmd -S %ServerName% -d %DatabaseName% -E -m-1 -b -i "Tables\Create_Stg_TresaliaParams.sql"
 if %ERRORLEVEL% NEQ 0 goto errors
 @echo off
-
 
 @echo ########################################################################################################
 @echo ########## Tresalia Build:Creating Functions in %DatabaseServer%.%DatabaseName% DB.##########
@@ -69,6 +65,12 @@ sqlcmd -S %ServerName% -d %DatabaseName% -E -m-1 -b -i "Functions\Create_Stg_fnG
 if %ERRORLEVEL% NEQ 0 goto errors
 @echo off
 
+@echo ########################################################################################################
+@echo ########## Tresalia Build:Creating Sequences in %DatabaseServer%.%DatabaseName% DB.##########
+@echo ########################################################################################################
+sqlcmd -S %ServerName% -d %DatabaseName% -E -m-1 -b -i "Sequences\Create_DW_Sequences.sql"
+if %ERRORLEVEL% NEQ 0 goto errors
+@echo off
 
 @echo ########################################################################################################
 @echo ########## Tresalia Build:Creating Storepd Procedures in %DatabaseServer%.%DatabaseName% DB.##########
@@ -77,40 +79,38 @@ sqlcmd -S %ServerName% -d %DatabaseName% -E -m-1 -b -i "StoredProcedures\Create_
 if %ERRORLEVEL% NEQ 0 goto errors
 @echo off
 
-@echo ########################################################################################################
-@echo ########## Tresalia Build:Creating Storepd Procedures in %DatabaseServer%.%DatabaseName% DB.##########
-@echo ########################################################################################################
 sqlcmd -S %ServerName% -d %DatabaseName% -E -m-1 -b -i "StoredProcedures\Create_Stg_spClearStageTable.sql"
 if %ERRORLEVEL% NEQ 0 goto errors
 @echo off
 
-@echo ########################################################################################################
-@echo ########## Tresalia Build:Creating Storepd Procedures in %DatabaseServer%.%DatabaseName% DB.##########
-@echo ########################################################################################################
 sqlcmd -S %ServerName% -d %DatabaseName% -E -m-1 -b -i "StoredProcedures\Create_Stg_spGetStartDate.sql"
 if %ERRORLEVEL% NEQ 0 goto errors
 @echo off
 
-@echo ########################################################################################################
-@echo ########## Tresalia Build:Creating Storepd Procedures in %DatabaseServer%.%DatabaseName% DB.##########
-@echo ########################################################################################################
 sqlcmd -S %ServerName% -d %DatabaseName% -E -m-1 -b -i "StoredProcedures\Create_Stg_spUpdateStartDate.sql"
 if %ERRORLEVEL% NEQ 0 goto errors
 @echo off
 
-@echo ########################################################################################################
-@echo ########## Tresalia Build:Creating Storepd Procedures in %DatabaseServer%.%DatabaseName% DB.##########
-@echo ########################################################################################################
 sqlcmd -S %ServerName% -d %DatabaseName% -E -m-1 -b -i "StoredProcedures\Create_Stg_spCreateFileHistory.sql"
 if %ERRORLEVEL% NEQ 0 goto errors
 @echo off
 
-@echo ########################################################################################################
-@echo ########## Tresalia Build:Creating Storepd Procedures in %DatabaseServer%.%DatabaseName% DB.##########
-@echo ########################################################################################################
-sqlcmd -S %ServerName% -d %DatabaseName% -E -m-1 -b -i "StoredProcedures\Create_Stg_spUpdateStartDate.sql"
+sqlcmd -S %ServerName% -d %DatabaseName% -E -m-1 -b -i "StoredProcedures\Create_Stg_spUpdateFileHistory.sql"
 if %ERRORLEVEL% NEQ 0 goto errors
 @echo off
+
+sqlcmd -S %ServerName% -d %DatabaseName% -E -m-1 -b -i "StoredProcedures\Create_Stg_spGetStagingData.sql"
+if %ERRORLEVEL% NEQ 0 goto errors
+@echo off
+
+sqlcmd -S %ServerName% -d %DatabaseName% -E -m-1 -b -i "StoredProcedures\Create_DW_spInsertPickListType.sql"
+if %ERRORLEVEL% NEQ 0 goto errors
+@echo off
+
+sqlcmd -S %ServerName% -d %DatabaseName% -E -m-1 -b -i "StoredProcedures\Create_DW_spInsertPickList.sql"
+if %ERRORLEVEL% NEQ 0 goto errors
+@echo off
+
 
 @echo ########################################################################################################
 @echo ########## Tresalia Build:Inserting static data in %DatabaseServer%.%DatabaseName% DB.##########
@@ -118,6 +118,11 @@ if %ERRORLEVEL% NEQ 0 goto errors
 sqlcmd -S %ServerName% -d %DatabaseName% -E -m-1 -b -i "Scripts\Insert_Script_TresaliaParam_Table.sql"
 if %ERRORLEVEL% NEQ 0 goto errors
 @echo off
+
+sqlcmd -S %ServerName% -d %DatabaseName% -E -m-1 -b -i "Scripts\InsertPickListData.sql"
+if %ERRORLEVEL% NEQ 0 goto errors
+@echo off
+
 
 
 
