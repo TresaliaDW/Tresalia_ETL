@@ -2,7 +2,7 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>Tresalia_ETL</Name>
-    <LastWriteTime>2016-04-01T11:12:59.6608753Z</LastWriteTime>
+    <LastWriteTime>2016-04-01T13:38:09.9980523Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
@@ -183,7 +183,7 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_Tresalia_Stg_DW_Country.dtsx</Name>
-      <LastWriteTime>2016-04-01T11:10:25.7460069Z</LastWriteTime>
+      <LastWriteTime>2016-04-01T13:31:47.6237137Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
@@ -219,6 +219,26 @@
     <ProjectBuildItemInfo>
       <Name>Pkg_Tresalia_Stg_DW_IRSurface.dtsx</Name>
       <LastWriteTime>2016-04-01T11:11:39.8644166Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Pkg_Tresalia_Excel_Stg_AssetAllocation.dtsx</Name>
+      <LastWriteTime>2016-04-01T13:44:12.4224262Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Pkg_Tresalia_Excel_Stg_EqSurface.dtsx</Name>
+      <LastWriteTime>2016-04-01T13:48:45.7068367Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Pkg_Tresalia_Excel_Stg_IRSurface.dtsx</Name>
+      <LastWriteTime>2016-04-01T13:49:58.4073335Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Pkg_Tresalia_Excel_Stg_EuroDollarSwapCurve.dtsx</Name>
+      <LastWriteTime>2016-04-01T13:35:04.2424681Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>
