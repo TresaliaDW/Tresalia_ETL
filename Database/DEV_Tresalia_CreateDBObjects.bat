@@ -112,6 +112,18 @@ sqlcmd -S %ServerName% -d %DatabaseName% -E -m-1 -b -i "StoredProcedures\Create_
 if %ERRORLEVEL% NEQ 0 goto errors
 @echo off
 
+sqlcmd -S %ServerName% -d %DatabaseName% -E -m-1 -b -i "StoredProcedures\Create_DW_spValidateCompositeAsset.sql"
+if %ERRORLEVEL% NEQ 0 goto errors
+@echo off
+
+sqlcmd -S %ServerName% -d %DatabaseName% -E -m-1 -b -i "StoredProcedures\Create_DW_spValidatePortfolioMaster.sql"
+if %ERRORLEVEL% NEQ 0 goto errors
+@echo off
+
+sqlcmd -S %ServerName% -d %DatabaseName% -E -m-1 -b -i "StoredProcedures\Create_DW_spValidateAssetAllocation.sql"
+if %ERRORLEVEL% NEQ 0 goto errors
+@echo off
+
 @echo ########################################################################################################
 @echo ########## Tresalia Build:Inserting static data in %DatabaseServer%.%DatabaseName% DB.##########
 @echo ########################################################################################################
