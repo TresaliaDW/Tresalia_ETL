@@ -66,13 +66,6 @@ if %ERRORLEVEL% NEQ 0 goto errors
 @echo off
 
 @echo ########################################################################################################
-@echo ########## Tresalia Build:Creating Sequences in %DatabaseServer%.%DatabaseName% DB.##########
-@echo ########################################################################################################
-sqlcmd -S %ServerName% -d %DatabaseName% -E -m-1 -b -i "Sequences\Create_DW_Sequences.sql"
-if %ERRORLEVEL% NEQ 0 goto errors
-@echo off
-
-@echo ########################################################################################################
 @echo ########## Tresalia Build:Creating Storepd Procedures in %DatabaseServer%.%DatabaseName% DB.##########
 @echo ########################################################################################################
 sqlcmd -S %ServerName% -d %DatabaseName% -E -m-1 -b -i "StoredProcedures\Create_Stg_spLogPackageExecutionHistory.sql"
@@ -111,6 +104,13 @@ sqlcmd -S %ServerName% -d %DatabaseName% -E -m-1 -b -i "StoredProcedures\Create_
 if %ERRORLEVEL% NEQ 0 goto errors
 @echo off
 
+sqlcmd -S %ServerName% -d %DatabaseName% -E -m-1 -b -i "StoredProcedures\Create_Stg_spInsertTresaliaParams.sql"
+if %ERRORLEVEL% NEQ 0 goto errors
+@echo off
+
+sqlcmd -S %ServerName% -d %DatabaseName% -E -m-1 -b -i "StoredProcedures\Create_Stg_spValidateAssetType.sql"
+if %ERRORLEVEL% NEQ 0 goto errors
+@echo off
 
 @echo ########################################################################################################
 @echo ########## Tresalia Build:Inserting static data in %DatabaseServer%.%DatabaseName% DB.##########

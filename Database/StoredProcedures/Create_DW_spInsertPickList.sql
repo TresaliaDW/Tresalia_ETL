@@ -34,7 +34,7 @@ BEGIN
 
 	IF NOT EXISTS (SELECT 1 FROM dw.PickList WHERE PickList_Type_Id = @PickListTypeId AND PickList_Code = @PickListCode)
 	BEGIN
-		SET @sequenceId =  NEXT VALUE FOR dw.SeqPickListId
+		SET @sequenceId =  NEXT VALUE FOR dw.PickList_SEQ
 		INSERT INTO dw.PickList(PickList_ID, PickList_Type_ID, PickList_Code, PickList_Name, Created_Date, Created_By, Is_Deleted)
 		VALUES(@sequenceId, @PickListTypeId, @PickListCode, @PickListName, getdate(), suser_name(), 0)
 	END
