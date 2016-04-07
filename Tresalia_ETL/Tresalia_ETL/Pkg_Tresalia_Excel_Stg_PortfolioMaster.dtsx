@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Pkg_Tresalia_Excel_Stg_PortfolioMaster"
   DTS:PackageType="5"
-  DTS:VersionBuild="217"
-  DTS:VersionGUID="{28720262-10E6-45BF-9EA3-BE53E691B342}">
+  DTS:VersionBuild="218"
+  DTS:VersionGUID="{D79627B5-9871-4C21-9A15-5431D0638AF6}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -39,7 +39,7 @@
         DTS:Name="ExcelFilePath">@[User::SourceFolderPath] + @[User::SourceFileName_PortfolioMaster]</DTS:PropertyExpression>
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=D:\Tresalia\Anupam\Tresalia_ETL\Source\20160320 - Portfolio Master.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\PD\Source\20160320 - Portfolio Master.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -59,7 +59,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="ArchiveFolderPath">
       <DTS:VariableValue
-        DTS:DataType="8">D:\Tresalia\Anupam\Tresalia_ETL\Archive\</DTS:VariableValue>
+        DTS:DataType="8">C:\PD\Archive\</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -97,7 +97,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="FullFilePathSource">
       <DTS:VariableValue
-        DTS:DataType="8">D:\Tresalia\Anupam\Tresalia_ETL\Source\\20160320 - Portfolio Master.xlsx</DTS:VariableValue>
+        DTS:DataType="8">C:\PD\Source\\20160320 - Portfolio Master.xlsx</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -126,7 +126,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="Query_PortfolioMaster">
       <DTS:VariableValue
-        DTS:DataType="8">Select * from [Sheet1$A:Z]</DTS:VariableValue>
+        DTS:DataType="8">Select * from [Sheet1$A:AB]</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -135,7 +135,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="SelectedColumnRange_PortfolioMaster">
       <DTS:VariableValue
-        DTS:DataType="8">A:Z</DTS:VariableValue>
+        DTS:DataType="8">A:AB</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -180,7 +180,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="SourceFolderPath">
       <DTS:VariableValue
-        DTS:DataType="8">D:\Tresalia\Anupam\Tresalia_ETL\Source\</DTS:VariableValue>
+        DTS:DataType="8">C:\PD\Source\</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -231,7 +231,7 @@
     <DTS:Executable
       DTS:refId="Package\Create TresaliaJobLog"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Execute SQL Task"
+      DTS:Description="Execute SQL Task tt"
       DTS:DTSID="{A75A4867-5D13-4E96-A56F-305AB7578F72}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
@@ -286,7 +286,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Archive File"
           DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2016 RC0; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <FileSystemData
@@ -2758,7 +2758,7 @@
           DTS:ExecutableType="Microsoft.ScriptTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Logging Error"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <ScriptProject
@@ -2777,7 +2777,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Update FileHistory"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -2886,14 +2886,35 @@
           ReadOnlyVariables="User::FileMask_PortfolioMaster,User::InputFolderPath_PortfolioMaster,User::SourceFolderPath,User::StartDate"
           ReadWriteVariables="User::SourceFileList">
           <ProjectItem
-            Name="Properties\Settings.settings"
-            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
-</SettingsFile>]]></ProjectItem>
+            Name="Properties\AssemblyInfo.cs"
+            Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_7721423477fc4545a532e65ca4c75477")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_7721423477fc4545a532e65ca4c75477")]
+[assembly: AssemblyCopyright("Copyright @  2016")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
           <ProjectItem
             Name="Properties\Resources.resx"
             Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
@@ -3384,35 +3405,14 @@ namespace ST_7721423477fc4545a532e65ca4c75477.Properties {
     }
 }]]></ProjectItem>
           <ProjectItem
-            Name="Properties\AssemblyInfo.cs"
-            Encoding="UTF8"><![CDATA[using System.Reflection;
-using System.Runtime.CompilerServices;
-
-//
-// General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
-//
-[assembly: AssemblyTitle("ST_7721423477fc4545a532e65ca4c75477")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ST_7721423477fc4545a532e65ca4c75477")]
-[assembly: AssemblyCopyright("Copyright @  2016")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-//
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Revision and Build Numbers 
-// by using the '*' as shown below:
-
-[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
           <ProjectItem
             Name="Properties\Resources.Designer.cs"
             Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
