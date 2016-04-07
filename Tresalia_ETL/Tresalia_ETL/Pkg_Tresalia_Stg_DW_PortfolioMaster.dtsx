@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Pkg_Tresalia_Stg_DW_PortfolioMaster"
   DTS:PackageType="5"
-  DTS:VersionBuild="230"
-  DTS:VersionGUID="{7C78709D-752A-496C-BD9A-F1FB97F11380}">
+  DTS:VersionBuild="231"
+  DTS:VersionGUID="{262EF4AE-F886-498F-AD2D-E1E05CE0B509}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -272,7 +272,7 @@
     <DTS:Executable
       DTS:refId="Package\Create TresaliaJobLog"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Execute SQL Task"
+      DTS:Description="Execute SQL Task fff"
       DTS:DTSID="{CA484153-EB17-4F10-BE87-5DB29F364C20}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
