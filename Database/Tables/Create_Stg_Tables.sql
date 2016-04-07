@@ -10,6 +10,10 @@ IF EXISTS (SELECT 1 FROM  sysobjects WHERE  id = OBJECT_ID('Stg.FileHistory') AN
    DROP TABLE Stg.FileHistory
 GO
 
+IF EXISTS (SELECT 1 FROM  sysobjects WHERE  id = OBJECT_ID('Stg.JobIdHistory') AND   TYPE = 'U')
+   DROP TABLE Stg.JobIdHistory
+GO
+
 if exists (select 1 from  sysobjects where  id = object_id('stg.AssetType') and   type = 'U')
    drop table stg.AssetType
 go
@@ -147,19 +151,22 @@ IF EXISTS (SELECT 1 FROM  sysobjects WHERE  id = OBJECT_ID('stg.CompositeAsset')
 GO
 
 
-
+/*==============================================================*/
+/* Table: FileHistory                                             */
+/*==============================================================*/
 
 CREATE TABLE [Stg].[FileHistory](
-	[FileID]							[int] IDENTITY(1,1) NOT NULL,
+	[FileID]							[int] IDENTITY(1,1) NOT NULL PRIMARY KEY,
 	[SourceFilePath]						[varchar](500) NULL,
 	[SourceFileName]						[varchar](200) NULL,
 	[TabName]							[varchar](100) NULL,
 	[ArchivedFilePath]						[varchar](500) NULL,
 	[ArchivedFileName]						[varchar](200) NULL,
 	[ProcessingStatus]						[varchar] (100) NULL,	
-	[ReceivedFileDateTime]						[datetime] NULL,
+	--[ReceivedFileDateTime]						[datetime] NULL,
 	[TotalRecordsInFile]						[int]	NULL,
-	[ProcessedRecordsInFile]					[int]	NULL,	
+	[ProcessedRecordsInFile]					[int]	NULL,
+	[JobId]										[Int] NULL,	
 	CreatedDate         						datetime             not null DEFAULT GETDATE(),
     	CreatedBy							Varchar(50)          not null DEFAULT SUSER_NAME(),    	
     	BatchDate							Date		     Null
@@ -167,6 +174,21 @@ CREATE TABLE [Stg].[FileHistory](
 
 GO
 
+
+/*==============================================================*/
+/* Table: JobIdHistory                                             */
+/*==============================================================*/
+CREATE TABLE [Stg].[JobIdHistory](
+	[JobID]							    INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
+	[JobName]						    [varchar](100) NULL,
+	--[InboundFileStartDate]				[Date]  NULL,
+	--[OutboundFileStartDate]				[Date]  NULL,
+	CreatedDate         				datetime             not null DEFAULT GETDATE(),
+    CreatedBy							Varchar(50)          not null DEFAULT SUSER_NAME(),    	
+    BatchDate							Date		     Null
+)
+
+GO
 
 /*==============================================================*/
 /* Table: TableName                                             */
@@ -284,6 +306,8 @@ create table stg.FX (
    FileName		Varchar(100)		not null,
    FilePath		Varchar(100)		not null,
    TabName              varchar(100)		not null,
+   SourceSystem      varchar(200)		not null,
+   FileDate      varchar(100)		not null,
    [FX CODE]	 	varchar(100)		 null,
    FX_NAME		varchar(100)		 null,
    TGT_FX		varchar(100)		 null,
@@ -559,11 +583,13 @@ create table stg.PortfolioMaster (
    [TabName]            varchar(100)		not null,
    ACCOUNT_ID		varchar(100)		 null,	
    ACCOUNT_NAME		varchar(100)		 null,
+   ACCOUNT_NAME_Long		varchar(100)		 null,
    LEVEL_1		varchar(100)		 null,
    LEVEL_2		varchar(100)		 null,
    LEVEL_3		varchar(100)		 null,
    LEVEL_4		varchar(100)		 null,
    LEVEL_5		varchar(100)		 null,
+   Bench_ID		varchar(100)		 null,
    FEE_1_PROXY		varchar(100)		 null,
    FEE_1_AUM		varchar(100)		 null,
    FEE_2_PROXY		varchar(100)		 null,
@@ -577,7 +603,7 @@ create table stg.PortfolioMaster (
    [Mask 2]		varchar(100)		 null,
    [Mask 3]		varchar(100)		 null,
    [Mask 4]		varchar(100)		 null,
-   [Mask 5]		varchar(100)		 null,
+   [Asset_Manager]		varchar(100)		 null,
     Pooled		varchar(100)		 null,
     Acct_Inception_Date	varchar(100)		 null,
     Strat_Inception_Date	varchar(100)		 null,
@@ -1154,6 +1180,8 @@ create table stg.IndexReturns (
    FileName		Varchar(100)		not null,
    FilePath		Varchar(100)		not null,
    TabName      varchar(100)		not null,
+   SourceSystem      varchar(200)		not null,
+   FileDate		varchar(100)		 null,
    SYMBOL	 	varchar(100)		 null,
    SHORTNAM		varchar(100)		 null,
    [GROUP]		varchar(100)		 null,
@@ -1267,10 +1295,10 @@ create table stg.EuroDollarSwapCurve (
 [FileName]					Varchar(100)		not null,
 [FilePath]					Varchar(100)		not null,
 [TabName]					Varchar(100)		not null,
-[Date]						Varchar(100)		NULL,
+[Valuation_Date]			Varchar(100)		NULL,
 [Reference]					Varchar(100)		NULL,
 [Month]						Varchar(100)		NULL,
-[Date1]						Varchar(100)		NULL,
+[Expiration_Date]			Varchar(100)		NULL,
 [Time]						Varchar(100)		NULL,
 [Price]						Varchar(100)		NULL,
 [Yield]						Varchar(100)		NULL,

@@ -7,8 +7,8 @@ go
 /* Table: TresaliaJobLog                                        */
 /*==============================================================*/
 Create Table Stg.TresaliaJobLog(
-	JobSequenceNo Numeric(19, 0) Identity(1,1) Not Null,
-       PackageId Varchar(255) Not Null,
+	JobSequenceNo Numeric(19, 0) Identity(1,1) Not Null PRIMARY KEY,
+       JobId INT Not Null,
 	   PackageName Varchar(255) Not Null,
 	   JobName Varchar(255) Not Null,
        JobStatus Varchar(255) Not Null,
