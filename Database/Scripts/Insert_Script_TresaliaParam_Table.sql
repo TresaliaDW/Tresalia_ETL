@@ -1,351 +1,95 @@
------------------------------------------------------------------------------------------------------------------
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'AssetTypeStartDate')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'AssetTypeStartDate', '01/31/2012')
-go
+Exec Stg.spInsertTresaliaParams 'Config', 'AssetTypeStartDate', '01/31/2012'
+Exec Stg.spInsertTresaliaParams 'Config', 'AssetTypeJobName', 'LoadDataWarehouse_AssetType'
 
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'AssetTypeJobName')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'AssetTypeJobName', 'LoadDataWarehouse_AssetType')
-go
------------------------------------------------------------------------------------------------------------------
+Exec Stg.spInsertTresaliaParams 'Config', 'BNYCFReportStartDate', '01/31/2012'
+Exec Stg.spInsertTresaliaParams 'Config', 'BNYCFReportJobName', 'LoadDataWarehouse_BNYCFReport'
 
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'BNYCFReportStartDate')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'BNYCFReportStartDate', '01/31/2012')
-go
+Exec Stg.spInsertTresaliaParams 'Config', 'BNYMonthlyStartDate', '01/31/2012'
+Exec Stg.spInsertTresaliaParams 'Config', 'BNYMonthlyJobName', 'LoadDataWarehouse_BNYMonthly'
 
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'BNYCFReportJobName')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'BNYCFReportJobName', 'LoadDataWarehouse_BNYCFReport')
-go
------------------------------------------------------------------------------------------------------------------
+Exec Stg.spInsertTresaliaParams 'Config', 'CompositesStartDate', '01/31/2012'
+Exec Stg.spInsertTresaliaParams 'Config', 'CompositesJobName', 'LoadDataWarehouse_Composites'
 
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'BNYMonthlyStartDate')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'BNYMonthlyStartDate', '01/31/2012')
-go
+Exec Stg.spInsertTresaliaParams 'Config', 'CountryStartDate', '01/31/2012'
+Exec Stg.spInsertTresaliaParams 'Config', 'CountryJobName', 'LoadDataWarehouse_Country'
 
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'BNYMonthlyJobName')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'BNYMonthlyJobName', 'LoadDataWarehouse_BNYMonthly')
-go
+Exec Stg.spInsertTresaliaParams 'Config', 'FactSetEqBenchmarksStartDate', '01/31/2012'
+Exec Stg.spInsertTresaliaParams 'Config', 'FactSetEqBenchmarksJobName', 'LoadDataWarehouse_FactSetEqBenchmarks'
 
------------------------------------------------------------------------------------------------------------------
+Exec Stg.spInsertTresaliaParams 'Config', 'FactSetFIBenchmarksStartDate', '01/31/2012'
+Exec Stg.spInsertTresaliaParams 'Config', 'FactSetFIBenchmarksJobName', 'LoadDataWarehouse_FactSetFIBenchmarks'
 
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'CompositesStartDate')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'CompositesStartDate', '01/31/2012')
-go
+Exec Stg.spInsertTresaliaParams 'Config', 'FactSetIntlFICoverageStartDate', '01/31/2012'
+Exec Stg.spInsertTresaliaParams 'Config', 'FactSetIntlFICoverageJobName', 'LoadDataWarehouse_FactSetIntlFICoverage'
 
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'CompositesJobName')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'CompositesJobName', 'LoadDataWarehouse_Composites')
-go
------------------------------------------------------------------------------------------------------------------
+Exec Stg.spInsertTresaliaParams 'Config', 'FactSetUSFICoverageStartDate', '01/31/2012'
+Exec Stg.spInsertTresaliaParams 'Config', 'FactSetUSFICoverageJobName', 'LoadDataWarehouse_FactSetUSFICoverage'
 
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'CountryStartDate')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'CountryStartDate', '01/31/2012')
-go
+Exec Stg.spInsertTresaliaParams 'Config', 'FXStartDate', '01/31/2012'
+Exec Stg.spInsertTresaliaParams 'Config', 'FXJobName', 'LoadDataWarehouse_FX'
 
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'CountryJobName')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'CountryJobName', 'LoadDataWarehouse_Country')
-go
+Exec Stg.spInsertTresaliaParams 'Config', 'LFIStartDate', '01/31/2012'
+Exec Stg.spInsertTresaliaParams 'Config', 'LFIJobName', 'LoadDataWarehouse_LFI'
 
------------------------------------------------------------------------------------------------------------------
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'FactSetEqBenchmarksStartDate')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'FactSetEqBenchmarksStartDate', '01/31/2012')
-go
+Exec Stg.spInsertTresaliaParams 'Config', 'MarshallWaceStartDate', '01/31/2012'
+Exec Stg.spInsertTresaliaParams 'Config', 'MarshallWaceJobName', 'LoadDataWarehouse_MarshallWace'
 
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'FactSetEqBenchmarksJobName')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'FactSetEqBenchmarksJobName', 'LoadDataWarehouse_FactSetEqBenchmarks')
-go
-------------------------------------------------------------------------------------------------------------------------
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'FactSetFIBenchmarksStartDate')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'FactSetFIBenchmarksStartDate', '01/31/2012')
-go
+Exec Stg.spInsertTresaliaParams 'Config', 'MgrTNCRMStartDate', '01/31/2012'
+Exec Stg.spInsertTresaliaParams 'Config', 'MgrTNCRMJobName', 'LoadDataWarehouse_MgrTNCRM'
 
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'FactSetFIBenchmarksJobName')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'FactSetFIBenchmarksJobName', 'LoadDataWarehouse_FactSetFIBenchmarks')
-go
-------------------------------------------------------------------------------------------------------------------------
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'FactSetIntlFICoverageStartDate')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'FactSetIntlFICoverageStartDate', '01/31/2012')
-go
+Exec Stg.spInsertTresaliaParams 'Config', 'PortfolioMasterStartDate', '01/31/2012'
+Exec Stg.spInsertTresaliaParams 'Config', 'PortfolioMasterJobName', 'LoadDataWarehouse_PortfolioMaster'
 
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'FactSetIntlFICoverageJobName')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'FactSetIntlFICoverageJobName', 'LoadDataWarehouse_FactSetIntlFICoverage')
-go
-------------------------------------------------------------------------------------------------------------------------
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'FactSetUSFICoverageStartDate')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'FactSetUSFICoverageStartDate', '01/31/2012')
-go
+Exec Stg.spInsertTresaliaParams 'Config', 'RatingsStartDate', '01/31/2012'
+Exec Stg.spInsertTresaliaParams 'Config', 'RatingsJobName', 'LoadDataWarehouse_Ratings'
 
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'FactSetUSFICoverageJobName')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'FactSetUSFICoverageJobName', 'LoadDataWarehouse_FactSetUSFICoverage')
-go
+Exec Stg.spInsertTresaliaParams 'Config', 'SectorStartDate', '01/31/2012'
+Exec Stg.spInsertTresaliaParams 'Config', 'SectorJobName', 'LoadDataWarehouse_Sector'
 
------------------------------------------------------------------------------------------------------------------
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'FXStartDate')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'FXStartDate', '01/31/2012')
-go
+Exec Stg.spInsertTresaliaParams 'Config', 'TenorHoldingsStartDate', '01/31/2012'
+Exec Stg.spInsertTresaliaParams 'Config', 'TenorHoldingsJobName', 'LoadDataWarehouse_TenorHoldings'
 
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'FXJobName')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'FXJobName', 'LoadDataWarehouse_FX')
-go
------------------------------------------------------------------------------------------------------------------
+Exec Stg.spInsertTresaliaParams 'Config', 'TenorTncStartDate', '01/31/2012'
+Exec Stg.spInsertTresaliaParams 'Config', 'TenorTncJobName', 'LoadDataWarehouse_TenorTnc'
 
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'LFIStartDate')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'LFIStartDate', '01/31/2012')
-go
+Exec Stg.spInsertTresaliaParams 'Config', 'CountryStartDate', '01/31/2012'
+Exec Stg.spInsertTresaliaParams 'Config', 'CountryJobName', 'LoadDataWarehouse_Country'
 
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'LFIJobName')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'LFIJobName', 'LoadDataWarehouse_LFI')
-go
+Exec Stg.spInsertTresaliaParams 'Config', 'IndexReturnsStartDate', '01/31/2012'
+Exec Stg.spInsertTresaliaParams 'Config', 'IndexReturnsJobName', 'LoadDataWarehouse_IndexReturns'
 
------------------------------------------------------------------------------------------------------------------
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'MarshallWaceStartDate')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'MarshallWaceStartDate', '01/31/2012')
-go
+Exec Stg.spInsertTresaliaParams 'Config', 'PotentialManagersStartDate', '01/31/2012'
+Exec Stg.spInsertTresaliaParams 'Config', 'PotentialManagersJobName', 'LoadDataWarehouse_PotentialManagers'
 
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'MarshallWaceJobName')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'MarshallWaceJobName', 'LoadDataWarehouse_MarshallWace')
-go
+Exec Stg.spInsertTresaliaParams 'Config', 'EqBenchmarksStartDate', '01/31/2012'
+Exec Stg.spInsertTresaliaParams 'Config', 'EqBenchmarksJobName', 'LoadDataWarehouse_EqBenchmarks'
 
------------------------------------------------------------------------------------------------------------------
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'MgrTNCRMStartDate')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'MgrTNCRMStartDate', '01/31/2012')
-go
+Exec Stg.spInsertTresaliaParams 'Config', 'FIBenchmarksStartDate', '01/31/2012'
+Exec Stg.spInsertTresaliaParams 'Config', 'FIBenchmarksJobName', 'LoadDataWarehouse_FIBenchmarks'
 
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'MgrTNCRMJobName')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'MgrTNCRMJobName', 'LoadDataWarehouse_MgrTNCRM')
-go
+Exec Stg.spInsertTresaliaParams 'Config', 'StoneMilinerStartDate', '01/31/2012'
+Exec Stg.spInsertTresaliaParams 'Config', 'StoneMilinerJobName', 'LoadDataWarehouse_StoneMiliner'
 
------------------------------------------------------------------------------------------------------------------
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'PortfolioMasterStartDate')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'PortfolioMasterStartDate', '01/31/2012')
-go
+Exec Stg.spInsertTresaliaParams 'Config', 'AssetAllocationStartDate', '01/31/2012'
+Exec Stg.spInsertTresaliaParams 'Config', 'AssetAllocationJobName', 'LoadDataWarehouse_AssetAllocation'
 
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'PortfolioMasterJobName')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'PortfolioMasterJobName', 'LoadDataWarehouse_PortfolioMaster')
-go
+Exec Stg.spInsertTresaliaParams 'Config', 'EuroDollarSwapCurveStartDate', '01/31/2012'
+Exec Stg.spInsertTresaliaParams 'Config', 'EuroDollarSwapCurveJobName', 'LoadDataWarehouse_EuroDollarSwapCurve'
 
------------------------------------------------------------------------------------------------------------------
+Exec Stg.spInsertTresaliaParams 'Config', 'IRSurfaceStartDate', '01/31/2012'
+Exec Stg.spInsertTresaliaParams 'Config', 'IRSurfaceJobName', 'LoadDataWarehouse_IRSurface'
 
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'RatingsStartDate')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'RatingsStartDate', '01/31/2012')
-go
+Exec Stg.spInsertTresaliaParams 'Config', 'MasterETFDataStartDate', '01/31/2012'
+Exec Stg.spInsertTresaliaParams 'Config', 'MasterETFDataJobName', 'LoadDataWarehouse_MasterETFData'
 
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'RatingsJobName')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'RatingsJobName', 'LoadDataWarehouse_Ratings')
-go
+Exec Stg.spInsertTresaliaParams 'Config', 'EqSurfaceStartDate', '01/31/2012'
+Exec Stg.spInsertTresaliaParams 'Config', 'EqSurfaceJobName', 'LoadDataWarehouse_EqSurface'
 
------------------------------------------------------------------------------------------------------------------
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'SectorStartDate')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'SectorStartDate', '01/31/2012')
-go
+Exec Stg.spInsertTresaliaParams 'Config', 'SwapCurveStartDate', '01/31/2012'
+Exec Stg.spInsertTresaliaParams 'Config', 'SwapCurveJobName', 'LoadDataWarehouse_SwapCurve'
 
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'SectorJobName')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'SectorJobName', 'LoadDataWarehouse_Sector')
-go
+Exec Stg.spInsertTresaliaParams 'Config', 'BroadRidgeTradeStartDate', '01/31/2012'
+Exec Stg.spInsertTresaliaParams 'Config', 'BroadRidgeTradeJobName', 'LoadDataWarehouse_BroadRidgeTrade'
 
------------------------------------------------------------------------------------------------------------------
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'TenorHoldingsStartDate')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'TenorHoldingsStartDate', '01/31/2012')
-go
-
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'TenorHoldingsJobName')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'TenorHoldingsJobName', 'LoadDataWarehouse_TenorHoldings')
-go
-
------------------------------------------------------------------------------------------------------------------
-
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'TenorTncStartDate')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'TenorTncStartDate', '01/31/2012')
-go
-
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'TenorTncJobName')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'TenorTncJobName', 'LoadDataWarehouse_TenorTnc')
-go
-
------------------------------------------------------------------------------------------------------------------
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'CountryStartDate')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'CountryStartDate', '01/31/2012')
-go
-
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'CountryJobName')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'CountryJobName', 'LoadDataWarehouse_Country')
-go
-
------------------------------------------------------------------------------------------------------------------
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'IndexReturnsStartDate')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'IndexReturnsStartDate', '01/31/2012')
-go
-
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'IndexReturnsJobName')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'IndexReturnsJobName', 'LoadDataWarehouse_IndexReturns')
-go
-
------------------------------------------------------------------------------------------------------------------
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'PotentialManagersStartDate')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'PotentialManagersStartDate', '01/31/2012')
-go
-
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'PotentialManagersJobName')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'PotentialManagersJobName', 'LoadDataWarehouse_PotentialManagers')
-go
------------------------------------------------------------------------------------------------------------------
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'EqBenchmarksStartDate')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'EqBenchmarksStartDate', '01/31/2012')
-go
-
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'EqBenchmarksJobName')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'EqBenchmarksJobName', 'LoadDataWarehouse_EqBenchmarks')
-go
------------------------------------------------------------------------------------------------------------------
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'FIBenchmarksStartDate')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'FIBenchmarksStartDate', '01/31/2012')
-go
-
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'FIBenchmarksJobName')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'FIBenchmarksJobName', 'LoadDataWarehouse_FIBenchmarks')
-go
------------------------------------------------------------------------------------------------------------------
-
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'StoneMilinerStartDate')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'StoneMilinerStartDate', '01/31/2012')
-go
-
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'StoneMilinerJobName')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'StoneMilinerJobName', 'LoadDataWarehouse_StoneMiliner')
-go
------------------------------------------------------------------------------------------------------------------
-
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'AssetAllocationStartDate')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'AssetAllocationStartDate', '01/31/2012')
-go
-
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'AssetAllocationJobName')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'AssetAllocationJobName', 'LoadDataWarehouse_AssetAllocation')
-go
------------------------------------------------------------------------------------------------------------------
-
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'EuroDollarSwapCurveStartDate')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'EuroDollarSwapCurveStartDate', '01/31/2012')
-go
-
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'EuroDollarSwapCurveJobName')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'EuroDollarSwapCurveJobName', 'LoadDataWarehouse_EuroDollarSwapCurve')
-go
------------------------------------------------------------------------------------------------------------------
-
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'IRSurfaceStartDate')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'IRSurfaceStartDate', '01/31/2012')
-go
-
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'IRSurfaceJobName')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'IRSurfaceJobName', 'LoadDataWarehouse_IRSurface')
-go
------------------------------------------------------------------------------------------------------------------
-
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'MasterETFDataStartDate')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'MasterETFDataStartDate', '01/31/2012')
-go
-
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'MasterETFDataJobName')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'MasterETFDataJobName', 'LoadDataWarehouse_MasterETFData')
-go
------------------------------------------------------------------------------------------------------------------
-
-
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'EqSurfaceStartDate')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'EqSurfaceStartDate', '01/31/2012')
-go
-
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'EqSurfaceJobName')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'EqSurfaceJobName', 'LoadDataWarehouse_EqSurface')
-go
------------------------------------------------------------------------------------------------------------------
-
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'SwapCurveStartDate')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'SwapCurveStartDate', '01/31/2012')
-go
-
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'SwapCurveJobName')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'SwapCurveJobName', 'LoadDataWarehouse_SwapCurve')
-go
------------------------------------------------------------------------------------------------------------------
-
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'BroadRidgeTradeStartDate')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'BroadRidgeTradeStartDate', '01/31/2012')
-go
-
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'BroadRidgeTradeJobName')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'BroadRidgeTradeJobName', 'LoadDataWarehouse_BroadRidgeTrade')
-go
------------------------------------------------------------------------------------------------------------------
-
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'CompositeAssetStartDate')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'CompositeAssetStartDate', '01/31/2012')
-go
-
-If not exists (select 1 from stg.TresaliaParams  where  ParamKey = 'CompositeAssetJobName')
-   INSERT INTO stg.TresaliaParams (ParamType,ParamKey,ParamValue)
-	VALUES('Config', 'CompositeAssetJobName', 'LoadDataWarehouse_CompositeAsset')
-go
------------------------------------------------------------------------------------------------------------------
+Exec Stg.spInsertTresaliaParams 'Config', 'CompositeAssetStartDate', '01/31/2012'
+Exec Stg.spInsertTresaliaParams 'Config', 'CompositeAssetJobName', 'LoadDataWarehouse_CompositeAsset'

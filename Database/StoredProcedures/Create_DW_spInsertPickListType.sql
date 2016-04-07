@@ -26,13 +26,13 @@ BEGIN
     
 	SET NOCOUNT ON
 
-	--DECLARE @sequenceId BIGINT
+	DECLARE @sequenceId BIGINT
 
 	IF NOT EXISTS (SELECT 1 FROM dw.PickList_Type WHERE PickList_Type_Code = @PickListTypeCode)
 	BEGIN
-		---SET @sequenceId =  NEXT VALUE FOR dw.SeqPickListTypeId
-		INSERT INTO dw.PickList_Type(PickList_Type_Code, PickList_Type_Name, Created_Date, Created_By, Is_Deleted)
-		VALUES(@PickListTypeCode, @PickListTypeName, getdate(), suser_name(), 0)
+		SET @sequenceId =  NEXT VALUE FOR dw.PickList_Type_SEQ
+		INSERT INTO dw.PickList_Type(PickList_Type_ID, PickList_Type_Code, PickList_Type_Name, Created_Date, Created_By, Is_Deleted)
+		VALUES(@sequenceId, @PickListTypeCode, @PickListTypeName, getdate(), suser_name(), 0)
 	END
 
 End
