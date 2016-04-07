@@ -20,20 +20,22 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 
-CREATE Procedure [stg].[spLogPackageExecutionHistory]
-	@PackageID Varchar(255),	
+CREATE Procedure [stg].[spLogPackageExecutionHistory]		
+	@ExecutionStatus Varchar(1),
+	@ParamJobNameKey Varchar(255) ,			
 	@PackageName Varchar(255),
-	@ParamKey Varchar(255),	
-	@ExecutionStatus Varchar(1)
+	@JobID Int OUTPUT,	
+	@BatchDate DateTime OUTPUT
 	
 As
 Begin
     Set Nocount On
-	DECLARE @JobName Varchar(255) = NULL
+	DECLARE @JobName Varchar(255) = NULL			
 	DECLARE @ParamType AS VARCHAR(100) = 'Config'
 	Declare @MaxJobSequenceNo Int
 
-	Select @JobName = ParamValue from stg.TresaliaParams where ParamType = @ParamType and ParamKey = @ParamKey
+	Select @JobName = ParamValue from stg.TresaliaParams where ParamType = @ParamType and ParamKey = @ParamJobNameKey
+	
 
 	If @JobName is NULL or @JobName = '' 
 	Begin
@@ -42,41 +44,58 @@ Begin
 
 	If (@ExecutionStatus = 'S')
 	Begin
-		Insert Into Stg.TresaliaJobLog (PackageId,PackageName, JobName,JobStatus,RunDate, Starttime)
-		Values (@PackageID,@PackageName, @JobName,'STARTED', GETDATE(), GETDATE())
+		INSERT INTO Stg.JobIdHistory(JobName, CreatedDate, CreatedBy, BatchDate)
+		VALUES (@JobName, GETDATE(), SUSER_NAME(), GETDATE())
+
+		SELECT @JobID = MAX(JobID)	FROM Stg.JobIdHistory  WHERE JobName = @JobName
+
+		SELECT @BatchDate = CAST(BatchDate AS DATETIME)
+		FROM Stg.JobIdHistory  WHERE JobID = @JobID
+
+		INSERT INTO Stg.TresaliaJobLog (JobId,PackageName, JobName,JobStatus,RunDate, Starttime)
+		VALUES (@JobID,@PackageName, @JobName,'STARTED', GETDATE(), GETDATE())
 	End
 
 	If (@ExecutionStatus = 'U')
-	Begin		
-		Set @MaxJobSequenceNo = (Select MAX(JobSequenceNo) From Stg.TresaliaJobLog Where PackageName = @PackageName AND JobName = @JobName)
-		
-		Update Stg.TresaliaJobLog 
-		Set JobStatus = 'COMPLETED'
-		,	EndDate = GetDate()
-		Where 
-			JobSequenceNo = @MaxJobSequenceNo
-		And PackageName = @PackageName
-		And JobName = @JobName
+	Begin				
+		SELECT @JobID = MAX(JobID) FROM Stg.JobIdHistory  WHERE JobName = @JobName
+
+		INSERT INTO Stg.TresaliaJobLog (JobId,PackageName, JobName,JobStatus,RunDate, EndDate)
+		VALUES (@JobID,@PackageName, @JobName,'COMPLETED', GETDATE(), GETDATE())
+
+		--Set @MaxJobSequenceNo = (Select MAX(JobSequenceNo) From Stg.TresaliaJobLog Where PackageName = @PackageName AND JobName = @JobName)
+		--Update Stg.TresaliaJobLog 
+		--Set JobStatus = 'COMPLETED'
+		--,	EndDate = GetDate()
+		--Where 
+		--	JobSequenceNo = @MaxJobSequenceNo
+		--And PackageName = @PackageName
+		--And JobName = @JobName
 	End
 	ELSE If (@ExecutionStatus = 'E')
-	Begin		
-		Set @MaxJobSequenceNo = (Select MAX(JobSequenceNo) From Stg.TresaliaJobLog Where PackageName = @PackageName AND JobName = @JobName)
+	Begin
+		SELECT @JobID = MAX(JobID) FROM Stg.JobIdHistory  WHERE JobName = @JobName
+
+		INSERT INTO Stg.TresaliaJobLog (JobId,PackageName, JobName,JobStatus,RunDate, Starttime, EndDate)
+		VALUES (@JobID,@PackageName, @JobName,'ERROR', GETDATE(), GETDATE(), GETDATE())
+				
+		--Set @MaxJobSequenceNo = (Select MAX(JobSequenceNo) From Stg.TresaliaJobLog Where PackageName = @PackageName AND JobName = @JobName)
 		
-		If(@MaxJobSequenceNo is Not Null)
-		Begin
-			Update Stg.TresaliaJobLog
-			Set JobStatus = 'ERROR'
-			,	EndDate = GetDate()
-			Where 
-				JobSequenceNo = @MaxJobSequenceNo
-			And PackageName = @PackageName
-			And JobName = @JobName
-		End
-		Else If(@MaxJobSequenceNo is Null) 
-		Begin
-			Insert Into Stg.TresaliaJobLog (PackageId,PackageName, JobName,JobStatus,RunDate, Starttime, EndDate)
-			Values (@PackageID,@PackageName, @JobName,'ERROR', GETDATE(), GETDATE(), GETDATE())
-		End
+		--If(@MaxJobSequenceNo is Not Null)
+		--Begin
+		--	Update Stg.TresaliaJobLog
+		--	Set JobStatus = 'ERROR'
+		--	,	EndDate = GetDate()
+		--	Where 
+		--		JobSequenceNo = @MaxJobSequenceNo
+		--	And PackageName = @PackageName
+		--	And JobName = @JobName
+		--End
+		--Else If(@MaxJobSequenceNo is Null) 
+		--Begin
+		--	Insert Into Stg.TresaliaJobLog (PackageId,PackageName, JobName,JobStatus,RunDate, Starttime, EndDate)
+		--	Values (@PackageID,@PackageName, @JobName,'ERROR', GETDATE(), GETDATE(), GETDATE())
+		--End
 	End
 End
 
