@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Pkg_Tresalia_Stg_DW_PortfolioMaster"
   DTS:PackageType="5"
-  DTS:VersionBuild="221"
-  DTS:VersionGUID="{C9BC3983-AF52-4FEA-BBB4-DFBBC6EF3789}">
+  DTS:VersionBuild="230"
+  DTS:VersionGUID="{7C78709D-752A-496C-BD9A-F1FB97F11380}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -441,6 +441,7 @@
                     <outputColumn
                       refId="Package\Loading Data From Stage to DW\Derived Column 1.Outputs[Derived Column Output].Columns[Created_Date]"
                       dataType="dbTimeStamp"
+                      description="Created_Date"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
                       lineageId="Package\Loading Data From Stage to DW\Derived Column 1.Outputs[Derived Column Output].Columns[Created_Date]"
@@ -561,6 +562,12 @@
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
+                      refId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].Columns[AccountIdFK]"
+                      cachedDataType="i8"
+                      cachedName="AccountIdFK"
+                      externalMetadataColumnId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Benchmark_ID]"
+                      lineageId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[AccountIdFK]" />
+                    <inputColumn
                       refId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].Columns[ACCOUNT_ID]"
                       cachedCodepage="1252"
                       cachedDataType="str"
@@ -576,6 +583,14 @@
                       cachedName="ACCOUNT_NAME"
                       externalMetadataColumnId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Account_Name]"
                       lineageId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[ACCOUNT_NAME]" />
+                    <inputColumn
+                      refId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].Columns[ACCOUNT_NAME_Long]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="ACCOUNT_NAME_Long"
+                      externalMetadataColumnId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Account_Name_Long]"
+                      lineageId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[ACCOUNT_NAME_Long]" />
                     <inputColumn
                       refId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].Columns[Asset_Manager]"
                       cachedCodepage="1252"
@@ -674,9 +689,11 @@
                       length="100"
                       name="Account_Name" />
                     <externalMetadataColumn
-                      refId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Fees_Paid_Directly]"
-                      dataType="i4"
-                      name="Fees_Paid_Directly" />
+                      refId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Account_Name_Long]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="Account_Name_Long" />
                     <externalMetadataColumn
                       refId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Hurdle_Rate]"
                       dataType="i4"
@@ -723,6 +740,18 @@
                       dataType="str"
                       length="50"
                       name="Sub_Strategy_Group" />
+                    <externalMetadataColumn
+                      refId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[BNY_Account_Code_Map]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="BNY_Account_Code_Map" />
+                    <externalMetadataColumn
+                      refId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Manager_Account_Code_Map]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Manager_Account_Code_Map" />
                     <externalMetadataColumn
                       refId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Level_1_Classification]"
                       codePage="1252"
@@ -954,7 +983,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">exec stg.spValidatePortfolioMaster '12/12/2016'</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -971,7 +1000,7 @@
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">3</property>
+                  typeConverter="AccessMode">2</property>
                 <property
                   dataType="System.String"
                   description="The mappings between the parameters in the SQL command and variables."
@@ -1360,6 +1389,25 @@
                       lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Entity_Type]"
                       name="Entity_Type"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Error]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Error]"
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Error]"
+                      name="Error"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[AccountIdFK]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AccountIdFK]"
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[AccountIdFK]"
+                      name="AccountIdFK"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1563,6 +1611,15 @@
                       dataType="str"
                       length="100"
                       name="Entity_Type" />
+                    <externalMetadataColumn
+                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Error]"
+                      codePage="1252"
+                      dataType="text"
+                      name="Error" />
+                    <externalMetadataColumn
+                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AccountIdFK]"
+                      dataType="i8"
+                      name="AccountIdFK" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1804,6 +1861,17 @@
                       dataType="dbDate"
                       lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BatchDate]"
                       name="BatchDate" />
+                    <outputColumn
+                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Error]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Error]"
+                      name="Error" />
+                    <outputColumn
+                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AccountIdFK]"
+                      dataType="i8"
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AccountIdFK]"
+                      name="AccountIdFK" />
                     <outputColumn
                       refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -2674,6 +2742,33 @@
                           name="OutputColumnLineageID">#{Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Entity_Type]}</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading Data From Stage to DW\Union All.Inputs[Union All Input 1].Columns[Error]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="Error"
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Error]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Error]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading Data From Stage to DW\Union All.Inputs[Union All Input 1].Columns[AccountIdFK]"
+                      cachedDataType="i8"
+                      cachedName="AccountIdFK"
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[AccountIdFK]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[AccountIdFK]}</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -3188,6 +3283,33 @@
                           name="OutputColumnLineageID">#{Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Entity_Type]}</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading Data From Stage to DW\Union All.Inputs[Union All Input 2].Columns[Error]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="Error"
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Error]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Error]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading Data From Stage to DW\Union All.Inputs[Union All Input 2].Columns[AccountIdFK]"
+                      cachedDataType="i8"
+                      cachedName="AccountIdFK"
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[AccountIdFK]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[AccountIdFK]}</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -3438,6 +3560,17 @@
                       length="100"
                       lineageId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Entity_Type]"
                       name="Entity_Type" />
+                    <outputColumn
+                      refId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Error]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Error]"
+                      name="Error" />
+                    <outputColumn
+                      refId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[AccountIdFK]"
+                      dataType="i8"
+                      lineageId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[AccountIdFK]"
+                      name="AccountIdFK" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -3493,7 +3626,7 @@
       DTS:ExecutableType="Microsoft.ScriptTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Logging Error"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:LoggingOptions
         DTS:FilterKind="0" />
@@ -3504,6 +3637,36 @@
           VSTAMinorVersion="0"
           Language="CSharp"
           ReadOnlyVariables="System::ErrorCode,System::ErrorDescription">
+          <ProjectItem
+            Name="Properties\AssemblyInfo.cs"
+            Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_b525a5b6bafb448b994d0bc0800f043f")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_b525a5b6bafb448b994d0bc0800f043f")]
+[assembly: AssemblyCopyright("Copyright @  2016")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
           <ProjectItem
             Name="ST_b525a5b6bafb448b994d0bc0800f043f.csproj"
             Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
@@ -3716,35 +3879,6 @@
   </resheader>
 </root>]]></ProjectItem>
           <ProjectItem
-            Name="Properties\Settings.Designer.cs"
-            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
-// <auto-generated>
-//     This code was generated by a tool.
-//
-//     Changes to this file may cause incorrect behavior and will be lost if
-//     the code is regenerated.
-// </auto-generated>
-//------------------------------------------------------------------------------
-
-[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_b525a5b6bafb448b994d0bc0800f043f.Properties.Settings.get_Default():ST_b525a5b6bafb448b994d0bc0800f043f.Properties.Sett" +
-    "ings")]
-
-namespace ST_b525a5b6bafb448b994d0bc0800f043f.Properties {
-    
-    
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
-        
-        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-        private static Settings defaultInstance = new Settings();
-        
-        public static Settings Default {
-            get {
-                return defaultInstance;
-            }
-        }
-    }
-}]]></ProjectItem>
-          <ProjectItem
             Name="ScriptMain.cs"
             Encoding="UTF8"><![CDATA[#region Help:  Introduction to the script task
 /* The Script Task allows you to perform virtually any operation that can be accomplished in
@@ -3883,35 +4017,34 @@ namespace ST_b525a5b6bafb448b994d0bc0800f043f
 	</msb:ItemGroup>
 </c:Project>]]></ProjectItem>
           <ProjectItem
-            Name="Properties\AssemblyInfo.cs"
-            Encoding="UTF8"><![CDATA[using System.Reflection;
-using System.Runtime.CompilerServices;
+            Name="Properties\Settings.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
 
-//
-// General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
-//
-[assembly: AssemblyTitle("ST_b525a5b6bafb448b994d0bc0800f043f")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ST_b525a5b6bafb448b994d0bc0800f043f")]
-[assembly: AssemblyCopyright("Copyright @  2016")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-//
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Revision and Build Numbers 
-// by using the '*' as shown below:
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_b525a5b6bafb448b994d0bc0800f043f.Properties.Settings.get_Default():ST_b525a5b6bafb448b994d0bc0800f043f.Properties.Sett" +
+    "ings")]
 
-[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+namespace ST_b525a5b6bafb448b994d0bc0800f043f.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
           <ProjectItem
             Name="Properties\Settings.settings"
             Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
@@ -4119,7 +4252,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       DTS:LocaleID="-1"
       DTS:ObjectName="Update StartDate"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:LoggingOptions
         DTS:FilterKind="0" />
@@ -4145,7 +4278,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       DTS:LocaleID="-1"
       DTS:ObjectName="Update TresaliaJobLog"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:LoggingOptions
         DTS:FilterKind="0" />
@@ -4445,55 +4578,13 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="209,42"
-          Id="Package\Loading Data From Stage to DW\Slowly Changing Dimension"
-          TopLeft="128,107.5" />
-        <NodeLayout
-          Size="163,42"
-          Id="Package\Loading Data From Stage to DW\Derived Column 1"
-          TopLeft="151,515.5" />
-        <NodeLayout
-          Size="121,42"
-          Id="Package\Loading Data From Stage to DW\Union All"
-          TopLeft="172,413.5" />
-        <NodeLayout
-          Size="166,42"
-          Id="Package\Loading Data From Stage to DW\OLE DB Command"
-          TopLeft="5.50000000000003,311.5" />
-        <NodeLayout
           Size="150,42"
           Id="Package\Loading Data From Stage to DW\OLE DB Source"
           TopLeft="157.5,5.5" />
         <NodeLayout
-          Size="163,42"
-          Id="Package\Loading Data From Stage to DW\Insert Destination"
-          TopLeft="151,617.5" />
-        <NodeLayout
-          Size="154,42"
-          Id="Package\Loading Data From Stage to DW\Derived Column"
-          TopLeft="17.5,209.5" />
-        <EdgeLayout
-          Id="Package\Loading Data From Stage to DW.Paths[Union All Output 1]"
-          TopLeft="232.5,455.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="209,42"
+          Id="Package\Loading Data From Stage to DW\Slowly Changing Dimension"
+          TopLeft="128,107.5" />
         <EdgeLayout
           Id="Package\Loading Data From Stage to DW.Paths[OLE DB Source Output]"
           TopLeft="232.5,47.5">
@@ -4516,76 +4607,10 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Loading Data From Stage to DW.Paths[OLE DB Command Output]"
-          TopLeft="88.5,353.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="125.166666666667,60"
-              Start="0,0"
-              End="125.166666666667,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,31.5301794453507" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,31.5301794453507"
-                    Point2="0,35.5301794453507"
-                    Point3="4,35.5301794453507" />
-                  <mssgle:LineSegment
-                    End="121.166666666667,35.5301794453507" />
-                  <mssgle:CubicBezierSegment
-                    Point1="121.166666666667,35.5301794453507"
-                    Point2="125.166666666667,35.5301794453507"
-                    Point3="125.166666666667,39.5301794453507" />
-                  <mssgle:LineSegment
-                    End="125.166666666667,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Loading Data From Stage to DW.Paths[New Output]"
-          TopLeft="266,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-14.6666666666667,264"
-              Start="0,0"
-              End="-14.6666666666667,256.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,127.104705383637" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,127.104705383637"
-                    Point2="0,131.104705383637"
-                    Point3="-4,131.104705383637" />
-                  <mssgle:LineSegment
-                    End="-10.6666666666667,131.104705383637" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-10.6666666666667,131.104705383637"
-                    Point2="-14.6666666666667,131.104705383637"
-                    Point3="-14.6666666666667,135.104705383637" />
-                  <mssgle:LineSegment
-                    End="-14.6666666666667,256.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-34.4247200520833,136.104705383637,54.1827734375,11.43359375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Loading Data From Stage to DW\Derived Column"
+          TopLeft="17.5,209.5" />
         <EdgeLayout
           Id="Package\Loading Data From Stage to DW.Paths[Historical Attribute Inserts Output]"
           TopLeft="199,149.5">
@@ -4622,9 +4647,13 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="166,42"
+          Id="Package\Loading Data From Stage to DW\OLE DB Command"
+          TopLeft="5.50000000000003,311.5" />
         <EdgeLayout
-          Id="Package\Loading Data From Stage to DW.Paths[Derived Column Output1]"
-          TopLeft="232.5,557.5">
+          Id="Package\Loading Data From Stage to DW.Paths[Derived Column Output]"
+          TopLeft="91.5,251.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -4644,9 +4673,113 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="121,42"
+          Id="Package\Loading Data From Stage to DW\Union All"
+          TopLeft="172,413.5" />
         <EdgeLayout
-          Id="Package\Loading Data From Stage to DW.Paths[Derived Column Output]"
-          TopLeft="91.5,251.5">
+          Id="Package\Loading Data From Stage to DW.Paths[New Output]"
+          TopLeft="266,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-14.6666666666666,264"
+              Start="0,0"
+              End="-14.6666666666666,256.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,127.104705383637" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,127.104705383637"
+                    Point2="0,131.104705383637"
+                    Point3="-4,131.104705383637" />
+                  <mssgle:LineSegment
+                    End="-10.6666666666666,131.104705383637" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-10.6666666666666,131.104705383637"
+                    Point2="-14.6666666666666,131.104705383637"
+                    Point3="-14.6666666666666,135.104705383637" />
+                  <mssgle:LineSegment
+                    End="-14.6666666666666,256.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-34.4247200520833,136.104705383637,54.1827734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loading Data From Stage to DW.Paths[OLE DB Command Output]"
+          TopLeft="88.5,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="125.166666666667,60"
+              Start="0,0"
+              End="125.166666666667,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5301794453507" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.5301794453507"
+                    Point2="0,35.5301794453507"
+                    Point3="4,35.5301794453507" />
+                  <mssgle:LineSegment
+                    End="121.166666666667,35.5301794453507" />
+                  <mssgle:CubicBezierSegment
+                    Point1="121.166666666667,35.5301794453507"
+                    Point2="125.166666666667,35.5301794453507"
+                    Point3="125.166666666667,39.5301794453507" />
+                  <mssgle:LineSegment
+                    End="125.166666666667,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Loading Data From Stage to DW\Derived Column 1"
+          TopLeft="151,515.5" />
+        <EdgeLayout
+          Id="Package\Loading Data From Stage to DW.Paths[Union All Output 1]"
+          TopLeft="232.5,455.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Loading Data From Stage to DW\Insert Destination"
+          TopLeft="151,617.5" />
+        <EdgeLayout
+          Id="Package\Loading Data From Stage to DW.Paths[Derived Column Output1]"
+          TopLeft="232.5,557.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -4693,10 +4826,22 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[ACCOUNT_NAME_Long]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Account_Name_Long&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
       &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[Asset_Manager]&lt;/IdentificationString&gt;
       &lt;ColumnName&gt;Asset_Manager&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
       &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[AccountIdFK]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Benchmark_ID&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
       &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[Calc_Pref]&lt;/IdentificationString&gt;

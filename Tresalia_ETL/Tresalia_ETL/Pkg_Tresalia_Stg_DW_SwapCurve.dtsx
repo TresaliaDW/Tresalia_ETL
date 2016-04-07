@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Pkg_Tresalia_Stg_DW_SwapCurve"
   DTS:PackageType="5"
-  DTS:VersionBuild="205"
-  DTS:VersionGUID="{45626C55-1BB6-4B26-B975-ABA063D1BBBC}">
+  DTS:VersionBuild="207"
+  DTS:VersionGUID="{F5C0F7FD-26BD-43FD-8CFF-935842D6305F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -258,7 +258,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{B532DC0F-96C1-4F3B-B2FC-DA339F20E832}"
-          SQLTask:SqlStatementSource="exec stg.spLogPackageExecutionHistory ?,?,'AssetTypeJobName','S'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          SQLTask:SqlStatementSource="exec stg.spLogPackageExecutionHistory ?,?,'SwapCurveJobName','S'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ParameterBinding
             SQLTask:ParameterName="@PackageID"
             SQLTask:DtsVariableName="System::PackageID"
@@ -788,7 +788,7 @@
                       cachedLength="100"
                       cachedName="PRODUCT TYPE"
                       externalMetadataColumnId="Package\Loading Data From Stage to DW\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[PRODUCT TYPE]" />
+                      lineageId="Package\Loading Data From Stage to DW\96:invalid" />
                     <inputColumn
                       refId="Package\Loading Data From Stage to DW\OLE DB Command.Inputs[OLE DB Command Input].Columns[Updated_Date]"
                       cachedDataType="dbTimeStamp"
@@ -882,7 +882,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">exec stg.spValidateSwapCurve '04/04/2016'</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -899,7 +899,7 @@
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">3</property>
+                  typeConverter="AccessMode">2</property>
                 <property
                   dataType="System.String"
                   description="The mappings between the parameters in the SQL command and variables."
@@ -952,94 +952,6 @@
                       name="TabName"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[PRODUCT TYPE]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PRODUCT TYPE]"
-                      length="100"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[PRODUCT TYPE]"
-                      name="PRODUCT TYPE"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[DESCRIPTION]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DESCRIPTION]"
-                      length="100"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[DESCRIPTION]"
-                      name="DESCRIPTION"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Description2]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Description2]"
-                      length="100"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Description2]"
-                      name="Description2"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_1]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Level_1]"
-                      length="100"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_1]"
-                      name="Level_1"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_2]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Level_2]"
-                      length="100"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_2]"
-                      name="Level_2"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_3]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Level_3]"
-                      length="100"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_3]"
-                      name="Level_3"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_4]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Level_4]"
-                      length="100"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_4]"
-                      name="Level_4"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_5]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Level_5]"
-                      length="100"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_5]"
-                      name="Level_5"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreatedDate]"
                       dataType="dbTimeStamp"
                       errorOrTruncationOperation="Conversion"
@@ -1068,6 +980,71 @@
                       lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[BatchDate]"
                       name="BatchDate"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Tenor]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Tenor]"
+                      length="100"
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Tenor]"
+                      name="Tenor"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                      length="100"
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Name]"
+                      name="Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Security_ID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Security_ID]"
+                      length="100"
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Security_ID]"
+                      name="Security_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Date]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Date]"
+                      length="100"
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Date]"
+                      name="Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Value]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Value]"
+                      length="100"
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Value]"
+                      name="Value"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Error]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Error]"
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Error]"
+                      name="Error"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1090,54 +1067,6 @@
                       length="100"
                       name="TabName" />
                     <externalMetadataColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PRODUCT TYPE]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="PRODUCT TYPE" />
-                    <externalMetadataColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DESCRIPTION]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="DESCRIPTION" />
-                    <externalMetadataColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Description2]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Description2" />
-                    <externalMetadataColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Level_1]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Level_1" />
-                    <externalMetadataColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Level_2]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Level_2" />
-                    <externalMetadataColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Level_3]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Level_3" />
-                    <externalMetadataColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Level_4]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Level_4" />
-                    <externalMetadataColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Level_5]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Level_5" />
-                    <externalMetadataColumn
                       refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CreatedDate]"
                       dataType="dbTimeStamp"
                       name="CreatedDate" />
@@ -1151,6 +1080,41 @@
                       refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BatchDate]"
                       dataType="dbDate"
                       name="BatchDate" />
+                    <externalMetadataColumn
+                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Tenor]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Tenor" />
+                    <externalMetadataColumn
+                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Security_ID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Security_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Date]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Date" />
+                    <externalMetadataColumn
+                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Value]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Value" />
+                    <externalMetadataColumn
+                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Error]"
+                      codePage="1252"
+                      dataType="text"
+                      name="Error" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1180,61 +1144,40 @@
                       lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TabName]"
                       name="TabName" />
                     <outputColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PRODUCT TYPE]"
+                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Tenor]"
                       codePage="1252"
                       dataType="str"
                       length="100"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PRODUCT TYPE]"
-                      name="PRODUCT TYPE" />
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Tenor]"
+                      name="Tenor" />
                     <outputColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DESCRIPTION]"
+                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Name]"
                       codePage="1252"
                       dataType="str"
                       length="100"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DESCRIPTION]"
-                      name="DESCRIPTION" />
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Name]"
+                      name="Name" />
                     <outputColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Description2]"
+                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Security_ID]"
                       codePage="1252"
                       dataType="str"
                       length="100"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Description2]"
-                      name="Description2" />
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Security_ID]"
+                      name="Security_ID" />
                     <outputColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Level_1]"
+                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Date]"
                       codePage="1252"
                       dataType="str"
                       length="100"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Level_1]"
-                      name="Level_1" />
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Date]"
+                      name="Date" />
                     <outputColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Level_2]"
+                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Value]"
                       codePage="1252"
                       dataType="str"
                       length="100"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Level_2]"
-                      name="Level_2" />
-                    <outputColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Level_3]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Level_3]"
-                      name="Level_3" />
-                    <outputColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Level_4]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Level_4]"
-                      name="Level_4" />
-                    <outputColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Level_5]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Level_5]"
-                      name="Level_5" />
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Value]"
+                      name="Value" />
                     <outputColumn
                       refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CreatedDate]"
                       dataType="dbTimeStamp"
@@ -1252,6 +1195,12 @@
                       dataType="dbDate"
                       lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BatchDate]"
                       name="BatchDate" />
+                    <outputColumn
+                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Error]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Error]"
+                      name="Error" />
                     <outputColumn
                       refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -1336,7 +1285,7 @@
                       cachedLength="100"
                       cachedName="PRODUCT TYPE"
                       externalMetadataColumnId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Asset_Type_Code]"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[PRODUCT TYPE]">
+                      lineageId="Package\Loading Data From Stage to DW\96:invalid">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -1351,7 +1300,7 @@
                       cachedLength="100"
                       cachedName="Description2"
                       externalMetadataColumnId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Asset_Type_Description]"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Description2]">
+                      lineageId="Package\Loading Data From Stage to DW\98:invalid">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -1366,7 +1315,7 @@
                       cachedLength="100"
                       cachedName="Level_1"
                       externalMetadataColumnId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Asset_Type_I]"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_1]">
+                      lineageId="Package\Loading Data From Stage to DW\99:invalid">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -1381,7 +1330,7 @@
                       cachedLength="100"
                       cachedName="Level_2"
                       externalMetadataColumnId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Asset_Type_II]"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_2]">
+                      lineageId="Package\Loading Data From Stage to DW\100:invalid">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -1396,7 +1345,7 @@
                       cachedLength="100"
                       cachedName="Level_3"
                       externalMetadataColumnId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Asset_Type_III]"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_3]">
+                      lineageId="Package\Loading Data From Stage to DW\101:invalid">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -1411,7 +1360,7 @@
                       cachedLength="100"
                       cachedName="Level_4"
                       externalMetadataColumnId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Asset_Type_IV]"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_4]">
+                      lineageId="Package\Loading Data From Stage to DW\102:invalid">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -1426,7 +1375,7 @@
                       cachedLength="100"
                       cachedName="DESCRIPTION"
                       externalMetadataColumnId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Asset_Type_Name]"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[DESCRIPTION]">
+                      lineageId="Package\Loading Data From Stage to DW\97:invalid">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -1441,7 +1390,7 @@
                       cachedLength="100"
                       cachedName="Level_5"
                       externalMetadataColumnId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Asset_Type_V]"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_5]">
+                      lineageId="Package\Loading Data From Stage to DW\103:invalid">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -1625,7 +1574,7 @@
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="PRODUCT TYPE"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[PRODUCT TYPE]">
+                      lineageId="Package\Loading Data From Stage to DW\96:invalid">
                       <properties>
                         <property
                           containsID="true"
@@ -1640,7 +1589,7 @@
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="DESCRIPTION"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[DESCRIPTION]">
+                      lineageId="Package\Loading Data From Stage to DW\97:invalid">
                       <properties>
                         <property
                           containsID="true"
@@ -1655,7 +1604,7 @@
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="Description2"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Description2]">
+                      lineageId="Package\Loading Data From Stage to DW\98:invalid">
                       <properties>
                         <property
                           containsID="true"
@@ -1670,7 +1619,7 @@
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="Level_1"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_1]">
+                      lineageId="Package\Loading Data From Stage to DW\99:invalid">
                       <properties>
                         <property
                           containsID="true"
@@ -1685,7 +1634,7 @@
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="Level_2"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_2]">
+                      lineageId="Package\Loading Data From Stage to DW\100:invalid">
                       <properties>
                         <property
                           containsID="true"
@@ -1700,7 +1649,7 @@
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="Level_3"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_3]">
+                      lineageId="Package\Loading Data From Stage to DW\101:invalid">
                       <properties>
                         <property
                           containsID="true"
@@ -1715,7 +1664,7 @@
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="Level_4"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_4]">
+                      lineageId="Package\Loading Data From Stage to DW\102:invalid">
                       <properties>
                         <property
                           containsID="true"
@@ -1730,7 +1679,7 @@
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="Level_5"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_5]">
+                      lineageId="Package\Loading Data From Stage to DW\103:invalid">
                       <properties>
                         <property
                           containsID="true"
@@ -1839,7 +1788,7 @@
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="PRODUCT TYPE"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[PRODUCT TYPE]">
+                      lineageId="Package\Loading Data From Stage to DW\96:invalid">
                       <properties>
                         <property
                           containsID="true"
@@ -1854,7 +1803,7 @@
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="DESCRIPTION"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[DESCRIPTION]">
+                      lineageId="Package\Loading Data From Stage to DW\97:invalid">
                       <properties>
                         <property
                           containsID="true"
@@ -1869,7 +1818,7 @@
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="Description2"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Description2]">
+                      lineageId="Package\Loading Data From Stage to DW\98:invalid">
                       <properties>
                         <property
                           containsID="true"
@@ -1884,7 +1833,7 @@
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="Level_1"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_1]">
+                      lineageId="Package\Loading Data From Stage to DW\99:invalid">
                       <properties>
                         <property
                           containsID="true"
@@ -1899,7 +1848,7 @@
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="Level_2"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_2]">
+                      lineageId="Package\Loading Data From Stage to DW\100:invalid">
                       <properties>
                         <property
                           containsID="true"
@@ -1914,7 +1863,7 @@
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="Level_3"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_3]">
+                      lineageId="Package\Loading Data From Stage to DW\101:invalid">
                       <properties>
                         <property
                           containsID="true"
@@ -1929,7 +1878,7 @@
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="Level_4"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_4]">
+                      lineageId="Package\Loading Data From Stage to DW\102:invalid">
                       <properties>
                         <property
                           containsID="true"
@@ -1944,7 +1893,7 @@
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="Level_5"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_5]">
+                      lineageId="Package\Loading Data From Stage to DW\103:invalid">
                       <properties>
                         <property
                           containsID="true"
@@ -2169,14 +2118,35 @@
           Language="CSharp"
           ReadOnlyVariables="System::ErrorCode,System::ErrorDescription">
           <ProjectItem
-            Name="Properties\Settings.settings"
-            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
-</SettingsFile>]]></ProjectItem>
+            Name="Properties\AssemblyInfo.cs"
+            Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_b525a5b6bafb448b994d0bc0800f043f")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_b525a5b6bafb448b994d0bc0800f043f")]
+[assembly: AssemblyCopyright("Copyright @  2016")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
           <ProjectItem
             Name="ST_b525a5b6bafb448b994d0bc0800f043f.csproj"
             Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
@@ -2556,35 +2526,14 @@ namespace ST_b525a5b6bafb448b994d0bc0800f043f.Properties {
     }
 }]]></ProjectItem>
           <ProjectItem
-            Name="Properties\AssemblyInfo.cs"
-            Encoding="UTF8"><![CDATA[using System.Reflection;
-using System.Runtime.CompilerServices;
-
-//
-// General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
-//
-[assembly: AssemblyTitle("ST_b525a5b6bafb448b994d0bc0800f043f")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ST_b525a5b6bafb448b994d0bc0800f043f")]
-[assembly: AssemblyCopyright("Copyright @  2016")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-//
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Revision and Build Numbers 
-// by using the '*' as shown below:
-
-[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
           <ProjectItem
             Name="Properties\Resources.Designer.cs"
             Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
@@ -2949,7 +2898,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         <NodeLayout
           Size="183,42"
           Id="Package\Create TresaliaJobLog"
-          TopLeft="116,143.5" />
+          TopLeft="117,142.5" />
         <NodeLayout
           Size="232,42"
           Id="Package\Loading Data From Stage to DW"
@@ -2968,30 +2917,30 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           TopLeft="170.214285714286,351.357142857143" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="207.5,185.5">
+          TopLeft="208.5,184.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="138.857142857143,68.7142857142857"
+              EndConnector="137.857142857143,69.714285714286"
               Start="0,0"
-              End="138.857142857143,61.2142857142857">
+              End="137.857142857143,62.214285714286">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,30.3571428571429" />
+                    End="0,30.857142857143" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,30.3571428571429"
-                    Point2="0,34.3571428571429"
-                    Point3="4,34.3571428571429" />
+                    Point1="0,30.857142857143"
+                    Point2="0,34.857142857143"
+                    Point3="4,34.857142857143" />
                   <mssgle:LineSegment
-                    End="134.857142857143,34.3571428571429" />
+                    End="133.857142857143,34.857142857143" />
                   <mssgle:CubicBezierSegment
-                    Point1="134.857142857143,34.3571428571429"
-                    Point2="138.857142857143,34.3571428571429"
-                    Point3="138.857142857143,38.3571428571429" />
+                    Point1="133.857142857143,34.857142857143"
+                    Point2="137.857142857143,34.857142857143"
+                    Point3="137.857142857143,38.857142857143" />
                   <mssgle:LineSegment
-                    End="138.857142857143,61.2142857142857" />
+                    End="137.857142857143,62.214285714286" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3129,16 +3078,36 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="166,42"
+          Id="Package\Loading Data From Stage to DW\OLE DB Command"
+          TopLeft="5.50000000000003,311.5" />
+        <NodeLayout
           Size="150,42"
           Id="Package\Loading Data From Stage to DW\OLE DB Source"
           TopLeft="157.5,5.5" />
         <NodeLayout
+          Size="121,42"
+          Id="Package\Loading Data From Stage to DW\Union All"
+          TopLeft="172,413.5" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Loading Data From Stage to DW\Derived Column 1"
+          TopLeft="151,515.5" />
+        <NodeLayout
           Size="209,42"
           Id="Package\Loading Data From Stage to DW\Slowly Changing Dimension"
           TopLeft="128,107.5" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Loading Data From Stage to DW\Insert Destination"
+          TopLeft="151,617.5" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Loading Data From Stage to DW\Derived Column"
+          TopLeft="17.5,209.5" />
         <EdgeLayout
-          Id="Package\Loading Data From Stage to DW.Paths[OLE DB Source Output]"
-          TopLeft="232.5,47.5">
+          Id="Package\Loading Data From Stage to DW.Paths[Union All Output 1]"
+          TopLeft="232.5,455.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3158,10 +3127,102 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="154,42"
-          Id="Package\Loading Data From Stage to DW\Derived Column"
-          TopLeft="17.5,209.5" />
+        <EdgeLayout
+          Id="Package\Loading Data From Stage to DW.Paths[OLE DB Source Output]"
+          TopLeft="232.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,18.25,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loading Data From Stage to DW.Paths[OLE DB Command Output]"
+          TopLeft="88.5,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="125.166666666667,60"
+              Start="0,0"
+              End="125.166666666667,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5301794453507" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.5301794453507"
+                    Point2="0,35.5301794453507"
+                    Point3="4,35.5301794453507" />
+                  <mssgle:LineSegment
+                    End="121.166666666667,35.5301794453507" />
+                  <mssgle:CubicBezierSegment
+                    Point1="121.166666666667,35.5301794453507"
+                    Point2="125.166666666667,35.5301794453507"
+                    Point3="125.166666666667,39.5301794453507" />
+                  <mssgle:LineSegment
+                    End="125.166666666667,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="54.5833333333335,40.5301794453507,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loading Data From Stage to DW.Paths[New Output]"
+          TopLeft="266,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-14.6666666666667,264"
+              Start="0,0"
+              End="-14.6666666666667,256.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,127.104705383637" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,127.104705383637"
+                    Point2="0,131.104705383637"
+                    Point3="-4,131.104705383637" />
+                  <mssgle:LineSegment
+                    End="-10.6666666666667,131.104705383637" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-10.6666666666667,131.104705383637"
+                    Point2="-14.6666666666667,131.104705383637"
+                    Point3="-14.6666666666667,135.104705383637" />
+                  <mssgle:LineSegment
+                    End="-14.6666666666667,256.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-43.2933723958333,136.104705383637,71.920078125,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Loading Data From Stage to DW.Paths[Historical Attribute Inserts Output]"
           TopLeft="199,149.5">
@@ -3198,136 +3259,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="166,42"
-          Id="Package\Loading Data From Stage to DW\OLE DB Command"
-          TopLeft="5.50000000000003,311.5" />
-        <EdgeLayout
-          Id="Package\Loading Data From Stage to DW.Paths[Derived Column Output]"
-          TopLeft="91.5,251.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="121,42"
-          Id="Package\Loading Data From Stage to DW\Union All"
-          TopLeft="172,413.5" />
-        <EdgeLayout
-          Id="Package\Loading Data From Stage to DW.Paths[New Output]"
-          TopLeft="266,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-14.6666666666666,264"
-              Start="0,0"
-              End="-14.6666666666666,256.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,127.104705383637" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,127.104705383637"
-                    Point2="0,131.104705383637"
-                    Point3="-4,131.104705383637" />
-                  <mssgle:LineSegment
-                    End="-10.6666666666666,131.104705383637" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-10.6666666666666,131.104705383637"
-                    Point2="-14.6666666666666,131.104705383637"
-                    Point3="-14.6666666666666,135.104705383637" />
-                  <mssgle:LineSegment
-                    End="-14.6666666666666,256.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-34.4247200520833,136.104705383637,54.1827734375,11.43359375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Loading Data From Stage to DW.Paths[OLE DB Command Output]"
-          TopLeft="88.5,353.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="125.166666666667,60"
-              Start="0,0"
-              End="125.166666666667,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,31.5301794453507" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,31.5301794453507"
-                    Point2="0,35.5301794453507"
-                    Point3="4,35.5301794453507" />
-                  <mssgle:LineSegment
-                    End="121.166666666667,35.5301794453507" />
-                  <mssgle:CubicBezierSegment
-                    Point1="121.166666666667,35.5301794453507"
-                    Point2="125.166666666667,35.5301794453507"
-                    Point3="125.166666666667,39.5301794453507" />
-                  <mssgle:LineSegment
-                    End="125.166666666667,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="163,42"
-          Id="Package\Loading Data From Stage to DW\Derived Column 1"
-          TopLeft="151,515.5" />
-        <EdgeLayout
-          Id="Package\Loading Data From Stage to DW.Paths[Union All Output 1]"
-          TopLeft="232.5,455.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="163,42"
-          Id="Package\Loading Data From Stage to DW\Insert Destination"
-          TopLeft="151,617.5" />
         <EdgeLayout
           Id="Package\Loading Data From Stage to DW.Paths[Derived Column Output1]"
           TopLeft="232.5,557.5">
@@ -3348,6 +3279,30 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loading Data From Stage to DW.Paths[Derived Column Output]"
+          TopLeft="91.5,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,18.25,16,16"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
