@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Pkg_Tresalia_Stg_DW_Country"
   DTS:PackageType="5"
-  DTS:VersionBuild="282"
-  DTS:VersionGUID="{E5B5156F-4451-4BCD-889B-A96B6330A5C0}">
+  DTS:VersionBuild="285"
+  DTS:VersionGUID="{C4530D85-EB58-4885-965F-358C77E47CE1}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -69,7 +69,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="BatchDate">
       <DTS:VariableValue
-        DTS:DataType="7">4/7/2016 3:00:07 AM</DTS:VariableValue>
+        DTS:DataType="7">4/7/2016 3:24:21 AM</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -679,6 +679,7 @@
                     <outputColumn
                       refId="Package\Loading Country Data From Stage to DW\Derived Column.Outputs[Derived Column Output].Columns[Updated_Date]"
                       dataType="dbTimeStamp"
+                      description="Updated_Date"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
                       lineageId="Package\Loading Country Data From Stage to DW\Derived Column.Outputs[Derived Column Output].Columns[Updated_Date]"
@@ -689,37 +690,13 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">(DT_DBTIMESTAMP)(@[System::CreationDate])</property>
+                          name="Expression">(DT_DBTIMESTAMP)(@[System::ContainerStartTime])</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">(DT_DBTIMESTAMP)(@[System::CreationDate])</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Loading Country Data From Stage to DW\Derived Column.Outputs[Derived Column Output].Columns[Updated_By]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      length="50"
-                      lineageId="Package\Loading Country Data From Stage to DW\Derived Column.Outputs[Derived Column Output].Columns[Updated_By]"
-                      name="Updated_By"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">(DT_STR,50,1252)@[System::UserName]</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">(DT_STR,50,1252)@[System::UserName]</property>
+                          name="FriendlyExpression">(DT_DBTIMESTAMP)(@[System::ContainerStartTime])</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -787,13 +764,13 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">(DT_DBTIMESTAMP)(@[System::CreationDate])</property>
+                          name="Expression">(DT_DBTIMESTAMP)(@[System::ContainerStartTime])</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">(DT_DBTIMESTAMP)(@[System::CreationDate])</property>
+                          name="FriendlyExpression">(DT_DBTIMESTAMP)(@[System::ContainerStartTime])</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -2897,21 +2874,6 @@ where [refTable].[Currency_Code] = ?</property>
                   name="Slowly Changing Dimension Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Loading Country Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[DC.Continent]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="150"
-                      cachedName="DC.Continent"
-                      externalMetadataColumnId="Package\Loading Country Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Continent]"
-                      lineageId="Package\Loading Country Data From Stage to DW\Data Conversion.Outputs[Data Conversion Output].Columns[DC.Continent]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          name="ColumnType"
-                          typeConverter="ColumnType">3</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
                       refId="Package\Loading Country Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[DC.ISO (FIPS)]"
                       cachedCodepage="1252"
                       cachedDataType="str"
@@ -3005,6 +2967,21 @@ where [refTable].[Currency_Code] = ?</property>
                       cachedName="DC.MSCI_INDEX_ID"
                       externalMetadataColumnId="Package\Loading Country Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[MSCI_Country_Index_ID]"
                       lineageId="Package\Loading Country Data From Stage to DW\Data Conversion.Outputs[Data Conversion Output].Columns[DC.MSCI_INDEX_ID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading Country Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[DC.Continent]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="150"
+                      cachedName="DC.Continent"
+                      externalMetadataColumnId="Package\Loading Country Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Continent]"
+                      lineageId="Package\Loading Country Data From Stage to DW\Data Conversion.Outputs[Data Conversion Output].Columns[DC.Continent]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -9509,9 +9486,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="54.5833333333333,40.5301794453507,16,16"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
@@ -9563,9 +9538,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-8,18.25,16,16"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9624,7 +9597,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -9740,7 +9713,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
   &lt;ValueExpired /&gt;
   &lt;StartDateColumn&gt;Created_Date&lt;/StartDateColumn&gt;
   &lt;EndDateColumn&gt;Updated_Date&lt;/EndDateColumn&gt;
-  &lt;DateVariable&gt;System::CreationDate&lt;/DateVariable&gt;
+  &lt;DateVariable&gt;System::ContainerStartTime&lt;/DateVariable&gt;
   &lt;EnableInferredSupport&gt;false&lt;/EnableInferredSupport&gt;
 &lt;/SCDWizardMetadata&gt;</Value>
       </Property>
