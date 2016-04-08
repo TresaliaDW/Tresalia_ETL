@@ -9,10 +9,10 @@ Exec dw.spInsertPickListType 'Option_Exercise_Type',		'Option_Exercise_Type'
 Exec dw.spInsertPickListType 'Option_Under_Type',			'Option_Under_Type'
 Exec dw.spInsertPickListType 'Option_Type',					'Option_Type'
 Exec dw.spInsertPickListType 'Day_Count',					'Day_Count'
+Exec dw.spInsertPickListType 'Account_Fee_Rate_Type',		'Account_Fee_Rate_Type'
 Exec dw.spInsertPickListType 'Futures_Month_Code',			'Futures_Month_Code'
 Exec dw.spInsertPickListType 'Futures_Type',				'Futures_Type'
-Exec dw.spInsertPickListType 'Account_Fee_Rate_Type',		'Account_Fee_Rate_Type'
-
+Exec dw.spInsertPickListType 'Calculation_Measure',			'Calculation_Measure'
 
 -----------------------------------------------------------------------------------------------------------------
 --Insert PickList Data
@@ -76,6 +76,11 @@ Exec dw.spInsertPickList 'Country_Code_Type', 'LH',		'Barclays'
 Exec dw.spInsertPickList 'Country_Code_Type', 'ML',		'Merrill Lynch'
 Exec dw.spInsertPickList 'Country_Code_Type', 'SP',		'S&P'
 Exec dw.spInsertPickList 'Country_Code_Type', 'BICS',	'Bloomberg'
+Exec dw.spInsertPickList 'Country_Code_Type', 'ICB',	'FTSE'
+Exec dw.spInsertPickList 'Country_Code_Type', 'RGS',	'Russell'
+Exec dw.spInsertPickList 'Country_Code_Type', 'SIC',	'SIC'
+Exec dw.spInsertPickList 'Country_Code_Type', 'NAIC',	'NAICS'
+
 
 Exec dw.spInsertPickList 'Option_Exercise_Type', 'A', 'American'
 Exec dw.spInsertPickList 'Option_Exercise_Type', 'E', 'European'
@@ -138,12 +143,20 @@ Exec dw.spInsertPickList 'Futures_Type','en',	'Energy Futures'
 Exec dw.spInsertPickList 'Futures_Type','me',	'Metals Futures'
 Exec dw.spInsertPickList 'Futures_Type','re',	'Real Estate Futures'
 
-
 Exec dw.spInsertPickList 'Account_Fee_Rate_Type','FEE1_Proxy',	'FEE 1 Proxy'
 Exec dw.spInsertPickList 'Account_Fee_Rate_Type','FEE1_AUM',	'FEE 1 AUM'
 Exec dw.spInsertPickList 'Account_Fee_Rate_Type','FEE2_Proxy',	'FEE 2 Proxy'
 Exec dw.spInsertPickList 'Account_Fee_Rate_Type','FEE2_AUM',	'FEE 2 AUM'
 Exec dw.spInsertPickList 'Account_Fee_Rate_Type','FEE3_Proxy',	'FEE 3 Proxy'
 Exec dw.spInsertPickList 'Account_Fee_Rate_Type','FEE3_AUM',	'FEE 3 AUM'
+
+Exec dw.spInsertPickList 'Calculation_Measure',	'BNY Calculated',			'1 to 1 Mapping'
+Exec dw.spInsertPickList 'Calculation_Measure',	'BNY Derived -MD',			'BNY Derived -Modified Dietz'
+Exec dw.spInsertPickList 'Calculation_Measure',	'BNY Derived -PCHG'	,		'BNY Derived -Percentage Changes'
+Exec dw.spInsertPickList 'Calculation_Measure',	'BNY Derived -MD -EOD',		'BNY Derived -Modified Dietz (CF at End of Day)'
+Exec dw.spInsertPickList 'Calculation_Measure',	'BNY Derived -MD -MOD',		'BNY Derived -Modified Dietz (CF at Mid of Day)'
+Exec dw.spInsertPickList 'Calculation_Measure',	'Account - Contribution',	'Account Contribution Estimated Performance'
+Exec dw.spInsertPickList 'Calculation_Measure',	'Holdings Derived - PCHG',	'Account Derived Performance by PCHG'
+Exec dw.spInsertPickList 'Calculation_Measure',	'Holdings Derived - Contr',	'Account Derived Performance by Contribution'
 
 ----------------------------------------------------------------------------------------------------------------
