@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Pkg_Tresalia_Stg_DW_IRSurface"
   DTS:PackageType="5"
-  DTS:VersionBuild="205"
-  DTS:VersionGUID="{6B4D9CE5-305A-4F47-BC66-D56770AEF7C5}">
+  DTS:VersionBuild="213"
+  DTS:VersionGUID="{95899EF8-99E1-40E5-ACB8-5E89B76FC462}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -258,7 +258,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{D2AED6BE-BA40-46DD-B1AC-CC1CFC21735A}"
-          SQLTask:SqlStatementSource="exec stg.spLogPackageExecutionHistory ?,?,'AssetTypeJobName','S'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          SQLTask:SqlStatementSource="exec stg.spLogPackageExecutionHistory ?,?,'IRSurfaceJobName','S'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ParameterBinding
             SQLTask:ParameterName="@PackageID"
             SQLTask:DtsVariableName="System::PackageID"
@@ -312,6 +312,112 @@
         <pipeline
           version="1">
           <components>
+            <component
+              refId="Package\Loading Data From Stage to DW\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Loading Data From Stage to DW\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Loading Data From Stage to DW\Data Conversion.Inputs[Data Conversion Input].Columns[Date]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Date"
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Date]" />
+                    <inputColumn
+                      refId="Package\Loading Data From Stage to DW\Data Conversion.Inputs[Data Conversion Input].Columns[Surface]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Surface"
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Surface]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Loading Data From Stage to DW\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Loading Data From Stage to DW\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading Data From Stage to DW\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Loading Data From Stage to DW\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Date]"
+                      name="Copy of Date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Date]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading Data From Stage to DW\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Surface]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Loading Data From Stage to DW\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Surface]"
+                      name="Copy of Surface"
+                      precision="22"
+                      scale="6"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Surface]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Loading Data From Stage to DW\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Loading Data From Stage to DW\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading Data From Stage to DW\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Loading Data From Stage to DW\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Loading Data From Stage to DW\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Loading Data From Stage to DW\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
             <component
               refId="Package\Loading Data From Stage to DW\Derived Column"
               componentClassID="Microsoft.DerivedColumn"
@@ -476,7 +582,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dw].[Asset_Type1]</property>
+                  name="OpenRowset">[dw].[Interest_Rate_Surface]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -533,69 +639,57 @@
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].Columns[PRODUCT TYPE]"
+                      refId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].Columns[BBID]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="100"
-                      cachedName="PRODUCT TYPE"
-                      externalMetadataColumnId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Asset_Type_Code]"
-                      lineageId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[PRODUCT TYPE]" />
+                      cachedName="BBID"
+                      externalMetadataColumnId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Security_Code]"
+                      lineageId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[BBID]" />
                     <inputColumn
-                      refId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].Columns[DESCRIPTION]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="DESCRIPTION"
-                      externalMetadataColumnId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Asset_Type_Name]"
-                      lineageId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[DESCRIPTION]" />
+                      refId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].Columns[Copy of Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Copy of Date"
+                      externalMetadataColumnId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Valuation_Date]"
+                      lineageId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Copy of Date]" />
                     <inputColumn
-                      refId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].Columns[Description2]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="Description2"
-                      externalMetadataColumnId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Asset_Type_Description]"
-                      lineageId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Description2]" />
+                      refId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].Columns[CreatedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="CreatedDate"
+                      externalMetadataColumnId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Upload_Date]"
+                      lineageId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[CreatedDate]" />
                     <inputColumn
-                      refId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].Columns[Level_1]"
+                      refId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].Columns[Name]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="100"
-                      cachedName="Level_1"
-                      externalMetadataColumnId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Asset_Type_I]"
-                      lineageId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Level_1]" />
+                      cachedName="Name"
+                      externalMetadataColumnId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Surface_Name]"
+                      lineageId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Name]" />
                     <inputColumn
-                      refId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].Columns[Level_2]"
+                      refId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].Columns[Tenor]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="100"
-                      cachedName="Level_2"
-                      externalMetadataColumnId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Asset_Type_II]"
-                      lineageId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Level_2]" />
+                      cachedName="Tenor"
+                      externalMetadataColumnId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Tenor_1_Position]"
+                      lineageId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Tenor]" />
                     <inputColumn
-                      refId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].Columns[Level_3]"
+                      refId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].Columns[Expiry]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="100"
-                      cachedName="Level_3"
-                      externalMetadataColumnId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Asset_Type_III]"
-                      lineageId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Level_3]" />
+                      cachedName="Expiry"
+                      externalMetadataColumnId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Tenor_2_Position]"
+                      lineageId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Expiry]" />
                     <inputColumn
-                      refId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].Columns[Level_4]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="Level_4"
-                      externalMetadataColumnId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Asset_Type_IV]"
-                      lineageId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Level_4]" />
-                    <inputColumn
-                      refId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].Columns[Level_5]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="Level_5"
-                      externalMetadataColumnId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Asset_Type_V]"
-                      lineageId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Level_5]" />
+                      refId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].Columns[Copy of Surface]"
+                      cachedDataType="numeric"
+                      cachedName="Copy of Surface"
+                      cachedPrecision="22"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Surface_Point]"
+                      lineageId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Copy of Surface]" />
                     <inputColumn
                       refId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].Columns[Created_Date]"
                       cachedDataType="dbTimeStamp"
@@ -606,92 +700,52 @@
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Asset_Type_ID]"
+                      refId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Interest_Rate_Surface_ID]"
                       dataType="i8"
-                      name="Asset_Type_ID" />
+                      name="Interest_Rate_Surface_ID" />
                     <externalMetadataColumn
-                      refId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Asset_Type_Code]"
+                      refId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Security_Code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Security_Code" />
+                    <externalMetadataColumn
+                      refId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Valuation_Date]"
+                      dataType="dbTimeStamp"
+                      name="Valuation_Date" />
+                    <externalMetadataColumn
+                      refId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Upload_Date]"
+                      dataType="dbTimeStamp"
+                      name="Upload_Date" />
+                    <externalMetadataColumn
+                      refId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Surface_Name]"
                       codePage="1252"
                       dataType="str"
                       length="100"
-                      name="Asset_Type_Code" />
+                      name="Surface_Name" />
                     <externalMetadataColumn
-                      refId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Asset_Type_Name]"
+                      refId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Tenor_1_Position]"
                       codePage="1252"
                       dataType="str"
-                      length="100"
-                      name="Asset_Type_Name" />
+                      length="10"
+                      name="Tenor_1_Position" />
                     <externalMetadataColumn
-                      refId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Asset_Type_Description]"
+                      refId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Tenor_2_Position]"
                       codePage="1252"
                       dataType="str"
-                      length="100"
-                      name="Asset_Type_Description" />
+                      length="10"
+                      name="Tenor_2_Position" />
                     <externalMetadataColumn
-                      refId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Asset_Type_I]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Asset_Type_I" />
-                    <externalMetadataColumn
-                      refId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Asset_Type_II]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Asset_Type_II" />
-                    <externalMetadataColumn
-                      refId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Asset_Type_III]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Asset_Type_III" />
-                    <externalMetadataColumn
-                      refId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Asset_Type_IV]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Asset_Type_IV" />
-                    <externalMetadataColumn
-                      refId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Asset_Type_V]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Asset_Type_V" />
-                    <externalMetadataColumn
-                      refId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Risk_Level_Type_I]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Risk_Level_Type_I" />
-                    <externalMetadataColumn
-                      refId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Risk_Level_Type_II]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Risk_Level_Type_II" />
-                    <externalMetadataColumn
-                      refId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Risk_Level_Type_III]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Risk_Level_Type_III" />
-                    <externalMetadataColumn
-                      refId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Risk_Level_Type_IV]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Risk_Level_Type_IV" />
-                    <externalMetadataColumn
-                      refId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Risk_Level_Type_V]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Risk_Level_Type_V" />
+                      refId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Surface_Point]"
+                      dataType="numeric"
+                      name="Surface_Point"
+                      precision="22"
+                      scale="6" />
                     <externalMetadataColumn
                       refId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Created_By]"
                       codePage="1252"
                       dataType="str"
-                      length="100"
+                      length="50"
                       name="Created_By" />
                     <externalMetadataColumn
                       refId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Created_Date]"
@@ -701,7 +755,7 @@
                       refId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Updated_By]"
                       codePage="1252"
                       dataType="str"
-                      length="100"
+                      length="50"
                       name="Updated_By" />
                     <externalMetadataColumn
                       refId="Package\Loading Data From Stage to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Updated_Date]"
@@ -759,7 +813,7 @@
                   description="The SQL command to be executed."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dw].[Asset_Type1] SET [Updated_Date] = ? WHERE [Asset_Type_Code] = ? AND [Updated_Date] IS NULL</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dw].[Interest_Rate_Surface] SET [Updated_Date] = ? WHERE [Security_Code] = ? AND [Upload_Date] = ? AND [Valuation_Date] = ? AND [Updated_Date] IS NULL</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -782,13 +836,25 @@
                   name="OLE DB Command Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Command.Inputs[OLE DB Command Input].Columns[PRODUCT TYPE]"
+                      refId="Package\Loading Data From Stage to DW\OLE DB Command.Inputs[OLE DB Command Input].Columns[BBID]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="100"
-                      cachedName="PRODUCT TYPE"
+                      cachedName="BBID"
                       externalMetadataColumnId="Package\Loading Data From Stage to DW\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[PRODUCT TYPE]" />
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[BBID]" />
+                    <inputColumn
+                      refId="Package\Loading Data From Stage to DW\OLE DB Command.Inputs[OLE DB Command Input].Columns[CreatedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="CreatedDate"
+                      externalMetadataColumnId="Package\Loading Data From Stage to DW\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreatedDate]" />
+                    <inputColumn
+                      refId="Package\Loading Data From Stage to DW\OLE DB Command.Inputs[OLE DB Command Input].Columns[Copy of Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Copy of Date"
+                      externalMetadataColumnId="Package\Loading Data From Stage to DW\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      lineageId="Package\Loading Data From Stage to DW\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Date]" />
                     <inputColumn
                       refId="Package\Loading Data From Stage to DW\OLE DB Command.Inputs[OLE DB Command Input].Columns[Updated_Date]"
                       cachedDataType="dbTimeStamp"
@@ -813,8 +879,30 @@
                       refId="Package\Loading Data From Stage to DW\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
                       codePage="1252"
                       dataType="str"
-                      length="100"
+                      length="50"
                       name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Loading Data From Stage to DW\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      dataType="dbTimeStamp"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Loading Data From Stage to DW\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      dataType="dbTimeStamp"
+                      name="Param_3">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -882,7 +970,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">exec [stg].[spValidateInterestRateSurface] '12/12/2016'</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -899,7 +987,7 @@
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">3</property>
+                  typeConverter="AccessMode">2</property>
                 <property
                   dataType="System.String"
                   description="The mappings between the parameters in the SQL command and variables."
@@ -952,94 +1040,6 @@
                       name="TabName"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[PRODUCT TYPE]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PRODUCT TYPE]"
-                      length="100"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[PRODUCT TYPE]"
-                      name="PRODUCT TYPE"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[DESCRIPTION]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DESCRIPTION]"
-                      length="100"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[DESCRIPTION]"
-                      name="DESCRIPTION"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Description2]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Description2]"
-                      length="100"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Description2]"
-                      name="Description2"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_1]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Level_1]"
-                      length="100"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_1]"
-                      name="Level_1"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_2]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Level_2]"
-                      length="100"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_2]"
-                      name="Level_2"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_3]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Level_3]"
-                      length="100"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_3]"
-                      name="Level_3"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_4]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Level_4]"
-                      length="100"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_4]"
-                      name="Level_4"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_5]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Level_5]"
-                      length="100"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_5]"
-                      name="Level_5"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreatedDate]"
                       dataType="dbTimeStamp"
                       errorOrTruncationOperation="Conversion"
@@ -1068,6 +1068,82 @@
                       lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[BatchDate]"
                       name="BatchDate"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[BBID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BBID]"
+                      length="100"
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[BBID]"
+                      name="BBID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                      length="100"
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Name]"
+                      name="Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Date]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Date]"
+                      length="100"
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Date]"
+                      name="Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Expiry]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Expiry]"
+                      length="100"
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Expiry]"
+                      name="Expiry"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Tenor]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Tenor]"
+                      length="100"
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Tenor]"
+                      name="Tenor"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Surface]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Surface]"
+                      length="100"
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Surface]"
+                      name="Surface"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Error]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Error]"
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Error]"
+                      name="Error"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1090,54 +1166,6 @@
                       length="100"
                       name="TabName" />
                     <externalMetadataColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PRODUCT TYPE]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="PRODUCT TYPE" />
-                    <externalMetadataColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DESCRIPTION]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="DESCRIPTION" />
-                    <externalMetadataColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Description2]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Description2" />
-                    <externalMetadataColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Level_1]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Level_1" />
-                    <externalMetadataColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Level_2]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Level_2" />
-                    <externalMetadataColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Level_3]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Level_3" />
-                    <externalMetadataColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Level_4]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Level_4" />
-                    <externalMetadataColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Level_5]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Level_5" />
-                    <externalMetadataColumn
                       refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CreatedDate]"
                       dataType="dbTimeStamp"
                       name="CreatedDate" />
@@ -1151,6 +1179,47 @@
                       refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BatchDate]"
                       dataType="dbDate"
                       name="BatchDate" />
+                    <externalMetadataColumn
+                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BBID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="BBID" />
+                    <externalMetadataColumn
+                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Date]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Date" />
+                    <externalMetadataColumn
+                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Expiry]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Expiry" />
+                    <externalMetadataColumn
+                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Tenor]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Tenor" />
+                    <externalMetadataColumn
+                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Surface]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Surface" />
+                    <externalMetadataColumn
+                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Error]"
+                      codePage="1252"
+                      dataType="text"
+                      name="Error" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1180,61 +1249,47 @@
                       lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TabName]"
                       name="TabName" />
                     <outputColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PRODUCT TYPE]"
+                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BBID]"
                       codePage="1252"
                       dataType="str"
                       length="100"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PRODUCT TYPE]"
-                      name="PRODUCT TYPE" />
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BBID]"
+                      name="BBID" />
                     <outputColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DESCRIPTION]"
+                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Name]"
                       codePage="1252"
                       dataType="str"
                       length="100"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DESCRIPTION]"
-                      name="DESCRIPTION" />
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Name]"
+                      name="Name" />
                     <outputColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Description2]"
+                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Date]"
                       codePage="1252"
                       dataType="str"
                       length="100"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Description2]"
-                      name="Description2" />
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Date]"
+                      name="Date" />
                     <outputColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Level_1]"
+                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Expiry]"
                       codePage="1252"
                       dataType="str"
                       length="100"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Level_1]"
-                      name="Level_1" />
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Expiry]"
+                      name="Expiry" />
                     <outputColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Level_2]"
+                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Tenor]"
                       codePage="1252"
                       dataType="str"
                       length="100"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Level_2]"
-                      name="Level_2" />
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Tenor]"
+                      name="Tenor" />
                     <outputColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Level_3]"
+                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Surface]"
                       codePage="1252"
                       dataType="str"
                       length="100"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Level_3]"
-                      name="Level_3" />
-                    <outputColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Level_4]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Level_4]"
-                      name="Level_4" />
-                    <outputColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Level_5]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Level_5]"
-                      name="Level_5" />
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Surface]"
+                      name="Surface" />
                     <outputColumn
                       refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CreatedDate]"
                       dataType="dbTimeStamp"
@@ -1252,6 +1307,12 @@
                       dataType="dbDate"
                       lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BatchDate]"
                       name="BatchDate" />
+                    <outputColumn
+                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Error]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Error]"
+                      name="Error" />
                     <outputColumn
                       refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -1281,7 +1342,7 @@
                   dataType="System.String"
                   description="Specifies the SELECT statement used to create a schema rowset."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [Asset_Type_Code], [Asset_Type_Description], [Asset_Type_I], [Asset_Type_II], [Asset_Type_III], [Asset_Type_IV], [Asset_Type_Name], [Asset_Type_V],[Created_Date],[Updated_Date] FROM [dw].[Asset_Type1]</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [Security_Code], [Surface_Name], [Surface_Point], [Tenor_1_Position], [Tenor_2_Position], [Upload_Date], [Valuation_Date],[Created_Date],[Updated_Date] FROM [dw].[Interest_Rate_Surface]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
@@ -1330,13 +1391,13 @@
                   name="Slowly Changing Dimension Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[PRODUCT TYPE]"
+                      refId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[BBID]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="100"
-                      cachedName="PRODUCT TYPE"
-                      externalMetadataColumnId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Asset_Type_Code]"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[PRODUCT TYPE]">
+                      cachedName="BBID"
+                      externalMetadataColumnId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Security_Code]"
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[BBID]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -1345,13 +1406,13 @@
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Description2]"
+                      refId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Name]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="100"
-                      cachedName="Description2"
-                      externalMetadataColumnId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Asset_Type_Description]"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Description2]">
+                      cachedName="Name"
+                      externalMetadataColumnId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Surface_Name]"
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Name]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -1360,13 +1421,13 @@
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Level_1]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="Level_1"
-                      externalMetadataColumnId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Asset_Type_I]"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_1]">
+                      refId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Copy of Surface]"
+                      cachedDataType="numeric"
+                      cachedName="Copy of Surface"
+                      cachedPrecision="22"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Surface_Point]"
+                      lineageId="Package\Loading Data From Stage to DW\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Surface]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -1375,13 +1436,13 @@
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Level_2]"
+                      refId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Tenor]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="100"
-                      cachedName="Level_2"
-                      externalMetadataColumnId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Asset_Type_II]"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_2]">
+                      cachedName="Tenor"
+                      externalMetadataColumnId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Tenor_1_Position]"
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Tenor]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -1390,13 +1451,13 @@
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Level_3]"
+                      refId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Expiry]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="100"
-                      cachedName="Level_3"
-                      externalMetadataColumnId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Asset_Type_III]"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_3]">
+                      cachedName="Expiry"
+                      externalMetadataColumnId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Tenor_2_Position]"
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Expiry]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -1405,101 +1466,72 @@
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Level_4]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="Level_4"
-                      externalMetadataColumnId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Asset_Type_IV]"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_4]">
+                      refId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[CreatedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="CreatedDate"
+                      externalMetadataColumnId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Upload_Date]"
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreatedDate]">
                       <properties>
                         <property
                           dataType="System.Int32"
                           name="ColumnType"
-                          typeConverter="ColumnType">3</property>
+                          typeConverter="ColumnType">1</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[DESCRIPTION]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="DESCRIPTION"
-                      externalMetadataColumnId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Asset_Type_Name]"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[DESCRIPTION]">
+                      refId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Copy of Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Copy of Date"
+                      externalMetadataColumnId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Valuation_Date]"
+                      lineageId="Package\Loading Data From Stage to DW\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Date]">
                       <properties>
                         <property
                           dataType="System.Int32"
                           name="ColumnType"
-                          typeConverter="ColumnType">3</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Level_5]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="Level_5"
-                      externalMetadataColumnId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Asset_Type_V]"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_5]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          name="ColumnType"
-                          typeConverter="ColumnType">3</property>
+                          typeConverter="ColumnType">1</property>
                       </properties>
                     </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Asset_Type_Code]"
+                      refId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Security_Code]"
                       codePage="1252"
                       dataType="str"
-                      length="100"
-                      name="Asset_Type_Code" />
+                      length="50"
+                      name="Security_Code" />
                     <externalMetadataColumn
-                      refId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Asset_Type_Description]"
+                      refId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Surface_Name]"
                       codePage="1252"
                       dataType="str"
                       length="100"
-                      name="Asset_Type_Description" />
+                      name="Surface_Name" />
                     <externalMetadataColumn
-                      refId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Asset_Type_I]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Asset_Type_I" />
+                      refId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Surface_Point]"
+                      dataType="numeric"
+                      name="Surface_Point"
+                      precision="22"
+                      scale="6" />
                     <externalMetadataColumn
-                      refId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Asset_Type_II]"
+                      refId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Tenor_1_Position]"
                       codePage="1252"
                       dataType="str"
-                      length="100"
-                      name="Asset_Type_II" />
+                      length="10"
+                      name="Tenor_1_Position" />
                     <externalMetadataColumn
-                      refId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Asset_Type_III]"
+                      refId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Tenor_2_Position]"
                       codePage="1252"
                       dataType="str"
-                      length="100"
-                      name="Asset_Type_III" />
+                      length="10"
+                      name="Tenor_2_Position" />
                     <externalMetadataColumn
-                      refId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Asset_Type_IV]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Asset_Type_IV" />
+                      refId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Upload_Date]"
+                      dataType="dbTimeStamp"
+                      name="Upload_Date" />
                     <externalMetadataColumn
-                      refId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Asset_Type_Name]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Asset_Type_Name" />
-                    <externalMetadataColumn
-                      refId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Asset_Type_V]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Asset_Type_V" />
+                      refId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Valuation_Date]"
+                      dataType="dbTimeStamp"
+                      name="Valuation_Date" />
                     <externalMetadataColumn
                       refId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Created_Date]"
                       dataType="dbTimeStamp"
@@ -1620,126 +1652,6 @@
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Loading Data From Stage to DW\Union All.Inputs[Union All Input 1].Columns[PRODUCT TYPE]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="PRODUCT TYPE"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[PRODUCT TYPE]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[PRODUCT TYPE]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Loading Data From Stage to DW\Union All.Inputs[Union All Input 1].Columns[DESCRIPTION]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="DESCRIPTION"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[DESCRIPTION]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[DESCRIPTION]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Loading Data From Stage to DW\Union All.Inputs[Union All Input 1].Columns[Description2]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="Description2"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Description2]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Description2]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Loading Data From Stage to DW\Union All.Inputs[Union All Input 1].Columns[Level_1]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="Level_1"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_1]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Level_1]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Loading Data From Stage to DW\Union All.Inputs[Union All Input 1].Columns[Level_2]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="Level_2"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_2]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Level_2]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Loading Data From Stage to DW\Union All.Inputs[Union All Input 1].Columns[Level_3]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="Level_3"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_3]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Level_3]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Loading Data From Stage to DW\Union All.Inputs[Union All Input 1].Columns[Level_4]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="Level_4"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_4]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Level_4]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Loading Data From Stage to DW\Union All.Inputs[Union All Input 1].Columns[Level_5]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="Level_5"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_5]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Level_5]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
                       refId="Package\Loading Data From Stage to DW\Union All.Inputs[Union All Input 1].Columns[CreatedDate]"
                       cachedDataType="dbTimeStamp"
                       cachedName="CreatedDate"
@@ -1778,6 +1690,138 @@
                           dataType="System.Int32"
                           description="Output column lineage ID"
                           name="OutputColumnLineageID">#{Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[BatchDate]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading Data From Stage to DW\Union All.Inputs[Union All Input 1].Columns[BBID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="BBID"
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[BBID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[BBID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading Data From Stage to DW\Union All.Inputs[Union All Input 1].Columns[Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Name"
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Name]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Name]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading Data From Stage to DW\Union All.Inputs[Union All Input 1].Columns[Date]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Date"
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Date]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Date]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading Data From Stage to DW\Union All.Inputs[Union All Input 1].Columns[Expiry]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Expiry"
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Expiry]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Expiry]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading Data From Stage to DW\Union All.Inputs[Union All Input 1].Columns[Tenor]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Tenor"
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Tenor]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Tenor]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading Data From Stage to DW\Union All.Inputs[Union All Input 1].Columns[Surface]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Surface"
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Surface]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Surface]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading Data From Stage to DW\Union All.Inputs[Union All Input 1].Columns[Error]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="Error"
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Error]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Error]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading Data From Stage to DW\Union All.Inputs[Union All Input 1].Columns[Copy of Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Copy of Date"
+                      lineageId="Package\Loading Data From Stage to DW\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Date]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Copy of Date]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading Data From Stage to DW\Union All.Inputs[Union All Input 1].Columns[Copy of Surface]"
+                      cachedDataType="numeric"
+                      cachedName="Copy of Surface"
+                      cachedPrecision="22"
+                      cachedScale="6"
+                      lineageId="Package\Loading Data From Stage to DW\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Surface]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Copy of Surface]}</property>
                       </properties>
                     </inputColumn>
                   </inputColumns>
@@ -1834,126 +1878,6 @@
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Loading Data From Stage to DW\Union All.Inputs[Union All Input 2].Columns[PRODUCT TYPE]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="PRODUCT TYPE"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[PRODUCT TYPE]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[PRODUCT TYPE]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Loading Data From Stage to DW\Union All.Inputs[Union All Input 2].Columns[DESCRIPTION]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="DESCRIPTION"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[DESCRIPTION]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[DESCRIPTION]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Loading Data From Stage to DW\Union All.Inputs[Union All Input 2].Columns[Description2]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="Description2"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Description2]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Description2]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Loading Data From Stage to DW\Union All.Inputs[Union All Input 2].Columns[Level_1]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="Level_1"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_1]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Level_1]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Loading Data From Stage to DW\Union All.Inputs[Union All Input 2].Columns[Level_2]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="Level_2"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_2]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Level_2]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Loading Data From Stage to DW\Union All.Inputs[Union All Input 2].Columns[Level_3]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="Level_3"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_3]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Level_3]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Loading Data From Stage to DW\Union All.Inputs[Union All Input 2].Columns[Level_4]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="Level_4"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_4]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Level_4]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Loading Data From Stage to DW\Union All.Inputs[Union All Input 2].Columns[Level_5]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="Level_5"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_5]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Level_5]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
                       refId="Package\Loading Data From Stage to DW\Union All.Inputs[Union All Input 2].Columns[CreatedDate]"
                       cachedDataType="dbTimeStamp"
                       cachedName="CreatedDate"
@@ -1994,6 +1918,138 @@
                           name="OutputColumnLineageID">#{Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[BatchDate]}</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading Data From Stage to DW\Union All.Inputs[Union All Input 2].Columns[BBID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="BBID"
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[BBID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[BBID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading Data From Stage to DW\Union All.Inputs[Union All Input 2].Columns[Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Name"
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Name]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Name]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading Data From Stage to DW\Union All.Inputs[Union All Input 2].Columns[Date]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Date"
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Date]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Date]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading Data From Stage to DW\Union All.Inputs[Union All Input 2].Columns[Expiry]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Expiry"
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Expiry]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Expiry]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading Data From Stage to DW\Union All.Inputs[Union All Input 2].Columns[Tenor]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Tenor"
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Tenor]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Tenor]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading Data From Stage to DW\Union All.Inputs[Union All Input 2].Columns[Surface]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Surface"
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Surface]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Surface]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading Data From Stage to DW\Union All.Inputs[Union All Input 2].Columns[Error]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="Error"
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Error]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Error]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading Data From Stage to DW\Union All.Inputs[Union All Input 2].Columns[Copy of Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Copy of Date"
+                      lineageId="Package\Loading Data From Stage to DW\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Date]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Copy of Date]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading Data From Stage to DW\Union All.Inputs[Union All Input 2].Columns[Copy of Surface]"
+                      cachedDataType="numeric"
+                      cachedName="Copy of Surface"
+                      cachedPrecision="22"
+                      cachedScale="6"
+                      lineageId="Package\Loading Data From Stage to DW\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Surface]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Copy of Surface]}</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -2032,62 +2088,6 @@
                       lineageId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[TabName]"
                       name="TabName" />
                     <outputColumn
-                      refId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[PRODUCT TYPE]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      lineageId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[PRODUCT TYPE]"
-                      name="PRODUCT TYPE" />
-                    <outputColumn
-                      refId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[DESCRIPTION]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      lineageId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[DESCRIPTION]"
-                      name="DESCRIPTION" />
-                    <outputColumn
-                      refId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Description2]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      lineageId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Description2]"
-                      name="Description2" />
-                    <outputColumn
-                      refId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Level_1]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      lineageId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Level_1]"
-                      name="Level_1" />
-                    <outputColumn
-                      refId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Level_2]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      lineageId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Level_2]"
-                      name="Level_2" />
-                    <outputColumn
-                      refId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Level_3]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      lineageId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Level_3]"
-                      name="Level_3" />
-                    <outputColumn
-                      refId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Level_4]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      lineageId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Level_4]"
-                      name="Level_4" />
-                    <outputColumn
-                      refId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Level_5]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      lineageId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Level_5]"
-                      name="Level_5" />
-                    <outputColumn
                       refId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[CreatedDate]"
                       dataType="dbTimeStamp"
                       lineageId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[CreatedDate]"
@@ -2104,6 +2104,66 @@
                       dataType="dbDate"
                       lineageId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[BatchDate]"
                       name="BatchDate" />
+                    <outputColumn
+                      refId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[BBID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[BBID]"
+                      name="BBID" />
+                    <outputColumn
+                      refId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Name]"
+                      name="Name" />
+                    <outputColumn
+                      refId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Date]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Date]"
+                      name="Date" />
+                    <outputColumn
+                      refId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Expiry]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Expiry]"
+                      name="Expiry" />
+                    <outputColumn
+                      refId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Tenor]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Tenor]"
+                      name="Tenor" />
+                    <outputColumn
+                      refId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Surface]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Surface]"
+                      name="Surface" />
+                    <outputColumn
+                      refId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Error]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Error]"
+                      name="Error" />
+                    <outputColumn
+                      refId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Copy of Date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Copy of Date]"
+                      name="Copy of Date" />
+                    <outputColumn
+                      refId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Copy of Surface]"
+                      dataType="numeric"
+                      lineageId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[Copy of Surface]"
+                      name="Copy of Surface"
+                      precision="22"
+                      scale="6" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -2111,6 +2171,11 @@
             </component>
           </components>
           <paths>
+            <path
+              refId="Package\Loading Data From Stage to DW.Paths[Data Conversion Output]"
+              endId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]"
+              name="Data Conversion Output"
+              startId="Package\Loading Data From Stage to DW\Data Conversion.Outputs[Data Conversion Output]" />
             <path
               refId="Package\Loading Data From Stage to DW.Paths[Derived Column Output]"
               endId="Package\Loading Data From Stage to DW\OLE DB Command.Inputs[OLE DB Command Input]"
@@ -2138,7 +2203,7 @@
               startId="Package\Loading Data From Stage to DW\OLE DB Command.Outputs[OLE DB Command Output]" />
             <path
               refId="Package\Loading Data From Stage to DW.Paths[OLE DB Source Output]"
-              endId="Package\Loading Data From Stage to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]"
+              endId="Package\Loading Data From Stage to DW\Data Conversion.Inputs[Data Conversion Input]"
               name="OLE DB Source Output"
               startId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output]" />
             <path
@@ -2169,14 +2234,35 @@
           Language="CSharp"
           ReadOnlyVariables="System::ErrorCode,System::ErrorDescription">
           <ProjectItem
-            Name="Properties\Settings.settings"
-            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
-</SettingsFile>]]></ProjectItem>
+            Name="Properties\AssemblyInfo.cs"
+            Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_b525a5b6bafb448b994d0bc0800f043f")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_b525a5b6bafb448b994d0bc0800f043f")]
+[assembly: AssemblyCopyright("Copyright @  2016")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
           <ProjectItem
             Name="ST_b525a5b6bafb448b994d0bc0800f043f.csproj"
             Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
@@ -2556,35 +2642,14 @@ namespace ST_b525a5b6bafb448b994d0bc0800f043f.Properties {
     }
 }]]></ProjectItem>
           <ProjectItem
-            Name="Properties\AssemblyInfo.cs"
-            Encoding="UTF8"><![CDATA[using System.Reflection;
-using System.Runtime.CompilerServices;
-
-//
-// General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
-//
-[assembly: AssemblyTitle("ST_b525a5b6bafb448b994d0bc0800f043f")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ST_b525a5b6bafb448b994d0bc0800f043f")]
-[assembly: AssemblyCopyright("Copyright @  2016")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-//
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Revision and Build Numbers 
-// by using the '*' as shown below:
-
-[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
           <ProjectItem
             Name="Properties\Resources.Designer.cs"
             Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
@@ -2788,7 +2853,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{D2AED6BE-BA40-46DD-B1AC-CC1CFC21735A}"
-          SQLTask:SqlStatementSource="exec stg.spUpdateStartDate ?,'AssetTypeStartDate'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          SQLTask:SqlStatementSource="exec stg.spUpdateStartDate ?,'IRSurfaceStartDate'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ParameterBinding
             SQLTask:ParameterName="@PackageName"
             SQLTask:DtsVariableName="System::PackageName"
@@ -2812,7 +2877,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{D2AED6BE-BA40-46DD-B1AC-CC1CFC21735A}"
-          SQLTask:SqlStatementSource="exec stg.spLogPackageExecutionHistory ?,?,'AssetTypeJobName','U'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          SQLTask:SqlStatementSource="exec stg.spLogPackageExecutionHistory ?,?,'IRSurfaceJobName','U'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ParameterBinding
             SQLTask:ParameterName="@PackageID"
             SQLTask:DtsVariableName="System::PackageID"
@@ -3135,7 +3200,11 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         <NodeLayout
           Size="209,42"
           Id="Package\Loading Data From Stage to DW\Slowly Changing Dimension"
-          TopLeft="128,107.5" />
+          TopLeft="128,209.5" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Loading Data From Stage to DW\Data Conversion"
+          TopLeft="154.5,107.5" />
         <EdgeLayout
           Id="Package\Loading Data From Stage to DW.Paths[OLE DB Source Output]"
           TopLeft="232.5,47.5">
@@ -3158,13 +3227,35 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loading Data From Stage to DW.Paths[Data Conversion Output]"
+          TopLeft="232.5,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <NodeLayout
           Size="154,42"
           Id="Package\Loading Data From Stage to DW\Derived Column"
-          TopLeft="17.5,209.5" />
+          TopLeft="17.5,311.5" />
         <EdgeLayout
           Id="Package\Loading Data From Stage to DW.Paths[Historical Attribute Inserts Output]"
-          TopLeft="199,149.5">
+          TopLeft="199,251.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3201,10 +3292,10 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         <NodeLayout
           Size="166,42"
           Id="Package\Loading Data From Stage to DW\OLE DB Command"
-          TopLeft="5.50000000000003,311.5" />
+          TopLeft="5.50000000000003,413.5" />
         <EdgeLayout
           Id="Package\Loading Data From Stage to DW.Paths[Derived Column Output]"
-          TopLeft="91.5,251.5">
+          TopLeft="91.5,353.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3227,10 +3318,10 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         <NodeLayout
           Size="121,42"
           Id="Package\Loading Data From Stage to DW\Union All"
-          TopLeft="172,413.5" />
+          TopLeft="172,515.5" />
         <EdgeLayout
           Id="Package\Loading Data From Stage to DW.Paths[New Output]"
-          TopLeft="266,149.5">
+          TopLeft="266,251.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3266,7 +3357,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Loading Data From Stage to DW.Paths[OLE DB Command Output]"
-          TopLeft="88.5,353.5">
+          TopLeft="88.5,455.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3301,10 +3392,10 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         <NodeLayout
           Size="163,42"
           Id="Package\Loading Data From Stage to DW\Derived Column 1"
-          TopLeft="151,515.5" />
+          TopLeft="151,617.5" />
         <EdgeLayout
           Id="Package\Loading Data From Stage to DW.Paths[Union All Output 1]"
-          TopLeft="232.5,455.5">
+          TopLeft="232.5,557.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3327,10 +3418,10 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         <NodeLayout
           Size="163,42"
           Id="Package\Loading Data From Stage to DW\Insert Destination"
-          TopLeft="151,617.5" />
+          TopLeft="151,719.5" />
         <EdgeLayout
           Id="Package\Loading Data From Stage to DW.Paths[Derived Column Output1]"
-          TopLeft="232.5,557.5">
+          TopLeft="232.5,659.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3370,55 +3461,49 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           type="q2:string">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SCDWizardMetadata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;ConnectionID&gt;{64CDBEE9-2B2F-4481-AF00-34740DD14413}&lt;/ConnectionID&gt;
-  &lt;TableName&gt;[dw].[Asset_Type1]&lt;/TableName&gt;
+  &lt;TableName&gt;[dw].[Interest_Rate_Surface]&lt;/TableName&gt;
   &lt;InputToColumnsCollection&gt;
     &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[PRODUCT TYPE]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;Asset_Type_Code&lt;/ColumnName&gt;
+      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[BBID]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Security_Code&lt;/ColumnName&gt;
       &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
       &lt;ChangeType&gt;None&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[Description2]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;Asset_Type_Description&lt;/ColumnName&gt;
+      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[Name]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Surface_Name&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
       &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_1]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;Asset_Type_I&lt;/ColumnName&gt;
+      &lt;IdentificationString&gt;Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Surface]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Surface_Point&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
       &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_2]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;Asset_Type_II&lt;/ColumnName&gt;
+      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[Tenor]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Tenor_1_Position&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
       &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_3]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;Asset_Type_III&lt;/ColumnName&gt;
+      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[Expiry]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Tenor_2_Position&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
       &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_4]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;Asset_Type_IV&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
+      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[CreatedDate]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Upload_Date&lt;/ColumnName&gt;
+      &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[DESCRIPTION]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;Asset_Type_Name&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[Level_5]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;Asset_Type_V&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
+      &lt;IdentificationString&gt;Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Date]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Valuation_Date&lt;/ColumnName&gt;
+      &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
   &lt;/InputToColumnsCollection&gt;
   &lt;GeneratedComponentsIdentificationStrings&gt;
