@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Pkg_Tresalia_Stg_DW_FX"
   DTS:PackageType="5"
-  DTS:VersionBuild="258"
-  DTS:VersionGUID="{69139F7F-E573-44A7-8871-0A92E2750EC9}">
+  DTS:VersionBuild="262"
+  DTS:VersionGUID="{12489788-3562-488C-B23C-6A5FB873484D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -107,7 +107,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="StartDate">
       <DTS:VariableValue
-        DTS:DataType="7">3/24/2016 12:06:23 AM</DTS:VariableValue>
+        DTS:DataType="7">3/24/2016 12:06:00 AM</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -1212,14 +1212,6 @@ where [refTable].[Currency_Code] = ?</property>
                       externalMetadataColumnId="Package\Loading Data From Stage to DW\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FileName]"
                       lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[FileName]" />
                     <inputColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FilePath]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="FilePath"
-                      externalMetadataColumnId="Package\Loading Data From Stage to DW\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FilePath]"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[FilePath]" />
-                    <inputColumn
                       refId="Package\Loading Data From Stage to DW\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TabName]"
                       cachedCodepage="1252"
                       cachedDataType="str"
@@ -1241,14 +1233,6 @@ where [refTable].[Currency_Code] = ?</property>
                       cachedName="BatchDate"
                       externalMetadataColumnId="Package\Loading Data From Stage to DW\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BatchDate]"
                       lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[BatchDate]" />
-                    <inputColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SourceSystem]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="200"
-                      cachedName="SourceSystem"
-                      externalMetadataColumnId="Package\Loading Data From Stage to DW\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SourceSystem]"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[SourceSystem]" />
                     <inputColumn
                       refId="Package\Loading Data From Stage to DW\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FileDate]"
                       cachedCodepage="1252"
@@ -1329,23 +1313,11 @@ where [refTable].[Currency_Code] = ?</property>
                       length="100"
                       name="FileName" />
                     <externalMetadataColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FilePath]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="FilePath" />
-                    <externalMetadataColumn
                       refId="Package\Loading Data From Stage to DW\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TabName]"
                       codePage="1252"
                       dataType="str"
                       length="100"
                       name="TabName" />
-                    <externalMetadataColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SourceSystem]"
-                      codePage="1252"
-                      dataType="str"
-                      length="200"
-                      name="SourceSystem" />
                     <externalMetadataColumn
                       refId="Package\Loading Data From Stage to DW\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FileDate]"
                       codePage="1252"
@@ -1528,14 +1500,6 @@ where [refTable].[Currency_Code] = ?</property>
                       externalMetadataColumnId="Package\Loading Data From Stage to DW\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[FileName]"
                       lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[FileName]" />
                     <inputColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[FilePath]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="FilePath"
-                      externalMetadataColumnId="Package\Loading Data From Stage to DW\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[FilePath]"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[FilePath]" />
-                    <inputColumn
                       refId="Package\Loading Data From Stage to DW\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[TabName]"
                       cachedCodepage="1252"
                       cachedDataType="str"
@@ -1557,14 +1521,6 @@ where [refTable].[Currency_Code] = ?</property>
                       cachedName="BatchDate"
                       externalMetadataColumnId="Package\Loading Data From Stage to DW\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[BatchDate]"
                       lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[BatchDate]" />
-                    <inputColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[SourceSystem]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="200"
-                      cachedName="SourceSystem"
-                      externalMetadataColumnId="Package\Loading Data From Stage to DW\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[SourceSystem]"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[SourceSystem]" />
                     <inputColumn
                       refId="Package\Loading Data From Stage to DW\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[FileDate]"
                       cachedCodepage="1252"
@@ -1645,23 +1601,11 @@ where [refTable].[Currency_Code] = ?</property>
                       length="100"
                       name="FileName" />
                     <externalMetadataColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[FilePath]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="FilePath" />
-                    <externalMetadataColumn
                       refId="Package\Loading Data From Stage to DW\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[TabName]"
                       codePage="1252"
                       dataType="str"
                       length="100"
                       name="TabName" />
-                    <externalMetadataColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[SourceSystem]"
-                      codePage="1252"
-                      dataType="str"
-                      length="200"
-                      name="SourceSystem" />
                     <externalMetadataColumn
                       refId="Package\Loading Data From Stage to DW\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[FileDate]"
                       codePage="1252"
@@ -1844,14 +1788,6 @@ where [refTable].[Currency_Code] = ?</property>
                       externalMetadataColumnId="Package\Loading Data From Stage to DW\OLE DB Destination 1 1.Inputs[OLE DB Destination Input].ExternalColumns[FileName]"
                       lineageId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[FileName]" />
                     <inputColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Destination 1 1.Inputs[OLE DB Destination Input].Columns[FilePath]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="FilePath"
-                      externalMetadataColumnId="Package\Loading Data From Stage to DW\OLE DB Destination 1 1.Inputs[OLE DB Destination Input].ExternalColumns[FilePath]"
-                      lineageId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[FilePath]" />
-                    <inputColumn
                       refId="Package\Loading Data From Stage to DW\OLE DB Destination 1 1.Inputs[OLE DB Destination Input].Columns[TabName]"
                       cachedCodepage="1252"
                       cachedDataType="str"
@@ -1873,14 +1809,6 @@ where [refTable].[Currency_Code] = ?</property>
                       cachedName="BatchDate"
                       externalMetadataColumnId="Package\Loading Data From Stage to DW\OLE DB Destination 1 1.Inputs[OLE DB Destination Input].ExternalColumns[BatchDate]"
                       lineageId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[BatchDate]" />
-                    <inputColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Destination 1 1.Inputs[OLE DB Destination Input].Columns[SourceSystem]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="200"
-                      cachedName="SourceSystem"
-                      externalMetadataColumnId="Package\Loading Data From Stage to DW\OLE DB Destination 1 1.Inputs[OLE DB Destination Input].ExternalColumns[SourceSystem]"
-                      lineageId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[SourceSystem]" />
                     <inputColumn
                       refId="Package\Loading Data From Stage to DW\OLE DB Destination 1 1.Inputs[OLE DB Destination Input].Columns[FileDate]"
                       cachedCodepage="1252"
@@ -1959,23 +1887,11 @@ where [refTable].[Currency_Code] = ?</property>
                       length="100"
                       name="FileName" />
                     <externalMetadataColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Destination 1 1.Inputs[OLE DB Destination Input].ExternalColumns[FilePath]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="FilePath" />
-                    <externalMetadataColumn
                       refId="Package\Loading Data From Stage to DW\OLE DB Destination 1 1.Inputs[OLE DB Destination Input].ExternalColumns[TabName]"
                       codePage="1252"
                       dataType="str"
                       length="100"
                       name="TabName" />
-                    <externalMetadataColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Destination 1 1.Inputs[OLE DB Destination Input].ExternalColumns[SourceSystem]"
-                      codePage="1252"
-                      dataType="str"
-                      length="200"
-                      name="SourceSystem" />
                     <externalMetadataColumn
                       refId="Package\Loading Data From Stage to DW\OLE DB Destination 1 1.Inputs[OLE DB Destination Input].ExternalColumns[FileDate]"
                       codePage="1252"
@@ -2150,17 +2066,6 @@ where [refTable].[Currency_Code] = ?</property>
                       name="FileName"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[FilePath]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FilePath]"
-                      length="100"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[FilePath]"
-                      name="FilePath"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[TabName]"
                       codePage="1252"
                       dataType="str"
@@ -2190,17 +2095,6 @@ where [refTable].[Currency_Code] = ?</property>
                       externalMetadataColumnId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BatchDate]"
                       lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[BatchDate]"
                       name="BatchDate"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[SourceSystem]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SourceSystem]"
-                      length="200"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[SourceSystem]"
-                      name="SourceSystem"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[FileDate]"
@@ -2308,12 +2202,6 @@ where [refTable].[Currency_Code] = ?</property>
                       length="100"
                       name="FileName" />
                     <externalMetadataColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FilePath]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="FilePath" />
-                    <externalMetadataColumn
                       refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TabName]"
                       codePage="1252"
                       dataType="str"
@@ -2329,12 +2217,6 @@ where [refTable].[Currency_Code] = ?</property>
                       refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BatchDate]"
                       dataType="dbDate"
                       name="BatchDate" />
-                    <externalMetadataColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SourceSystem]"
-                      codePage="1252"
-                      dataType="str"
-                      length="200"
-                      name="SourceSystem" />
                     <externalMetadataColumn
                       refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FileDate]"
                       codePage="1252"
@@ -2394,19 +2276,24 @@ where [refTable].[Currency_Code] = ?</property>
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
+                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
                       refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FileName]"
                       codePage="1252"
                       dataType="str"
                       length="100"
                       lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FileName]"
                       name="FileName" />
-                    <outputColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FilePath]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FilePath]"
-                      name="FilePath" />
                     <outputColumn
                       refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TabName]"
                       codePage="1252"
@@ -2415,12 +2302,17 @@ where [refTable].[Currency_Code] = ?</property>
                       lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TabName]"
                       name="TabName" />
                     <outputColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SourceSystem]"
+                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CreatedBy]"
                       codePage="1252"
                       dataType="str"
-                      length="200"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SourceSystem]"
-                      name="SourceSystem" />
+                      length="50"
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CreatedBy]"
+                      name="CreatedBy" />
+                    <outputColumn
+                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BatchDate]"
+                      dataType="dbDate"
+                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BatchDate]"
+                      name="BatchDate" />
                     <outputColumn
                       refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FileDate]"
                       codePage="1252"
@@ -2476,35 +2368,11 @@ where [refTable].[Currency_Code] = ?</property>
                       lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Upload_Date]"
                       name="Upload_Date" />
                     <outputColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CreatedBy]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CreatedBy]"
-                      name="CreatedBy" />
-                    <outputColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BatchDate]"
-                      dataType="dbDate"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BatchDate]"
-                      name="BatchDate" />
-                    <outputColumn
                       refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Error]"
                       codePage="1252"
                       dataType="text"
                       lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Error]"
                       name="Error" />
-                    <outputColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -2735,21 +2603,6 @@ where [refTable].[Currency_Code] = ?</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Loading Data From Stage to DW\Union All.Inputs[Union All Input 1].Columns[FilePath]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="FilePath"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[FilePath]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[FilePath]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
                       refId="Package\Loading Data From Stage to DW\Union All.Inputs[Union All Input 1].Columns[TabName]"
                       cachedCodepage="1252"
                       cachedDataType="str"
@@ -2790,21 +2643,6 @@ where [refTable].[Currency_Code] = ?</property>
                           dataType="System.Int32"
                           description="Output column lineage ID"
                           name="OutputColumnLineageID">#{Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[BatchDate]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Loading Data From Stage to DW\Union All.Inputs[Union All Input 1].Columns[SourceSystem]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="200"
-                      cachedName="SourceSystem"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[SourceSystem]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[SourceSystem]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
@@ -3062,21 +2900,6 @@ where [refTable].[Currency_Code] = ?</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Loading Data From Stage to DW\Union All.Inputs[Union All Input 2].Columns[FilePath]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="FilePath"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[FilePath]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[FilePath]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
                       refId="Package\Loading Data From Stage to DW\Union All.Inputs[Union All Input 2].Columns[TabName]"
                       cachedCodepage="1252"
                       cachedDataType="str"
@@ -3117,21 +2940,6 @@ where [refTable].[Currency_Code] = ?</property>
                           dataType="System.Int32"
                           description="Output column lineage ID"
                           name="OutputColumnLineageID">#{Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[BatchDate]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Loading Data From Stage to DW\Union All.Inputs[Union All Input 2].Columns[SourceSystem]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="200"
-                      cachedName="SourceSystem"
-                      lineageId="Package\Loading Data From Stage to DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[SourceSystem]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[SourceSystem]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
@@ -3389,13 +3197,6 @@ where [refTable].[Currency_Code] = ?</property>
                       lineageId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[FileName]"
                       name="FileName" />
                     <outputColumn
-                      refId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[FilePath]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      lineageId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[FilePath]"
-                      name="FilePath" />
-                    <outputColumn
                       refId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[TabName]"
                       codePage="1252"
                       dataType="str"
@@ -3414,13 +3215,6 @@ where [refTable].[Currency_Code] = ?</property>
                       dataType="dbDate"
                       lineageId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[BatchDate]"
                       name="BatchDate" />
-                    <outputColumn
-                      refId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[SourceSystem]"
-                      codePage="1252"
-                      dataType="str"
-                      length="200"
-                      lineageId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[SourceSystem]"
-                      name="SourceSystem" />
                     <outputColumn
                       refId="Package\Loading Data From Stage to DW\Union All.Outputs[Union All Output 1].Columns[FileDate]"
                       codePage="1252"
@@ -3808,10 +3602,6 @@ where [refTable].[Currency_Code] = ?</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="232,42"
-          Id="Package\Loading Data From Stage to DW"
-          TopLeft="92,144.5" />
-        <NodeLayout
           Size="171,42"
           Id="Package\Clear Staging Table"
           TopLeft="96.5,240.5" />
@@ -3819,6 +3609,22 @@ where [refTable].[Currency_Code] = ?</property>
           Size="205,42"
           Id="Package\Create TresaliaPackageLog"
           TopLeft="95.5,70.5" />
+        <NodeLayout
+          Size="197,42"
+          Id="Package\Get JobId and BatchDate"
+          TopLeft="109,0" />
+        <NodeLayout
+          Size="232,42"
+          Id="Package\Loading Data From Stage to DW"
+          TopLeft="92,144.5" />
+        <NodeLayout
+          Size="186,42"
+          Id="Package\Update TresaliaJobLog"
+          TopLeft="57,426" />
+        <NodeLayout
+          Size="208,42"
+          Id="Package\Update TresaliaPackageLog"
+          TopLeft="56,319" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="198,112.5">
@@ -3853,14 +3659,6 @@ where [refTable].[Currency_Code] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="208,42"
-          Id="Package\Update TresaliaPackageLog"
-          TopLeft="56,319" />
-        <NodeLayout
-          Size="186,42"
-          Id="Package\Update TresaliaJobLog"
-          TopLeft="57,426" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
           TopLeft="160,361">
@@ -3963,10 +3761,6 @@ where [refTable].[Currency_Code] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="197,42"
-          Id="Package\Get JobId and BatchDate"
-          TopLeft="109,0" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
           TopLeft="207.5,42">
@@ -4048,82 +3842,40 @@ where [refTable].[Currency_Code] = ?</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="163,42"
-          Id="Package\Loading Data From Stage to DW\Derived Column 1"
-          TopLeft="8.00000000000006,515.5" />
-        <NodeLayout
           Size="171,42"
           Id="Package\Loading Data From Stage to DW\OLE DB Destination 1"
-          TopLeft="398,413.5" />
-        <NodeLayout
-          Size="121,42"
-          Id="Package\Loading Data From Stage to DW\Union All"
-          TopLeft="172,719.5" />
+          TopLeft="13.5000000000001,413.5" />
         <NodeLayout
           Size="171,42"
           Id="Package\Loading Data From Stage to DW\OLE DB Destination"
-          TopLeft="387,311.5" />
+          TopLeft="253.5,311.5" />
         <NodeLayout
           Size="150,42"
           Id="Package\Loading Data From Stage to DW\OLE DB Source"
-          TopLeft="397.5,5.5" />
+          TopLeft="264,5.5" />
         <NodeLayout
           Size="154,42"
           Id="Package\Loading Data From Stage to DW\Derived Column"
-          TopLeft="395.5,107.5" />
-        <NodeLayout
-          Size="163,42"
-          Id="Package\Loading Data From Stage to DW\Insert Destination"
-          TopLeft="151,923.5" />
+          TopLeft="262,107.5" />
         <NodeLayout
           Size="187,42"
           Id="Package\Loading Data From Stage to DW\Lookup Currency Table"
-          TopLeft="139,311.5" />
+          TopLeft="5.50000000000011,311.5" />
         <NodeLayout
           Size="171,42"
           Id="Package\Loading Data From Stage to DW\OLE DB Destination 1 1"
-          TopLeft="477,911" />
-        <NodeLayout
-          Size="163,42"
-          Id="Package\Loading Data From Stage to DW\Derived Column 2"
-          TopLeft="151,821.5" />
+          TopLeft="492.5,923.5" />
         <NodeLayout
           Size="209,42"
           Id="Package\Loading Data From Stage to DW\Slowly Changing Dimension"
-          TopLeft="128,413.5" />
+          TopLeft="245.5,413.5" />
         <NodeLayout
           Size="156,42"
           Id="Package\Loading Data From Stage to DW\Data Conversion"
-          TopLeft="394.5,209.5" />
-        <NodeLayout
-          Size="166,42"
-          Id="Package\Loading Data From Stage to DW\OLE DB Command"
-          TopLeft="5.50000000000006,617.5" />
-        <EdgeLayout
-          Id="Package\Loading Data From Stage to DW.Paths[Union All Output 1]"
-          TopLeft="232.5,761.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          TopLeft="261,209.5" />
         <EdgeLayout
           Id="Package\Loading Data From Stage to DW.Paths[OLE DB Source Output]"
-          TopLeft="472.5,47.5">
+          TopLeft="339,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -4141,117 +3893,47 @@ where [refTable].[Currency_Code] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Loading Data From Stage to DW.Paths[OLE DB Destination Error Output]"
-          TopLeft="314,944.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="163,-12.5"
-              Start="0,0"
-              End="155.5,-12.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="77.4999999999999,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="77.4999999999999,0"
-                    Point2="81.4999999999999,0"
-                    Point3="81.4999999999999,-4" />
-                  <mssgle:LineSegment
-                    End="81.4999999999999,-8.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="81.4999999999999,-8.5"
-                    Point2="81.4999999999999,-12.5"
-                    Point3="85.4999999999999,-12.5" />
-                  <mssgle:LineSegment
-                    End="155.5,-12.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="8.2910937499999,1,146.4178125,11.43359375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Loading Data From Stage to DW.Paths[OLE DB Command Output]"
-          TopLeft="88.5000000000001,659.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="125.166666666667,60"
-              Start="0,0"
-              End="125.166666666667,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,31.5301794453507" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,31.5301794453507"
-                    Point2="0,35.5301794453507"
-                    Point3="4,35.5301794453507" />
-                  <mssgle:LineSegment
-                    End="121.166666666667,35.5301794453507" />
-                  <mssgle:CubicBezierSegment
-                    Point1="121.166666666667,35.5301794453507"
-                    Point2="125.166666666667,35.5301794453507"
-                    Point3="125.166666666667,39.5301794453507" />
-                  <mssgle:LineSegment
-                    End="125.166666666667,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Loading Data From Stage to DW.Paths[New Output]"
-          TopLeft="266,455.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-14.6666666666666,264"
-              Start="0,0"
-              End="-14.6666666666666,256.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,127.104705383637" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,127.104705383637"
-                    Point2="0,131.104705383637"
-                    Point3="-4,131.104705383637" />
-                  <mssgle:LineSegment
-                    End="-10.6666666666666,131.104705383637" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-10.6666666666666,131.104705383637"
-                    Point2="-14.6666666666666,131.104705383637"
-                    Point3="-14.6666666666666,135.104705383637" />
-                  <mssgle:LineSegment
-                    End="-14.6666666666666,256.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-34.4247200520833,136.104705383637,54.1827734375,11.43359375"
-              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Loading Data From Stage to DW.Paths[Lookup No Match Output]"
-          TopLeft="262.333333333333,353.5">
+          TopLeft="69.1666666666668,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="29.8333333333333,60"
+              Start="0,0"
+              End="29.8333333333333,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.305408271474" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.305408271474"
+                    Point2="0,24.305408271474"
+                    Point3="4,24.305408271474" />
+                  <mssgle:LineSegment
+                    End="25.8333333333333,24.305408271474" />
+                  <mssgle:CubicBezierSegment
+                    Point1="25.8333333333333,24.305408271474"
+                    Point2="29.8333333333333,24.305408271474"
+                    Point3="29.8333333333333,28.305408271474" />
+                  <mssgle:LineSegment
+                    End="29.8333333333333,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-40.8897200520833,29.305408271474,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loading Data From Stage to DW.Paths[Lookup Match Output]"
+          TopLeft="128.833333333333,353.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -4281,129 +3963,13 @@ where [refTable].[Currency_Code] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="54.7769466145835,29.305408271474,111.6127734375,11.609375"
+              BoundingBox="62.3919466145833,29.305408271474,96.3827734375,11.609375"
               RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Loading Data From Stage to DW.Paths[Lookup Match Output]"
-          TopLeft="202.666666666667,353.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="29.8333333333334,60"
-              Start="0,0"
-              End="29.8333333333334,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20.305408271474" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.305408271474"
-                    Point2="0,24.305408271474"
-                    Point3="4,24.305408271474" />
-                  <mssgle:LineSegment
-                    End="25.8333333333334,24.305408271474" />
-                  <mssgle:CubicBezierSegment
-                    Point1="25.8333333333334,24.305408271474"
-                    Point2="29.8333333333334,24.305408271474"
-                    Point3="29.8333333333334,28.305408271474" />
-                  <mssgle:LineSegment
-                    End="29.8333333333334,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-33.2747200520833,29.305408271474,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Loading Data From Stage to DW.Paths[Historical Attribute Inserts Output]"
-          TopLeft="199,455.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-109.5,60"
-              Start="0,0"
-              End="-109.5,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20.2735042735043" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.2735042735043"
-                    Point2="0,24.2735042735043"
-                    Point3="-4,24.2735042735043" />
-                  <mssgle:LineSegment
-                    End="-105.5,24.2735042735043" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-105.5,24.2735042735043"
-                    Point2="-109.5,24.2735042735043"
-                    Point3="-109.5,28.2735042735043" />
-                  <mssgle:LineSegment
-                    End="-109.5,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-129.80638671875,29.2735042735043,150.1127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Loading Data From Stage to DW.Paths[Derived Column Output2]"
-          TopLeft="232.5,863.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Loading Data From Stage to DW.Paths[Derived Column Output1]"
-          TopLeft="89.0000000000001,557.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Loading Data From Stage to DW.Paths[Derived Column Output]"
-          TopLeft="472.5,149.5">
+          TopLeft="339,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -4425,7 +3991,7 @@ where [refTable].[Currency_Code] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Loading Data From Stage to DW.Paths[Data Conversion Output]"
-          TopLeft="447.833333333333,251.5">
+          TopLeft="314.333333333333,251.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -4459,7 +4025,7 @@ where [refTable].[Currency_Code] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Loading Data From Stage to DW.Paths[Data Conversion Error Output]"
-          TopLeft="497.166666666667,251.5">
+          TopLeft="363.666666666667,251.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -4490,6 +4056,222 @@ where [refTable].[Currency_Code] = ?</property>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
               BoundingBox="-78.4197200520833,29.3654822335025,132.1727734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Loading Data From Stage to DW\Derived Column 1"
+          TopLeft="125.5,515.5" />
+        <EdgeLayout
+          Id="Package\Loading Data From Stage to DW.Paths[Historical Attribute Inserts Output]"
+          TopLeft="316.5,455.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-109.5,60"
+              Start="0,0"
+              End="-109.5,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2735042735043" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2735042735043"
+                    Point2="0,24.2735042735043"
+                    Point3="-4,24.2735042735043" />
+                  <mssgle:LineSegment
+                    End="-105.5,24.2735042735043" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-105.5,24.2735042735043"
+                    Point2="-109.5,24.2735042735043"
+                    Point3="-109.5,28.2735042735043" />
+                  <mssgle:LineSegment
+                    End="-109.5,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-129.80638671875,29.2735042735043,150.1127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="166,42"
+          Id="Package\Loading Data From Stage to DW\OLE DB Command"
+          TopLeft="123,617.5" />
+        <EdgeLayout
+          Id="Package\Loading Data From Stage to DW.Paths[Derived Column Output1]"
+          TopLeft="206.5,557.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="121,42"
+          Id="Package\Loading Data From Stage to DW\Union All"
+          TopLeft="289.5,719.5" />
+        <EdgeLayout
+          Id="Package\Loading Data From Stage to DW.Paths[New Output]"
+          TopLeft="383.5,455.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-14.6666666666667,264"
+              Start="0,0"
+              End="-14.6666666666667,256.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,127.104705383637" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,127.104705383637"
+                    Point2="0,131.104705383637"
+                    Point3="-4,131.104705383637" />
+                  <mssgle:LineSegment
+                    End="-10.6666666666667,131.104705383637" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-10.6666666666667,131.104705383637"
+                    Point2="-14.6666666666667,131.104705383637"
+                    Point3="-14.6666666666667,135.104705383637" />
+                  <mssgle:LineSegment
+                    End="-14.6666666666667,256.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-34.4247200520833,136.104705383637,54.1827734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loading Data From Stage to DW.Paths[OLE DB Command Output]"
+          TopLeft="206,659.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="125.166666666667,60"
+              Start="0,0"
+              End="125.166666666667,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5301794453507" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.5301794453507"
+                    Point2="0,35.5301794453507"
+                    Point3="4,35.5301794453507" />
+                  <mssgle:LineSegment
+                    End="121.166666666667,35.5301794453507" />
+                  <mssgle:CubicBezierSegment
+                    Point1="121.166666666667,35.5301794453507"
+                    Point2="125.166666666667,35.5301794453507"
+                    Point3="125.166666666667,39.5301794453507" />
+                  <mssgle:LineSegment
+                    End="125.166666666667,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Loading Data From Stage to DW\Derived Column 2"
+          TopLeft="268.5,821.5" />
+        <EdgeLayout
+          Id="Package\Loading Data From Stage to DW.Paths[Union All Output 1]"
+          TopLeft="350,761.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Loading Data From Stage to DW\Insert Destination"
+          TopLeft="268.5,923.5" />
+        <EdgeLayout
+          Id="Package\Loading Data From Stage to DW.Paths[Derived Column Output2]"
+          TopLeft="350,863.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loading Data From Stage to DW.Paths[OLE DB Destination Error Output]"
+          TopLeft="431.5,944.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="60.9999999999999,0"
+              Start="0,0"
+              End="53.4999999999999,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="53.4999999999999,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-46.45890625,5,146.4178125,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -4536,25 +4318,12 @@ where [refTable].[Currency_Code] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Loading Data From Stage to DW\Insert Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Loading Data From Stage to DW\Lookup Currency Table">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>

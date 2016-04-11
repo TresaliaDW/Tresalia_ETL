@@ -22,14 +22,14 @@ CREATE Procedure [stg].[spCreateFileHistory]
        @TabName Varchar(100) = NULL,
 	   @TotalRecordsInFile Int,
 	   @JobID Int = NULL,
-	   @BatchDate DateTime = NULL
+	   @BatchDate VARCHAR(20) = NULL
 As
 Begin
     Set Nocount On
 
        
 	Insert Into Stg.FileHistory (SourceFilePath,SourceFileName,TabName,TotalRecordsInFile, JobId, BatchDate)
-	Values (@SourceFilePath,@SourceFileName,@TabName, @TotalRecordsInFile, @JobID, CAST(@BatchDate AS DATE))
+	Values (@SourceFilePath,@SourceFileName,@TabName, @TotalRecordsInFile, @JobID, CONVERT(DATE, @BatchDate, 101))
        
 End
 

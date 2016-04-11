@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Pkg_Tresalia_Excel_Stg_AssetType"
   DTS:PackageType="5"
-  DTS:VersionBuild="192"
-  DTS:VersionGUID="{1B66F194-BD83-4FDA-A049-76AD3F1629EE}">
+  DTS:VersionBuild="215"
+  DTS:VersionGUID="{A4899BAC-0B83-438F-ADEB-6BED633831D5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -64,11 +64,12 @@
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{4480FD28-AE86-4BC4-B6B8-49FDF8D3377E}"
-      DTS:IncludeInDebugDump="6789"
+      DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="BatchDate">
       <DTS:VariableValue
-        DTS:DataType="7">12:00:00 AM</DTS:VariableValue>
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -105,6 +106,15 @@
       DTS:ObjectName="InputFolderPath_AssetType">
       <DTS:VariableValue
         DTS:DataType="8">D:\Tresalia\Anupam\Tresalia_ETL\Input\</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{9C15FF33-524E-4561-B84D-5E2ABF291656}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="JobId">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -237,27 +247,10 @@
   </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\Clear Staging Table"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Execute SQL Task"
-      DTS:DTSID="{0C7E300E-45D9-4D0C-B5C9-5D827A606B8A}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Clear Staging Table"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{4A214E18-E559-4EE0-A01D-A7F083CFAB5B}"
-          SQLTask:SqlStatementSource="exec stg.spClearStageTable 'ASSETTYPE'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
       DTS:refId="Package\Create TresaliaJobLog"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{0A7555BF-B680-428C-A7C4-0F69D1A8B93D}"
+      DTS:DTSID="{152cfffa-e60a-4a59-ab1a-102537b27b72}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Create TresaliaJobLog"
@@ -267,19 +260,61 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{4A214E18-E559-4EE0-A01D-A7F083CFAB5B}"
-          SQLTask:SqlStatementSource="exec stg.spLogPackageExecutionHistory ?,?,'AssetTypeJobName','S'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          SQLTask:SqlStatementSource="EXEC stg.spCreateJobExecutionHistory 'S', 'LoadDataWarehouse_AssetType',? OUTPUT, ? OUTPUT, ? OUTPUT" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ParameterBinding
-            SQLTask:ParameterName="@PackageID"
-            SQLTask:DtsVariableName="System::PackageID"
-            SQLTask:ParameterDirection="Input"
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::JobId"
+            SQLTask:ParameterDirection="Output"
+            SQLTask:DataType="20"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="User::BatchDate"
+            SQLTask:ParameterDirection="Output"
             SQLTask:DataType="129"
-            SQLTask:ParameterSize="255" />
+            SQLTask:ParameterSize="20" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="2"
+            SQLTask:DtsVariableName="User::StartDate"
+            SQLTask:ParameterDirection="Output"
+            SQLTask:DataType="135"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Create TresaliaPackageLog"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{60d930ad-7255-406f-94e8-357f64cec019}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Create TresaliaPackageLog"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{4A214E18-E559-4EE0-A01D-A7F083CFAB5B}"
+          SQLTask:SqlStatementSource="EXEC stg.spCreatePackageExecutionHistory 'S',?, ?, ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ParameterBinding
             SQLTask:ParameterName="@PackageName"
             SQLTask:DtsVariableName="System::PackageName"
             SQLTask:ParameterDirection="Input"
             SQLTask:DataType="129"
             SQLTask:ParameterSize="255" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@JobID"
+            SQLTask:DtsVariableName="User::JobId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="20"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@BatchDate"
+            SQLTask:DtsVariableName="User::BatchDate"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="20" />
         </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
@@ -965,7 +1000,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4A214E18-E559-4EE0-A01D-A7F083CFAB5B}"
-              SQLTask:SqlStatementSource="exec stg.spCreateFileHistory ?,?,?,?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              SQLTask:SqlStatementSource="exec stg.spCreateFileHistory ?,?,?,?,?,?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
                 SQLTask:ParameterName="@SourceFilePath"
                 SQLTask:DtsVariableName="User::SourceFolderPath"
@@ -990,6 +1025,18 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="20"
                 SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@JobID"
+                SQLTask:DtsVariableName="User::JobId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="20"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@BatchDate"
+                SQLTask:DtsVariableName="User::BatchDate"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="20" />
             </SQLTask:SqlTaskData>
           </DTS:ObjectData>
         </DTS:Executable>
@@ -1525,13 +1572,37 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                               containsID="true"
                               dataType="System.String"
                               description="Derived Column Expression"
-                              name="Expression">@[User::BatchDate]</property>
+                              name="Expression">(DT_DATE)@[User::BatchDate]</property>
                             <property
                               containsID="true"
                               dataType="System.String"
                               description="Derived Column Friendly Expression"
                               expressionType="Notify"
-                              name="FriendlyExpression">@[User::BatchDate]</property>
+                              name="FriendlyExpression">(DT_DATE)@[User::BatchDate]</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Derived Column.Outputs[Derived Column Output].Columns[FileDate]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="100"
+                          lineageId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Derived Column.Outputs[Derived Column Output].Columns[FileDate]"
+                          name="FileDate"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_STR,100,1252)[TRIM]([SUBSTRING](@[User::SourceFileName_AssetType],1,[FINDSTRING](@[User::SourceFileName_AssetType],"-",1) - 1))</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_STR,100,1252)TRIM(SUBSTRING(@[User::SourceFileName_AssetType],1,FINDSTRING(@[User::SourceFileName_AssetType],"-",1) - 1))</property>
                           </properties>
                         </outputColumn>
                       </outputColumns>
@@ -1883,14 +1954,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                       name="OLE DB Destination Input">
                       <inputColumns>
                         <inputColumn
-                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DC.Filepath]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="100"
-                          cachedName="DC.Filepath"
-                          externalMetadataColumnId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FilePath]"
-                          lineageId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Data Conversion.Outputs[Data Conversion Output].Columns[DC.Filepath]" />
-                        <inputColumn
                           refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DC.FileName]"
                           cachedCodepage="1252"
                           cachedDataType="str"
@@ -1969,13 +2032,21 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                           externalMetadataColumnId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DESCRIPTION]"
                           lineageId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Data Conversion.Outputs[Data Conversion Output].Columns[DC.DESCRIPTION]" />
                         <inputColumn
-                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TabName]"
+                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DC.TabName]"
                           cachedCodepage="1252"
                           cachedDataType="str"
                           cachedLength="100"
-                          cachedName="TabName"
+                          cachedName="DC.TabName"
                           externalMetadataColumnId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TabName]"
-                          lineageId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Derived Column.Outputs[Derived Column Output].Columns[TabName]" />
+                          lineageId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Data Conversion.Outputs[Data Conversion Output].Columns[DC.TabName]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FileDate]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="FileDate"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FileDate]"
+                          lineageId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Derived Column.Outputs[Derived Column Output].Columns[FileDate]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -1985,12 +2056,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                           dataType="str"
                           length="100"
                           name="FileName" />
-                        <externalMetadataColumn
-                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FilePath]"
-                          codePage="1252"
-                          dataType="str"
-                          length="100"
-                          name="FilePath" />
                         <externalMetadataColumn
                           refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CreatedDate]"
                           dataType="dbTimeStamp"
@@ -2059,6 +2124,12 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                           dataType="str"
                           length="100"
                           name="TabName" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FileDate]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="FileDate" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -2812,8 +2883,8 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                 SQLTask:DataType="129"
                 SQLTask:ParameterSize="100" />
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="@TotalRecordsInFile"
-                SQLTask:DtsVariableName="User::TotalRecordsInFile"
+                SQLTask:ParameterName="@JobID"
+                SQLTask:DtsVariableName="User::JobId"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="20"
                 SQLTask:ParameterSize="-1" />
@@ -2883,6 +2954,36 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           Language="CSharp"
           ReadOnlyVariables="User::FileMask_AssetType,User::InputFolderPath_AssetType,User::SourceFolderPath,User::StartDate"
           ReadWriteVariables="User::SourceFileList">
+          <ProjectItem
+            Name="Properties\AssemblyInfo.cs"
+            Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_1030dd962f67463d894c9be6c354121e")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_1030dd962f67463d894c9be6c354121e")]
+[assembly: AssemblyCopyright("Copyright @  2016")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
           <ProjectItem
             Name="Properties\Resources.resx"
             Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
@@ -3088,35 +3189,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
   </ProjectExtensions>
 </Project>]]></ProjectItem>
           <ProjectItem
-            Name="Properties\Settings.Designer.cs"
-            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
-// <auto-generated>
-//     This code was generated by a tool.
-//
-//     Changes to this file may cause incorrect behavior and will be lost if
-//     the code is regenerated.
-// </auto-generated>
-//------------------------------------------------------------------------------
-
-[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_1030dd962f67463d894c9be6c354121e.Properties.Settings.get_Default():ST_1030dd962f67463d894c9be6c354121e.Properties.Sett" +
-    "ings")]
-
-namespace ST_1030dd962f67463d894c9be6c354121e.Properties {
-    
-    
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
-        
-        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-        private static Settings defaultInstance = new Settings();
-        
-        public static Settings Default {
-            get {
-                return defaultInstance;
-            }
-        }
-    }
-}]]></ProjectItem>
-          <ProjectItem
             Name="ScriptMain.cs"
             Encoding="UTF8"><![CDATA[#region Help:  Introduction to the script task
 /* The Script Task allows you to perform virtually any operation that can be accomplished in
@@ -3225,14 +3297,24 @@ namespace ST_1030dd962f67463d894c9be6c354121e
         /// </summary>
         public void Main()
         {
-            string fileName = string.Empty;
-            string inputFolderPath = Dts.Variables["User::InputFolderPath_AssetType"].Value.ToString();
-            string sourceFolderPath = Dts.Variables["User::SourceFolderPath"].Value.ToString();
-            string fileMask = Dts.Variables["User::FileMask_AssetType"].Value.ToString();
-            DateTime startDateTime = Convert.ToDateTime(Dts.Variables["User::StartDate"].Value.ToString().Trim());
+            try
+            {
+                string fileName = string.Empty;
+                string inputFolderPath = Dts.Variables["User::InputFolderPath_AssetType"].Value.ToString();
+                string sourceFolderPath = Dts.Variables["User::SourceFolderPath"].Value.ToString();
+                string fileMask = Dts.Variables["User::FileMask_AssetType"].Value.ToString();
+                DateTime startDateTime = Convert.ToDateTime(Dts.Variables["User::StartDate"].Value.ToString().Trim());
 
-            this.CopyFilesFromInputToSource(inputFolderPath, sourceFolderPath, fileMask);
-            this.GetFileList(sourceFolderPath, fileMask, startDateTime);
+                this.GetFileList(inputFolderPath, fileMask, startDateTime);
+                this.CopyFilesFromInputToSource(inputFolderPath, sourceFolderPath, fileMask);
+
+                Dts.TaskResult = (int)ScriptResults.Success;
+            }            
+            catch (Exception ex)
+            {
+                Dts.TaskResult = (int)ScriptResults.Failure;
+            }
+            
         }
 
         public void CopyFilesFromInputToSource(string inputFolderPath, string sourceFolderPath, string fileMask)
@@ -3243,7 +3325,10 @@ namespace ST_1030dd962f67463d894c9be6c354121e
             {
                 foreach (var file in ExcelDirectoryInfo.GetFiles(fileMask))
                 {
-                    File.Copy(inputFolderPath + file.Name, sourceFolderPath + file.Name, true);
+                    if (dicFileList.ContainsValue(file.Name.Trim()))
+                    {
+                        File.Copy(inputFolderPath + file.Name, sourceFolderPath + file.Name, true);
+                    }
                 }
             }
         }
@@ -3342,62 +3427,50 @@ namespace ST_1030dd962f67463d894c9be6c354121e
             Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
 <c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="3.0" schemaVersion="1.0">
 	<msb:PropertyGroup>
-		<msb:Language>msBuild</msb:Language>
 		<msb:CodeName>ST_1030dd962f67463d894c9be6c354121e</msb:CodeName>
+		<msb:Language>msBuild</msb:Language>
 		<msb:DisplayName>ST_1030dd962f67463d894c9be6c354121e</msb:DisplayName>
 		<msb:ProjectId>{ECCD4BF6-738F-4B21-8453-4770C7A25807}</msb:ProjectId>
 	</msb:PropertyGroup>
 	<msb:ItemGroup>
 		<msb:Project Include="ST_1030dd962f67463d894c9be6c354121e.csproj"/>
-		<msb:File Include="Properties\Settings.settings"/>
 		<msb:File Include="Properties\AssemblyInfo.cs"/>
+		<msb:File Include="Properties\Settings.settings"/>
 		<msb:File Include="Properties\Resources.resx"/>
 		<msb:File Include="Properties\Resources.Designer.cs"/>
 		<msb:File Include="Properties\Settings.Designer.cs"/>
 		<msb:File Include="ScriptMain.cs"/>
-		<msb:Breakpoint Include="0cdb93871140466d9360c736f3a92c67">
-			<msb:FileName>ScriptMain.cs</msb:FileName>
-			<msb:LineNumber>160</msb:LineNumber>
-			<msb:ColumnNumber>25</msb:ColumnNumber>
-			<msb:Enabled>True</msb:Enabled>
-			<msb:ConditionType>1</msb:ConditionType>
-			<msb:Condition></msb:Condition>
-			<msb:Language>C#</msb:Language>
-			<msb:HitCountType>1</msb:HitCountType>
-			<msb:HitCountTarget>1</msb:HitCountTarget>
-		</msb:Breakpoint>
 	</msb:ItemGroup>
 </c:Project>]]></ProjectItem>
           <ProjectItem
-            Name="Properties\AssemblyInfo.cs"
-            Encoding="UTF8"><![CDATA[using System.Reflection;
-using System.Runtime.CompilerServices;
+            Name="Properties\Settings.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
 
-//
-// General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
-//
-[assembly: AssemblyTitle("ST_1030dd962f67463d894c9be6c354121e")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ST_1030dd962f67463d894c9be6c354121e")]
-[assembly: AssemblyCopyright("Copyright @  2016")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-//
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Revision and Build Numbers 
-// by using the '*' as shown below:
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_1030dd962f67463d894c9be6c354121e.Properties.Settings.get_Default():ST_1030dd962f67463d894c9be6c354121e.Properties.Sett" +
+    "ings")]
 
-[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+namespace ST_1030dd962f67463d894c9be6c354121e.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
           <ProjectItem
             Name="Properties\Settings.settings"
             Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
@@ -3478,116 +3551,116 @@ namespace ST_1030dd962f67463d894c9be6c354121e.Properties {
           <BinaryItem
             Name="ST_1030dd962f67463d894c9be6c354121e.dll">TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
-ZGUuDQ0KJAAAAAAAAABQRQAATAEDAGMK/VYAAAAAAAAAAOAAAiELAQsAABgAAAAGAAAAAAAAbjYA
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAI1gC1cAAAAAAAAAAOAAAiELAQsAABgAAAAGAAAAAAAAzjYA
 AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAEAAAAAAAAAACAAAAAAgAAAAAAAAMAQIUAABAA
-ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAABw2AABPAAAAAEAAAAAEAAAAAAAAAAAAAAAAAAAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAIA2AABLAAAAAEAAAAAEAAAAAAAAAAAAAAAAAAAA
 AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAdBYAAAAgAAAAGAAAAAIA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAA1BYAAAAgAAAAGAAAAAIA
 AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAAAEAAAAQAAAAAQAAAAaAAAAAAAAAAAAAAAAAABAAABA
-LnJlbG9jAAAMAAAAAGAAAAACAAAAHgAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAABQ
-NgAAAAAAAEgAAAACAAUAmCQAAIQRAAABAAAAAAAAAOAjAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAHgAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAACw
+NgAAAAAAAEgAAAACAAUA4CQAAKARAAABAAAAAAAAACgkAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4CKA4AAAoqEzACAC0AAAABAAARfgEAAAQtIHIBAABw0AIA
 AAIoDwAACm8QAAAKcxEAAAoKBoABAAAEfgEAAAQqGn4CAAAEKh4CgAIAAAQqGn4DAAAEKi5zBgAA
-BoADAAAEKh4CKBQAAAoqABMwBACjAAAAAgAAEX4WAAAKJgIoFwAACm8YAAAKcnMAAHBvGQAACm8a
+BoADAAAEKh4CKBQAAAoqABswBADAAAAAAgAAEX4WAAAKJgIoFwAACm8YAAAKcnMAAHBvGQAACm8a
 AAAKbxsAAAoKAigXAAAKbxgAAApyswAAcG8ZAAAKbxoAAApvGwAACgsCKBcAAApvGAAACnLhAABw
 bxkAAApvGgAACm8bAAAKDAIoFwAACm8YAAAKchMBAHBvGQAACm8aAAAKbxsAAApvHAAACigdAAAK
-DQIGBwgoCQAABgIHCAkoCgAABioAEzADAEgAAAADAAARA3MeAAAKCgZvHwAACiw4BgVvIAAACgwW
-DSsmCAmaCwMHbyEAAAooIgAACgQHbyEAAAooIgAAChcoIwAACgkXWA0JCI5pMtQqGzAGANUBAAAE
-AAAREgAgbAcAABcXKCQAAAp+FgAACgsWDBYNFhMEFhMFFhMGfhYAAAomA3MeAAAKEwcCewYAAARv
-JQAAChEHbx8AAAo5fQEAABEHBG8gAAAKEwoWEws4EQEAABEKEQuaEwgEbyYAAAomFgx+FgAACgsW
-DRYTBBYTBRYTBhEIbyEAAApyMwEAcG8nAAAKOdQAAAARCG8hAAAKcjcBAHBvJwAACjq+AAAAEQhv
-IQAACnIzAQBwbygAAAoMCBYxexEIbyEAAAoWCG8pAAAKbxwAAAoLBxYabykAAApvHAAACigqAAAK
-DQcaGG8pAAAKbxwAAAooKgAAChMEBxwYbykAAApvHAAACigqAAAKEwUHbysAAAoeMRQHHhhvKQAA
-Cm8cAAAKKCoAAAoTBgkRBBEFEQYWFnMsAAAKChIAKC0AAAoPAygtAAAKKC4AAAosGAJ7BgAABAYR
-CG8hAAAKbxwAAApvLwAAChELF1gTCxELEQqOaT/k/v//AnsGAAAEbzAAAAooAQAAKxMJEQlvMgAA
-CgIoFwAACm8YAAAKcjsBAHBvGQAACgJ7BgAABG8zAAAKKAIAACtvNAAACgIoFwAAChZvNQAACt4P
-JgIoFwAAChdvNQAACt4AKgAAAEEcAAAAAAAAJwAAAJ4BAADFAQAADwAAACsAAAF2AnM2AAAKfQYA
-AAQCczYAAAp9BwAABAIoNwAACioAALQAAADOyu++AQAAAJEAAABsU3lzdGVtLlJlc291cmNlcy5S
-ZXNvdXJjZVJlYWRlciwgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFs
-LCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5I1N5c3RlbS5SZXNvdXJjZXMuUnVudGlt
-ZVJlc291cmNlU2V0AgAAAAAAAAAAAAAAUEFEUEFEULQAAABCU0pCAQABAAAAAAAMAAAAdjQuMC4z
-MDMxOQAAAAAFAGwAAABEBQAAI34AALAFAAAECAAAI1N0cmluZ3MAAAAAtA0AAGgBAAAjVVMAHA8A
-ABAAAAAjR1VJRAAAACwPAABYAgAAI0Jsb2IAAAAAAAAAAgAAAVcdogkJCwAAAPolMwAWAAABAAAA
-KwAAAAUAAAAKAAAACwAAAAcAAAA3AAAABAAAAA8AAAAEAAAAAgAAAAMAAAAEAAAAAgAAAAEAAAAF
-AAAAAQAAAAEAAAACAAAAAAAKAAEAAAAAAAYAwQC6AAoA3QDIAA4APQEUAQYAWQG6AAYAbwFeAQYA
-oAGLAQYAaQJOAgYAdgK6AAYAPgMkAwYAaQNXAwYAgANXAwYAnQNXAwYAvANXAwYA1QNXAwYA7gNX
-AwYACQRXAwYAJARXAwYAPQRXAwYAdgRWBAYAlgRWBAYAxwS0BAYA5AS6AAYA6QS6AAYADQVXAwoA
-OQUjBQoAUgUjBQYAZwVWBA4AiQUUAQYAqwW6AA4AuAUUARIAEQbxBRIAKQbxBQYAUwa6AAYAcAZm
-BgYAfgZmBgYAmAZmBgYAugZmBh8AJwcAABYAVgdKBwYAYQdOAgYAaAdOAh8AggcAAAYAtge6AAAA
-AAABAAAAAAABAAEAAAAQADIAPAAFAAEAAQAAARAAawA8AAkAAwAFAAEAEAB0AH8ADQAEAAgAAwEA
-AKMAAAARAAgADAARAH8BEwARAKwBFwARAPYBOQBWgBoCRwBWgDkCRwABAH8CUAABAIsCUAAGBskC
-aABWgNECawBWgNkCawBQIAAAAACDGLwBGwABAFggAAAAAJMIwgEfAAEAkSAAAAAAkwjWASQAAQCY
-IAAAAACTCOIBKQABAKAgAAAAAJYIBgI9AAIAsyAAAAAAhhi8ARsAAgCnIAAAAACRGIIFqgACALwg
-AAAAAIYAnQIbAAIAbCEAAAAAhgCiAlkAAgDAIQAAAACGAL0CYAAFAMAjAAAAAIYYvAEbAAgAAAAB
-AOECAAABAOcCAAACAPcCAAADAAgDAAABABEDAAACAAgDAAADABYDSQC8AXkAUQC8AXkAWQC8AXkA
-YQC8AXkAaQC8AXkAcQC8AXkAeQC8AXkAgQC8AXkAiQC8AXkAkQC8AXkAmQC8AX4AoQC8ARsAqQC8
-ARsACQC8ARsAsQD7BIMAsQAWBYoAKQC8AY8AyQC8AZsA2QC8ARsAEQC8ARsA4QC8ARsA6QCyBUcA
-GQDKBa4A8QAbBrMA+QAyBrgAAQE7Br8ACQBFBsMA6QBOBsMACQFbBscAEQG8AXkAGQGNBtUAEQGh
-BtkAGQGqBsMA6QCzBuEAKQG/BucAQQC8AfwADADEBhsA6QDKBsMA6QDSBgsB6QDbBhAB6QDnBhUB
-CQHxBhsB6QD5BiABQQC8ASQBQQAEBy4BQQANBzMBDAAjBzsBDAA1B0MBOQF2B08BFAB9BxsADACS
-B24BAQGdB34B8QCnB34ADAC8ARsAGQC8ARsADgAQAEoADgAUAE0ACAAkAG8ACAAoAHQAKQCTAKEA
-LgAbABECLgAjABECLgBjADcCLgALAKABLgATAOgBLgAzAOgBLgArABECLgA7ABcCLgBDABECLgBb
-AC4CQwBrAHQASQCTAKEAYQCbAHQAgwCrAHQAlgDNAO4AgwECAAEAAwADAAAAbwEvAAAA7gE0AAAA
-EgJCAAIAAgADAAIAAwAFAAEABAAFAAIABQAHAAMBZgEEgAAAAQAAAC4XsRgAAAAAAAB/AAAABAAA
-AAAAAAAAAAAAAQCxAAAAAAAEAAAAAAAAAAAAAAABALoAAAAAAAwAAAAAAAAAAAAAAAoA9QAAAAAA
-DAAAAAAAAAAAAAAACgDSBQAAAAAEAAAAAAAAAAAAAAABAD4HAAAAAAAAAAABAAAAwAcAAAUABABj
-AGEBYwB6AQAAADxNb2R1bGU+AFNUXzEwMzBkZDk2MmY2NzQ2M2Q4OTRjOWJlNmMzNTQxMjFlLmRs
-bABSZXNvdXJjZXMAU1RfMTAzMGRkOTYyZjY3NDYzZDg5NGM5YmU2YzM1NDEyMWUuUHJvcGVydGll
-cwBTZXR0aW5ncwBTY3JpcHRNYWluAFNUXzEwMzBkZDk2MmY2NzQ2M2Q4OTRjOWJlNmMzNTQxMjFl
-AFNjcmlwdFJlc3VsdHMAbXNjb3JsaWIAU3lzdGVtAE9iamVjdABTeXN0ZW0uQ29uZmlndXJhdGlv
-bgBBcHBsaWNhdGlvblNldHRpbmdzQmFzZQBNaWNyb3NvZnQuU3FsU2VydmVyLlNjcmlwdFRhc2sA
-TWljcm9zb2Z0LlNxbFNlcnZlci5EdHMuVGFza3MuU2NyaXB0VGFzawBWU1RBUlRTY3JpcHRPYmpl
-Y3RNb2RlbEJhc2UARW51bQBTeXN0ZW0uUmVzb3VyY2VzAFJlc291cmNlTWFuYWdlcgByZXNvdXJj
-ZU1hbgBTeXN0ZW0uR2xvYmFsaXphdGlvbgBDdWx0dXJlSW5mbwByZXNvdXJjZUN1bHR1cmUALmN0
-b3IAZ2V0X1Jlc291cmNlTWFuYWdlcgBnZXRfQ3VsdHVyZQBzZXRfQ3VsdHVyZQBDdWx0dXJlAGRl
-ZmF1bHRJbnN0YW5jZQBnZXRfRGVmYXVsdABEZWZhdWx0AGNoYXJCZXR3ZWVuRmlsZU5hbWVBbmRG
-aWxlRGF0ZQBjaGFySW5IaWRkZW5GaWxlTmFtZQBTeXN0ZW0uQ29sbGVjdGlvbnMuR2VuZXJpYwBE
-aWN0aW9uYXJ5YDIARGF0ZVRpbWUAZGljRmlsZUxpc3QAZGljRmlsZUxpc3RTb3J0ZWQATWFpbgBD
-b3B5RmlsZXNGcm9tSW5wdXRUb1NvdXJjZQBHZXRGaWxlTGlzdAB2YWx1ZV9fAFN1Y2Nlc3MARmFp
-bHVyZQB2YWx1ZQBpbnB1dEZvbGRlclBhdGgAc291cmNlRm9sZGVyUGF0aABmaWxlTWFzawBwYXRo
-AHN0YXJ0RGF0ZVRpbWUAU3lzdGVtLlJ1bnRpbWUuVmVyc2lvbmluZwBUYXJnZXRGcmFtZXdvcmtB
-dHRyaWJ1dGUAU3lzdGVtLlJlZmxlY3Rpb24AQXNzZW1ibHlUaXRsZUF0dHJpYnV0ZQBBc3NlbWJs
-eURlc2NyaXB0aW9uQXR0cmlidXRlAEFzc2VtYmx5Q29uZmlndXJhdGlvbkF0dHJpYnV0ZQBBc3Nl
-bWJseUNvbXBhbnlBdHRyaWJ1dGUAQXNzZW1ibHlQcm9kdWN0QXR0cmlidXRlAEFzc2VtYmx5Q29w
-eXJpZ2h0QXR0cmlidXRlAEFzc2VtYmx5VHJhZGVtYXJrQXR0cmlidXRlAEFzc2VtYmx5Q3VsdHVy
-ZUF0dHJpYnV0ZQBBc3NlbWJseVZlcnNpb25BdHRyaWJ1dGUAU3lzdGVtLlJ1bnRpbWUuQ29tcGls
-ZXJTZXJ2aWNlcwBDb21waWxhdGlvblJlbGF4YXRpb25zQXR0cmlidXRlAFJ1bnRpbWVDb21wYXRp
-YmlsaXR5QXR0cmlidXRlAFN5c3RlbS5EaWFnbm9zdGljcwBEZWJ1Z2dlck5vblVzZXJDb2RlQXR0
-cmlidXRlAFR5cGUAUnVudGltZVR5cGVIYW5kbGUAR2V0VHlwZUZyb21IYW5kbGUAQXNzZW1ibHkA
-Z2V0X0Fzc2VtYmx5AFN5c3RlbS5Db21wb25lbnRNb2RlbABFZGl0b3JCcm93c2FibGVBdHRyaWJ1
-dGUARWRpdG9yQnJvd3NhYmxlU3RhdGUAQ29tcGlsZXJHZW5lcmF0ZWRBdHRyaWJ1dGUALmNjdG9y
-AFNTSVNTY3JpcHRUYXNrRW50cnlQb2ludEF0dHJpYnV0ZQBTdHJpbmcARW1wdHkAU2NyaXB0T2Jq
-ZWN0TW9kZWwAZ2V0X0R0cwBNaWNyb3NvZnQuU3FsU2VydmVyLk1hbmFnZWREVFMATWljcm9zb2Z0
-LlNxbFNlcnZlci5EdHMuUnVudGltZQBWYXJpYWJsZXMAZ2V0X1ZhcmlhYmxlcwBWYXJpYWJsZQBn
-ZXRfSXRlbQBnZXRfVmFsdWUAVG9TdHJpbmcAVHJpbQBDb252ZXJ0AFRvRGF0ZVRpbWUAU3lzdGVt
-LklPAERpcmVjdG9yeUluZm8ARmlsZVN5c3RlbUluZm8AZ2V0X0V4aXN0cwBGaWxlSW5mbwBHZXRG
-aWxlcwBnZXRfTmFtZQBDb25jYXQARmlsZQBDb3B5AENsZWFyAFRvTG93ZXIAQ29udGFpbnMATGFz
-dEluZGV4T2YAU3Vic3RyaW5nAFRvSW50MzIAZ2V0X0xlbmd0aABnZXRfRGF0ZQBvcF9HcmVhdGVy
-VGhhbk9yRXF1YWwAQWRkAEtleUNvbGxlY3Rpb24AZ2V0X0tleXMAU3lzdGVtLkNvcmUAU3lzdGVt
-LkxpbnEARW51bWVyYWJsZQBMaXN0YDEASUVudW1lcmFibGVgMQBUb0xpc3QAU29ydABWYWx1ZUNv
-bGxlY3Rpb24AZ2V0X1ZhbHVlcwBzZXRfVmFsdWUAc2V0X1Rhc2tSZXN1bHQARXhjZXB0aW9uAFNU
-XzEwMzBkZDk2MmY2NzQ2M2Q4OTRjOWJlNmMzNTQxMjFlLlByb3BlcnRpZXMuUmVzb3VyY2VzLnJl
-c291cmNlcwAAAHFTAFQAXwAxADAAMwAwAGQAZAA5ADYAMgBmADYANwA0ADYAMwBkADgAOQA0AGMA
-OQBiAGUANgBjADMANQA0ADEAMgAxAGUALgBQAHIAbwBwAGUAcgB0AGkAZQBzAC4AUgBlAHMAbwB1
-AHIAYwBlAHMAAD9VAHMAZQByADoAOgBJAG4AcAB1AHQARgBvAGwAZABlAHIAUABhAHQAaABfAEEA
-cwBzAGUAdABUAHkAcABlAAAtVQBzAGUAcgA6ADoAUwBvAHUAcgBjAGUARgBvAGwAZABlAHIAUABh
-AHQAaAAAMVUAcwBlAHIAOgA6AEYAaQBsAGUATQBhAHMAawBfAEEAcwBzAGUAdABUAHkAcABlAAAf
-VQBzAGUAcgA6ADoAUwB0AGEAcgB0AEQAYQB0AGUAAAMtAAEDfgAAKVUAcwBlAHIAOgA6AFMAbwB1
-AHIAYwBlAEYAaQBsAGUATABpAHMAdAAAAAAAsRbgLc2DIU+Lkc7ZUnrQuwAIt3pcVhk04IkIiYRd
-zYCAzJEDBhIVAwYSGQMgAAEEAAASFQQAABIZBQABARIZBAgAEhUECAASGQMGEgwEAAASDAQIABIM
-AgYOAi0AAn4ACAYVEh0CESEOBiADAQ4ODgcgAwEODhEhAgYIAwYRFAQAAAAABAEAAAAEIAEBDgQg
-AQEIBgABElkRXQQgABJhBiACAQ4SYQQHARIVBSABARFpCAEAAgAAAAAAAwAAAQQgABJ5BCAAEn0G
-IAESgIEcAyAAHAMgAA4FAAERIQ4HBwQODg4RIQMgAAIHIAEdEoCRDgUAAg4ODgYAAwEODgINBwQS
-gIkSgJEdEoCRCAYgAwEICAgHFRIdAhEhDgQgAQIOBCABCA4FIAIOCAgEAAEIDgMgAAgJIAYBCAgI
-CAgIBCAAESEHAAICESERIQcgAgETABMBCyAAFRKAmQITABMBERABARUSgKEBHgAVEoClAR4ABAoB
-ESEHFRKAoQERIQsgABUSgKkCEwATAQMKAQ4EIAEBHBwHDBEhDggICAgIEoCJEoCRFRKAoQERIR0S
-gJEIRwEAGi5ORVRGcmFtZXdvcmssVmVyc2lvbj12NC4wAQBUDhRGcmFtZXdvcmtEaXNwbGF5TmFt
-ZRAuTkVUIEZyYW1ld29yayA0KAEAI1NUXzEwMzBkZDk2MmY2NzQ2M2Q4OTRjOWJlNmMzNTQxMjFl
-AAAFAQAAAAAWAQARQ29weXJpZ2h0IEAgIDIwMTYAAAgBAAgAAAAAAB4BAAEAVAIWV3JhcE5vbkV4
-Y2VwdGlvblRocm93cwEAAEQ2AAAAAAAAAAAAAF42AAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQ
-NgAAAAAAAAAAAAAAAF9Db3JEbGxNYWluAG1zY29yZWUuZGxsAAAAAAD/JQAgABAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+DQIGCAkoCgAABgIGBwgoCQAABgIoFwAAChZvHgAACt4PJgIoFwAAChdvHgAACt4AKgEQAAAAAAAA
+sLAADyIAAAETMAMAYAAAAAMAABEDcx8AAAoKBm8gAAAKLFAGBW8hAAAKDBYNKz4ICZoLAnsGAAAE
+B28iAAAKbxwAAApvIwAACiweAwdvIgAACigkAAAKBAdvIgAACigkAAAKFyglAAAKCRdYDQkIjmky
+vCobMAYA1QEAAAQAABESACBsBwAAFxcoJgAACn4WAAAKCxYMFg0WEwQWEwUWEwZ+FgAACiYDcx8A
+AAoTBwJ7BgAABG8nAAAKEQdvIAAACjl9AQAAEQcEbyEAAAoTChYTCzgRAQAAEQoRC5oTCARvKAAA
+CiYWDH4WAAAKCxYNFhMEFhMFFhMGEQhvIgAACnIzAQBwbykAAAo51AAAABEIbyIAAApyNwEAcG8p
+AAAKOr4AAAARCG8iAAAKcjMBAHBvKgAACgwIFjF7EQhvIgAAChYIbysAAApvHAAACgsHFhpvKwAA
+Cm8cAAAKKCwAAAoNBxoYbysAAApvHAAACigsAAAKEwQHHBhvKwAACm8cAAAKKCwAAAoTBQdvLQAA
+Ch4xFAceGG8rAAAKbxwAAAooLAAAChMGCREEEQURBhYWcy4AAAoKEgAoLwAACg8DKC8AAAooMAAA
+CiwYAnsGAAAEBhEIbyIAAApvHAAACm8xAAAKEQsXWBMLEQsRCo5pP+T+//8CewYAAARvMgAACigB
+AAArEwkRCW80AAAKAigXAAAKbxgAAApyOwEAcG8ZAAAKAnsGAAAEbzUAAAooAgAAK282AAAKAigX
+AAAKFm8eAAAK3g8mAigXAAAKF28eAAAK3gAqAAAAQRwAAAAAAAAnAAAAngEAAMUBAAAPAAAAIgAA
+AXYCczcAAAp9BgAABAJzNwAACn0HAAAEAig4AAAKKgAAAAAAALQAAADOyu++AQAAAJEAAABsU3lz
+dGVtLlJlc291cmNlcy5SZXNvdXJjZVJlYWRlciwgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwg
+Q3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5I1N5c3RlbS5S
+ZXNvdXJjZXMuUnVudGltZVJlc291cmNlU2V0AgAAAAAAAAAAAAAAUEFEUEFEULQAAABCU0pCAQAB
+AAAAAAAMAAAAdjQuMC4zMDMxOQAAAAAFAGwAAABMBQAAI34AALgFAAAUCAAAI1N0cmluZ3MAAAAA
+zA0AAGgBAAAjVVMANA8AABAAAAAjR1VJRAAAAEQPAABcAgAAI0Jsb2IAAAAAAAAAAgAAAVcdogkJ
+CwAAAPolMwAWAAABAAAAKwAAAAUAAAAKAAAACwAAAAcAAAA4AAAABAAAAA8AAAAEAAAAAgAAAAMA
+AAAEAAAAAgAAAAEAAAAFAAAAAQAAAAEAAAACAAAAAAAKAAEAAAAAAAYAwQC6AAoA3QDIAA4APQEU
+AQYAWQG6AAYAbwFeAQYAoAGLAQYAaQJOAgYAdgK6AAYAPgMkAwYAaQNXAwYAgANXAwYAnQNXAwYA
+vANXAwYA1QNXAwYA7gNXAwYACQRXAwYAJARXAwYAPQRXAwYAdgRWBAYAlgRWBAYAxwS0BAYA5AS6
+AAYA6QS6AAYADQVXAwoAOQUjBQoAUgUjBQYAZwVWBA4AiQUUAQYAqwW6AA4AuAUUARIAEQbxBRIA
+KQbxBQYAUwa6AAYAdQa6AAYAiQZ/BgYAlwZ/BgYAsQZ/BgYA4QZ/Bh8ATgcAABYAfQdxBwYAiAdO
+AgYAjwdOAh8AqQcAAAAAAAABAAAAAAABAAEAAAAQADIAPAAFAAEAAQAAARAAawA8AAkAAwAFAAEA
+EAB0AH8ADQAEAAgAAwEAAKMAAAARAAgADAARAH8BEwARAKwBFwARAPYBOQBWgBoCRwBWgDkCRwAB
+AH8CUAABAIsCUAAGBskCaABWgNECawBWgNkCawBQIAAAAACDGLwBGwABAFggAAAAAJMIwgEfAAEA
+kSAAAAAAkwjWASQAAQCYIAAAAACTCOIBKQABAKAgAAAAAJYIBgI9AAIAsyAAAAAAhhi8ARsAAgCn
+IAAAAACRGIIFqgACALwgAAAAAIYAnQIbAAIAmCEAAAAAhgCiAlkAAgAEIgAAAACGAL0CYAAFAAQk
+AAAAAIYYvAEbAAgAAAABAOECAAABAOcCAAACAPcCAAADAAgDAAABABEDAAACAAgDAAADABYDSQC8
+AXkAUQC8AXkAWQC8AXkAYQC8AXkAaQC8AXkAcQC8AXkAeQC8AXkAgQC8AXkAiQC8AXkAkQC8AXkA
+mQC8AX4AoQC8ARsAqQC8ARsACQC8ARsAsQD7BIMAsQAWBYoAKQC8AY8AyQC8AZsA2QC8ARsAEQC8
+ARsA4QC8ARsA6QCyBUcAGQDKBa4A8QAbBrMA+QAyBrgAAQE7Br8ACQBFBsMA6QBOBsMACQFbBscA
+8QBmBn4AGQG8AXkAIQGmBtUAGQG6BtkAIQHDBsMADADMBukA6QDaBu8AMQHmBvUAQQC8AQoBDADr
+BhsA6QDxBsMA6QD5BhEB6QACBxYB6QAOBxsBCQEYByEB6QAgByYBQQC8ASoBQQArBzQBQQA0BzkB
+DABKB0EBDABcB0kBQQGdB1UBFACkBxsADAC5B3QBAQHEB4QBDAC8ARsAGQC8ARsADgAQAEoADgAU
+AE0ACAAkAG8ACAAoAHQAKQCTAKEALgAbABcCLgAjABcCLgBjAD0CLgALAKYBLgATAO4BLgAzAO4B
+LgArABcCLgA7AB0CLgBDABcCLgBbADQCQwBrAHQASQCTAKEAYQCbAHQAgwCrAHQAlgDNAPwAiQEC
+AAEAAwADAAAAbwEvAAAA7gE0AAAAEgJCAAIAAgADAAIAAwAFAAEABAAFAAIABQAHAOEAbAEEgAAA
+AQAAADkXhgMAAAAAAAB/AAAABAAAAAAAAAAAAAAAAQCxAAAAAAAEAAAAAAAAAAAAAAABALoAAAAA
+AAwAAAAAAAAAAAAAAAoA9QAAAAAADAAAAAAAAAAAAAAACgDSBQAAAAAEAAAAAAAAAAAAAAABAGUH
+AAAAAAAAAAABAAAAzgcAAAUABABnAGcBZwCAAQAAAAAAPE1vZHVsZT4AU1RfMTAzMGRkOTYyZjY3
+NDYzZDg5NGM5YmU2YzM1NDEyMWUuZGxsAFJlc291cmNlcwBTVF8xMDMwZGQ5NjJmNjc0NjNkODk0
+YzliZTZjMzU0MTIxZS5Qcm9wZXJ0aWVzAFNldHRpbmdzAFNjcmlwdE1haW4AU1RfMTAzMGRkOTYy
+ZjY3NDYzZDg5NGM5YmU2YzM1NDEyMWUAU2NyaXB0UmVzdWx0cwBtc2NvcmxpYgBTeXN0ZW0AT2Jq
+ZWN0AFN5c3RlbS5Db25maWd1cmF0aW9uAEFwcGxpY2F0aW9uU2V0dGluZ3NCYXNlAE1pY3Jvc29m
+dC5TcWxTZXJ2ZXIuU2NyaXB0VGFzawBNaWNyb3NvZnQuU3FsU2VydmVyLkR0cy5UYXNrcy5TY3Jp
+cHRUYXNrAFZTVEFSVFNjcmlwdE9iamVjdE1vZGVsQmFzZQBFbnVtAFN5c3RlbS5SZXNvdXJjZXMA
+UmVzb3VyY2VNYW5hZ2VyAHJlc291cmNlTWFuAFN5c3RlbS5HbG9iYWxpemF0aW9uAEN1bHR1cmVJ
+bmZvAHJlc291cmNlQ3VsdHVyZQAuY3RvcgBnZXRfUmVzb3VyY2VNYW5hZ2VyAGdldF9DdWx0dXJl
+AHNldF9DdWx0dXJlAEN1bHR1cmUAZGVmYXVsdEluc3RhbmNlAGdldF9EZWZhdWx0AERlZmF1bHQA
+Y2hhckJldHdlZW5GaWxlTmFtZUFuZEZpbGVEYXRlAGNoYXJJbkhpZGRlbkZpbGVOYW1lAFN5c3Rl
+bS5Db2xsZWN0aW9ucy5HZW5lcmljAERpY3Rpb25hcnlgMgBEYXRlVGltZQBkaWNGaWxlTGlzdABk
+aWNGaWxlTGlzdFNvcnRlZABNYWluAENvcHlGaWxlc0Zyb21JbnB1dFRvU291cmNlAEdldEZpbGVM
+aXN0AHZhbHVlX18AU3VjY2VzcwBGYWlsdXJlAHZhbHVlAGlucHV0Rm9sZGVyUGF0aABzb3VyY2VG
+b2xkZXJQYXRoAGZpbGVNYXNrAHBhdGgAc3RhcnREYXRlVGltZQBTeXN0ZW0uUnVudGltZS5WZXJz
+aW9uaW5nAFRhcmdldEZyYW1ld29ya0F0dHJpYnV0ZQBTeXN0ZW0uUmVmbGVjdGlvbgBBc3NlbWJs
+eVRpdGxlQXR0cmlidXRlAEFzc2VtYmx5RGVzY3JpcHRpb25BdHRyaWJ1dGUAQXNzZW1ibHlDb25m
+aWd1cmF0aW9uQXR0cmlidXRlAEFzc2VtYmx5Q29tcGFueUF0dHJpYnV0ZQBBc3NlbWJseVByb2R1
+Y3RBdHRyaWJ1dGUAQXNzZW1ibHlDb3B5cmlnaHRBdHRyaWJ1dGUAQXNzZW1ibHlUcmFkZW1hcmtB
+dHRyaWJ1dGUAQXNzZW1ibHlDdWx0dXJlQXR0cmlidXRlAEFzc2VtYmx5VmVyc2lvbkF0dHJpYnV0
+ZQBTeXN0ZW0uUnVudGltZS5Db21waWxlclNlcnZpY2VzAENvbXBpbGF0aW9uUmVsYXhhdGlvbnNB
+dHRyaWJ1dGUAUnVudGltZUNvbXBhdGliaWxpdHlBdHRyaWJ1dGUAU3lzdGVtLkRpYWdub3N0aWNz
+AERlYnVnZ2VyTm9uVXNlckNvZGVBdHRyaWJ1dGUAVHlwZQBSdW50aW1lVHlwZUhhbmRsZQBHZXRU
+eXBlRnJvbUhhbmRsZQBBc3NlbWJseQBnZXRfQXNzZW1ibHkAU3lzdGVtLkNvbXBvbmVudE1vZGVs
+AEVkaXRvckJyb3dzYWJsZUF0dHJpYnV0ZQBFZGl0b3JCcm93c2FibGVTdGF0ZQBDb21waWxlckdl
+bmVyYXRlZEF0dHJpYnV0ZQAuY2N0b3IAU1NJU1NjcmlwdFRhc2tFbnRyeVBvaW50QXR0cmlidXRl
+AFN0cmluZwBFbXB0eQBTY3JpcHRPYmplY3RNb2RlbABnZXRfRHRzAE1pY3Jvc29mdC5TcWxTZXJ2
+ZXIuTWFuYWdlZERUUwBNaWNyb3NvZnQuU3FsU2VydmVyLkR0cy5SdW50aW1lAFZhcmlhYmxlcwBn
+ZXRfVmFyaWFibGVzAFZhcmlhYmxlAGdldF9JdGVtAGdldF9WYWx1ZQBUb1N0cmluZwBUcmltAENv
+bnZlcnQAVG9EYXRlVGltZQBzZXRfVGFza1Jlc3VsdABFeGNlcHRpb24AU3lzdGVtLklPAERpcmVj
+dG9yeUluZm8ARmlsZVN5c3RlbUluZm8AZ2V0X0V4aXN0cwBGaWxlSW5mbwBHZXRGaWxlcwBnZXRf
+TmFtZQBDb250YWluc1ZhbHVlAENvbmNhdABGaWxlAENvcHkAQ2xlYXIAVG9Mb3dlcgBDb250YWlu
+cwBMYXN0SW5kZXhPZgBTdWJzdHJpbmcAVG9JbnQzMgBnZXRfTGVuZ3RoAGdldF9EYXRlAG9wX0dy
+ZWF0ZXJUaGFuT3JFcXVhbABBZGQAS2V5Q29sbGVjdGlvbgBnZXRfS2V5cwBTeXN0ZW0uQ29yZQBT
+eXN0ZW0uTGlucQBFbnVtZXJhYmxlAExpc3RgMQBJRW51bWVyYWJsZWAxAFRvTGlzdABTb3J0AFZh
+bHVlQ29sbGVjdGlvbgBnZXRfVmFsdWVzAHNldF9WYWx1ZQBTVF8xMDMwZGQ5NjJmNjc0NjNkODk0
+YzliZTZjMzU0MTIxZS5Qcm9wZXJ0aWVzLlJlc291cmNlcy5yZXNvdXJjZXMAAAAAAHFTAFQAXwAx
+ADAAMwAwAGQAZAA5ADYAMgBmADYANwA0ADYAMwBkADgAOQA0AGMAOQBiAGUANgBjADMANQA0ADEA
+MgAxAGUALgBQAHIAbwBwAGUAcgB0AGkAZQBzAC4AUgBlAHMAbwB1AHIAYwBlAHMAAD9VAHMAZQBy
+ADoAOgBJAG4AcAB1AHQARgBvAGwAZABlAHIAUABhAHQAaABfAEEAcwBzAGUAdABUAHkAcABlAAAt
+VQBzAGUAcgA6ADoAUwBvAHUAcgBjAGUARgBvAGwAZABlAHIAUABhAHQAaAAAMVUAcwBlAHIAOgA6
+AEYAaQBsAGUATQBhAHMAawBfAEEAcwBzAGUAdABUAHkAcABlAAAfVQBzAGUAcgA6ADoAUwB0AGEA
+cgB0AEQAYQB0AGUAAAMtAAEDfgAAKVUAcwBlAHIAOgA6AFMAbwB1AHIAYwBlAEYAaQBsAGUATABp
+AHMAdAAAAAAACiZDi5cZwEeD/LQep9UIKgAIt3pcVhk04IkIiYRdzYCAzJEDBhIVAwYSGQMgAAEE
+AAASFQQAABIZBQABARIZBAgAEhUECAASGQMGEgwEAAASDAQIABIMAgYOAi0AAn4ACAYVEh0CESEO
+BiADAQ4ODgcgAwEODhEhAgYIAwYRFAQAAAAABAEAAAAEIAEBDgQgAQEIBgABElkRXQQgABJhBiAC
+AQ4SYQQHARIVBSABARFpCAEAAgAAAAAAAwAAAQQgABJ5BCAAEn0GIAESgIEcAyAAHAMgAA4FAAER
+IQ4HBwQODg4RIQMgAAIHIAEdEoCVDgcVEh0CESEOBSABAhMBBQACDg4OBgADAQ4OAg0HBBKAjRKA
+lR0SgJUIBiADAQgICAQgAQIOBCABCA4FIAIOCAgEAAEIDgMgAAgJIAYBCAgICAgIBCAAESEHAAIC
+ESERIQcgAgETABMBCyAAFRKAnQITABMBERABARUSgKUBHgAVEoCpAR4ABAoBESEHFRKApQERIQsg
+ABUSgK0CEwATAQMKAQ4EIAEBHBwHDBEhDggICAgIEoCNEoCVFRKApQERIR0SgJUIRwEAGi5ORVRG
+cmFtZXdvcmssVmVyc2lvbj12NC4wAQBUDhRGcmFtZXdvcmtEaXNwbGF5TmFtZRAuTkVUIEZyYW1l
+d29yayA0KAEAI1NUXzEwMzBkZDk2MmY2NzQ2M2Q4OTRjOWJlNmMzNTQxMjFlAAAFAQAAAAAWAQAR
+Q29weXJpZ2h0IEAgIDIwMTYAAAgBAAgAAAAAAB4BAAEAVAIWV3JhcE5vbkV4Y2VwdGlvblRocm93
+cwGoNgAAAAAAAAAAAAC+NgAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAsDYAAAAAAAAAAF9Db3JE
+bGxNYWluAG1zY29yZWUuZGxsAAAAAAD/JQAgABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -3595,22 +3668,22 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAEAEAAAABgAAIAAAAAAAAAAAAAAAAAAAAEAAQAAADAAAIAAAAAAAAAAAAAAAAAAAAEAAAAAAEgA
 AABYQAAApAMAAAAAAAAAAAAApAM0AAAAVgBTAF8AVgBFAFIAUwBJAE8ATgBfAEkATgBGAE8AAAAA
-AL0E7/4AAAEAAAABALEYLhcAAAEAsRguFz8AAAAAAAAABAAAAAIAAAAAAAAAAAAAAAAAAABEAAAA
+AL0E7/4AAAEAAAABAIYDORcAAAEAhgM5Fz8AAAAAAAAABAAAAAIAAAAAAAAAAAAAAAAAAABEAAAA
 AQBWAGEAcgBGAGkAbABlAEkAbgBmAG8AAAAAACQABAAAAFQAcgBhAG4AcwBsAGEAdABpAG8AbgAA
 AAAAAACwBAQDAAABAFMAdAByAGkAbgBnAEYAaQBsAGUASQBuAGYAbwAAAOACAAABADAAMAAwADAA
 MAA0AGIAMAAAAHAAJAABAEYAaQBsAGUARABlAHMAYwByAGkAcAB0AGkAbwBuAAAAAABTAFQAXwAx
 ADAAMwAwAGQAZAA5ADYAMgBmADYANwA0ADYAMwBkADgAOQA0AGMAOQBiAGUANgBjADMANQA0ADEA
-MgAxAGUAAAA8AA4AAQBGAGkAbABlAFYAZQByAHMAaQBvAG4AAAAAADEALgAwAC4ANQA5ADMANAAu
-ADYAMwAyADEAAABwACgAAQBJAG4AdABlAHIAbgBhAGwATgBhAG0AZQAAAFMAVABfADEAMAAzADAA
+MgAxAGUAAAA8AA0AAQBGAGkAbABlAFYAZQByAHMAaQBvAG4AAAAAADEALgAwAC4ANQA5ADQANQAu
+ADkAMAAyAAAAAABwACgAAQBJAG4AdABlAHIAbgBhAGwATgBhAG0AZQAAAFMAVABfADEAMAAzADAA
 ZABkADkANgAyAGYANgA3ADQANgAzAGQAOAA5ADQAYwA5AGIAZQA2AGMAMwA1ADQAMQAyADEAZQAu
 AGQAbABsAAAASAASAAEATABlAGcAYQBsAEMAbwBwAHkAcgBpAGcAaAB0AAAAQwBvAHAAeQByAGkA
 ZwBoAHQAIABAACAAIAAyADAAMQA2AAAAeAAoAAEATwByAGkAZwBpAG4AYQBsAEYAaQBsAGUAbgBh
 AG0AZQAAAFMAVABfADEAMAAzADAAZABkADkANgAyAGYANgA3ADQANgAzAGQAOAA5ADQAYwA5AGIA
 ZQA2AGMAMwA1ADQAMQAyADEAZQAuAGQAbABsAAAAaAAkAAEAUAByAG8AZAB1AGMAdABOAGEAbQBl
 AAAAAABTAFQAXwAxADAAMwAwAGQAZAA5ADYAMgBmADYANwA0ADYAMwBkADgAOQA0AGMAOQBiAGUA
-NgBjADMANQA0ADEAMgAxAGUAAABAAA4AAQBQAHIAbwBkAHUAYwB0AFYAZQByAHMAaQBvAG4AAAAx
-AC4AMAAuADUAOQAzADQALgA2ADMAMgAxAAAARAAOAAEAQQBzAHMAZQBtAGIAbAB5ACAAVgBlAHIA
-cwBpAG8AbgAAADEALgAwAC4ANQA5ADMANAAuADYAMwAyADEAAAAAAAAAADAAAAwAAABwNgAAAAAA
+NgBjADMANQA0ADEAMgAxAGUAAABAAA0AAQBQAHIAbwBkAHUAYwB0AFYAZQByAHMAaQBvAG4AAAAx
+AC4AMAAuADUAOQA0ADUALgA5ADAAMgAAAAAARAANAAEAQQBzAHMAZQBtAGIAbAB5ACAAVgBlAHIA
+cwBpAG8AbgAAADEALgAwAC4ANQA5ADQANQAuADkAMAAyAAAAAAAAAAAAADAAAAwAAADQNgAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -3620,87 +3693,42 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
-          <Breakpoint
-            Enabled="True"
-            File="ScriptMain.cs"
-            Line="160"
-            Column="25" />
         </ScriptProject>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\Get StartDate"
+      DTS:refId="Package\Update TresaliaPackageLog"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{C530CD79-D2AB-453C-A9DC-6601A5E1357D}"
+      DTS:DTSID="{e1654ffd-6dc1-4015-a004-968ff7066eec}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Get StartDate"
+      DTS:ObjectName="Update TresaliaPackageLog"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{4A214E18-E559-4EE0-A01D-A7F083CFAB5B}"
-          SQLTask:SqlStatementSource="Select Stg.fnGetStartDate('AssetTypeStartDate') AS 'StartDate'"
-          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
-          <SQLTask:ResultBinding
-            SQLTask:ResultName="StartDate"
-            SQLTask:DtsVariableName="User::StartDate" />
-        </SQLTask:SqlTaskData>
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Update StartDate"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Execute SQL Task"
-      DTS:DTSID="{F459AED5-C3ED-4EF5-9F0C-DC040E49D46C}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Update StartDate"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{4A214E18-E559-4EE0-A01D-A7F083CFAB5B}"
-          SQLTask:SqlStatementSource="exec stg.spUpdateStartDate ?,'AssetTypeStartDate'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          SQLTask:SqlStatementSource="EXEC stg.spCreatePackageExecutionHistory 'U',?, ?, ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ParameterBinding
             SQLTask:ParameterName="@PackageName"
             SQLTask:DtsVariableName="System::PackageName"
             SQLTask:ParameterDirection="Input"
             SQLTask:DataType="129"
             SQLTask:ParameterSize="255" />
-        </SQLTask:SqlTaskData>
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Update TresaliaJobLog"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Execute SQL Task"
-      DTS:DTSID="{3087E11C-9761-4407-8113-F1AD59F76D0D}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Update TresaliaJobLog"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{4A214E18-E559-4EE0-A01D-A7F083CFAB5B}"
-          SQLTask:SqlStatementSource="exec stg.spLogPackageExecutionHistory ?,?,'AssetTypeJobName','U'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ParameterBinding
-            SQLTask:ParameterName="@PackageID"
-            SQLTask:DtsVariableName="System::PackageID"
+            SQLTask:ParameterName="@JobID"
+            SQLTask:DtsVariableName="User::JobId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@BatchDate"
+            SQLTask:DtsVariableName="User::BatchDate"
             SQLTask:ParameterDirection="Input"
             SQLTask:DataType="129"
-            SQLTask:ParameterSize="255" />
-          <SQLTask:ParameterBinding
-            SQLTask:ParameterName="@PackageName"
-            SQLTask:DtsVariableName="System::PackageName"
-            SQLTask:ParameterDirection="Input"
-            SQLTask:DataType="129"
-            SQLTask:ParameterSize="255" />
+            SQLTask:ParameterSize="20" />
         </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
@@ -3717,40 +3745,24 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
-      DTS:DTSID="{C3EE07FD-04CB-4948-BEC1-0558C9477B6A}"
+      DTS:DTSID="{CADEE15D-5CC1-4110-8A56-EA51B231F294}"
       DTS:From="Package\Foreach Loop Container"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
-      DTS:To="Package\Update TresaliaJobLog" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
-      DTS:CreationName=""
-      DTS:DTSID="{56A71FA1-43B3-4ABB-9346-630621367C73}"
-      DTS:From="Package\Update TresaliaJobLog"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 2"
-      DTS:To="Package\Update StartDate" />
+      DTS:To="Package\Update TresaliaPackageLog" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
       DTS:CreationName=""
-      DTS:DTSID="{BA6D98BB-890B-41DB-B75D-C92B07892855}"
+      DTS:DTSID="{C90DEBF7-3FD4-4E09-98C7-A3FC58E8525E}"
       DTS:From="Package\Create TresaliaJobLog"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 3"
-      DTS:To="Package\Get StartDate" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
-      DTS:CreationName=""
-      DTS:DTSID="{98F52B7C-DAA7-47D2-B2AE-C01096D0B298}"
-      DTS:From="Package\Get StartDate"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 4"
-      DTS:To="Package\Clear Staging Table" />
+      DTS:To="Package\Create TresaliaPackageLog" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
       DTS:CreationName=""
-      DTS:DTSID="{1A00F465-ABB4-4F0A-BC41-A358DE2FB69E}"
-      DTS:From="Package\Clear Staging Table"
+      DTS:DTSID="{0E7D9A8B-B070-467A-861C-4DA679B2D081}"
+      DTS:From="Package\Create TresaliaPackageLog"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 5"
       DTS:To="Package\Get List of Files To Be Processed" />
@@ -3777,27 +3789,10 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       </DTS:Variables>
       <DTS:Executables>
         <DTS:Executable
-          DTS:refId="Package.EventHandlers[OnError]\Error HandellingTask"
-          DTS:CreationName="Microsoft.ScriptTask"
-          DTS:Description="Script Task"
-          DTS:DTSID="{DA15AC59-DD36-4666-9C65-2EB8BAB1BA31}"
-          DTS:ExecutableType="Microsoft.ScriptTask"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="Error HandellingTask">
-          <DTS:Variables />
-          <DTS:ObjectData>
-            <ScriptProject
-              Name="ST_8c76ead6c92d4f51926b819ca012d8e5"
-              VSTAMajorVersion="3"
-              VSTAMinorVersion="0"
-              Language="VisualBasic" />
-          </DTS:ObjectData>
-        </DTS:Executable>
-        <DTS:Executable
           DTS:refId="Package.EventHandlers[OnError]\Update TresaliaJobLog"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
-          DTS:DTSID="{EDEDE340-C9E4-43CD-B95F-D4753B1FD79B}"
+          DTS:DTSID="{dc543ccc-8372-4d0e-8b25-aad817a628f4}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Update TresaliaJobLog"
@@ -3806,23 +3801,62 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4A214E18-E559-4EE0-A01D-A7F083CFAB5B}"
-              SQLTask:SqlStatementSource="exec stg.spLogPackageExecutionHistory ?,?,'AssetTypeJobName','E'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              SQLTask:SqlStatementSource="EXEC stg.spUpdateJobExecutionHistory 'E', 'LoadDataWarehouse_AssetType',?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="@PackageID"
-                SQLTask:DtsVariableName="System::PackageID"
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::JobId"
                 SQLTask:ParameterDirection="Input"
-                SQLTask:DataType="129"
-                SQLTask:ParameterSize="255" />
+                SQLTask:DataType="20"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnError]\Update TresaliaPackageLog"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{ca3545e6-5c6f-4d1f-954a-a1b1fd985a8e}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Update TresaliaPackageLog"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{4A214E18-E559-4EE0-A01D-A7F083CFAB5B}"
+              SQLTask:SqlStatementSource="EXEC stg.spCreatePackageExecutionHistory 'E',?, ?, ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
                 SQLTask:ParameterName="@PackageName"
                 SQLTask:DtsVariableName="System::PackageName"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="129"
                 SQLTask:ParameterSize="255" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@JobID"
+                SQLTask:DtsVariableName="User::JobId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@BatchDate"
+                SQLTask:DtsVariableName="User::BatchDate"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="20" />
             </SQLTask:SqlTaskData>
           </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package.EventHandlers[OnError].PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{34FA8594-6676-4703-906C-BEC990ED67B2}"
+          DTS:From="Package.EventHandlers[OnError]\Update TresaliaPackageLog"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package.EventHandlers[OnError]\Update TresaliaJobLog" />
+      </DTS:PrecedenceConstraints>
     </DTS:EventHandler>
   </DTS:EventHandlers>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
@@ -3838,13 +3872,13 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="171,42"
-          Id="Package\Clear Staging Table"
-          TopLeft="122,209.5" />
-        <NodeLayout
           Size="183,42"
           Id="Package\Create TresaliaJobLog"
-          TopLeft="116,5.5" />
+          TopLeft="116.5,83" />
+        <NodeLayout
+          Size="205,42"
+          Id="Package\Create TresaliaPackageLog"
+          TopLeft="106,197.5" />
         <NodeLayout
           Size="113,42"
           Id="Package\Foreach Loop Container\Archive"
@@ -3991,17 +4025,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           Id="Package\Get List of Files To Be Processed"
           TopLeft="91.5000000000001,311.5" />
         <NodeLayout
-          Size="143,42"
-          Id="Package\Get StartDate"
-          TopLeft="136,107.5" />
-        <NodeLayout
-          Size="160,42"
-          Id="Package\Update StartDate"
-          TopLeft="127.5,1027.5" />
-        <NodeLayout
-          Size="186,42"
-          Id="Package\Update TresaliaJobLog"
-          TopLeft="114.5,925.5" />
+          Size="208,42"
+          Id="Package\Update TresaliaPackageLog"
+          TopLeft="87,948" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="207.5,353.5">
@@ -4030,36 +4056,26 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="-16.5000000000001,82.5"
               Start="0,0"
-              End="0,52.5">
+              End="-16.5000000000001,75">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="207.5,967.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
+                    End="0,37.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,37.25"
+                    Point2="0,41.25"
+                    Point3="-4,41.25" />
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="-12.5000000000001,41.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-12.5000000000001,41.25"
+                    Point2="-16.5000000000001,41.25"
+                    Point3="-16.5000000000001,45.25" />
+                  <mssgle:LineSegment
+                    End="-16.5000000000001,75" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4070,40 +4086,18 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="207.5,47.5">
+          TopLeft="208.25,125">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="0,72.5"
               Start="0,0"
-              End="0,52.5">
+              End="0,65">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="207.5,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,65" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4114,18 +4108,18 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 5]"
-          TopLeft="207.5,251.5">
+          TopLeft="208,239.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="0,72"
               Start="0,0"
-              End="0,52.5">
+              End="0,64.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,64.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4141,15 +4135,37 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
     design-time-name="Package.EventHandlers[OnError]">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="NaN,NaN"
-          Id="Package.EventHandlers[OnError]\Error HandellingTask"
-          TopLeft="NaN,NaN" />
-        <NodeLayout
-          Size="NaN,NaN"
+          Size="186,42"
           Id="Package.EventHandlers[OnError]\Update TresaliaJobLog"
-          TopLeft="NaN,NaN" />
+          TopLeft="146,99" />
+        <NodeLayout
+          Size="208,42"
+          Id="Package.EventHandlers[OnError]\Update TresaliaPackageLog"
+          TopLeft="131.5,13.5" />
+        <EdgeLayout
+          Id="Package.EventHandlers[OnError].PrecedenceConstraints[Constraint]"
+          TopLeft="237.25,55.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43.5"
+              Start="0,0"
+              End="0,36">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </DtsEventHandler>
@@ -4157,109 +4173,172 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
     design-time-name="Package\Foreach Loop Container\Loading Excel Sheet Data To Table">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="NaN,NaN"
+          Size="171,42"
           Id="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\OLE DB Destination"
-          TopLeft="NaN,NaN" />
+          TopLeft="345,352" />
         <NodeLayout
-          Size="NaN,NaN"
+          Size="139,42"
           Id="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Excel Source"
-          TopLeft="NaN,NaN" />
+          TopLeft="56,40" />
         <NodeLayout
-          Size="NaN,NaN"
+          Size="154,42"
           Id="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Derived Column"
-          TopLeft="NaN,NaN" />
+          TopLeft="409,160" />
         <NodeLayout
-          Size="NaN,NaN"
+          Size="156,42"
           Id="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Data Conversion"
-          TopLeft="NaN,NaN" />
+          TopLeft="253,238" />
         <NodeLayout
-          Size="NaN,NaN"
+          Size="130,42"
           Id="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Row Count"
-          TopLeft="NaN,NaN" />
+          TopLeft="277,122" />
         <EdgeLayout
           Id="Package\Foreach Loop Container\Loading Excel Sheet Data To Table.Paths[Excel Source Output]"
-          TopLeft="NaN,NaN">
+          TopLeft="125.5,82">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="{assembly:Null}"
+              EndConnector="216.5,40"
               Start="0,0"
-              End="0,0">
+              End="216.5,32.5">
               <mssgle:Curve.Segments>
-                <assembly:Null />
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16"
+                    Point2="0,20"
+                    Point3="4,20" />
+                  <mssgle:LineSegment
+                    End="212.5,20" />
+                  <mssgle:CubicBezierSegment
+                    Point1="212.5,20"
+                    Point2="216.5,20"
+                    Point3="216.5,24" />
+                  <mssgle:LineSegment
+                    End="216.5,32.5" />
+                </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Foreach Loop Container\Loading Excel Sheet Data To Table.Paths[Derived Column Output]"
-          TopLeft="NaN,NaN">
+          TopLeft="486,202">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="{assembly:Null}"
+              EndConnector="-155,36"
               Start="0,0"
-              End="0,0">
+              End="-155,28.5">
               <mssgle:Curve.Segments>
-                <assembly:Null />
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14"
+                    Point2="0,18"
+                    Point3="-4,18" />
+                  <mssgle:LineSegment
+                    End="-151,18" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-151,18"
+                    Point2="-155,18"
+                    Point3="-155,22" />
+                  <mssgle:LineSegment
+                    End="-155,28.5" />
+                </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Foreach Loop Container\Loading Excel Sheet Data To Table.Paths[Data Conversion Output]"
-          TopLeft="NaN,NaN">
+          TopLeft="331,280">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="{assembly:Null}"
+              EndConnector="99.5,72"
               Start="0,0"
-              End="0,0">
+              End="99.5,64.5">
               <mssgle:Curve.Segments>
-                <assembly:Null />
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,32"
+                    Point2="0,36"
+                    Point3="4,36" />
+                  <mssgle:LineSegment
+                    End="95.5,36" />
+                  <mssgle:CubicBezierSegment
+                    Point1="95.5,36"
+                    Point2="99.5,36"
+                    Point3="99.5,40" />
+                  <mssgle:LineSegment
+                    End="99.5,64.5" />
+                </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Foreach Loop Container\Loading Excel Sheet Data To Table.Paths[Row Count Output 1]"
-          TopLeft="NaN,NaN">
+          TopLeft="407,137.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="{assembly:Null}"
+              EndConnector="79,22.5"
               Start="0,0"
-              End="0,0">
+              End="79,15">
               <mssgle:Curve.Segments>
-                <assembly:Null />
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="75,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="75,0"
+                    Point2="79,0"
+                    Point3="79,4" />
+                  <mssgle:LineSegment
+                    End="79,15" />
+                </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>

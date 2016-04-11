@@ -16,15 +16,13 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-
-
 CREATE Procedure [stg].[spUpdateFileHistory]
        @ArchivedFilePath Varchar(100),
        @ArchivedFileName Varchar(100),	             
 	   @ProcessingStatus Varchar(100),
 	   @SourceFilePath Varchar(100),       
        @TabName Varchar(100),
-	   @TotalRecordsInFile Int,	
+	   @JobID Int = 0,	
 	   @EntityType Varchar(100)
 
 As
@@ -205,18 +203,36 @@ Begin
 	AND	SourceFileName = @ArchivedFileName
 	AND   TabName = @TabName)
 
-	UPDATE Stg.FileHistory 
-	SET 
-	ArchivedFilePath = @ArchivedFilePath ,
-	ArchivedFileName = @ArchivedFileName, 
-	TotalRecordsInFile = @TotalRecordsInFile, 
-	ProcessedRecordsInFile = @ProcessedRecordsInFile,
-	ProcessingStatus = @ProcessingStatus
-	WHERE
-		FileID = @MaxFileID 
-	AND	SourceFilePath = @SourceFilePath
-	AND	SourceFileName = @ArchivedFileName
-	AND   TabName = @TabName
+	IF (@JobID <> 0)
+	BEGIN
+		UPDATE Stg.FileHistory 
+		SET 
+		ArchivedFilePath = @ArchivedFilePath ,
+		ArchivedFileName = @ArchivedFileName, 
+		--TotalRecordsInFile = @TotalRecordsInFile, 
+		ProcessedRecordsInFile = @ProcessedRecordsInFile,
+		ProcessingStatus = @ProcessingStatus
+		WHERE
+			JobId = @JobID 
+		AND	SourceFilePath = @SourceFilePath
+		AND	SourceFileName = @ArchivedFileName
+		AND   TabName = @TabName
+	END
+	ELSE
+	BEGIN
+		UPDATE Stg.FileHistory 
+		SET 
+		ArchivedFilePath = @ArchivedFilePath ,
+		ArchivedFileName = @ArchivedFileName, 
+		--TotalRecordsInFile = @TotalRecordsInFile, 
+		ProcessedRecordsInFile = @ProcessedRecordsInFile,
+		ProcessingStatus = @ProcessingStatus
+		WHERE
+			FileID = @MaxFileID 
+		AND	SourceFilePath = @SourceFilePath
+		AND	SourceFileName = @ArchivedFileName
+		AND   TabName = @TabName
+	END
        
 End
 
