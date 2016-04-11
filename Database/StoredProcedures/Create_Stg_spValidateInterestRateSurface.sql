@@ -29,7 +29,6 @@ BEGIN TRY
 
 	DECLARE @errorDetail NVARCHAR(max) = ''
 	DECLARE @User_ID VARCHAR(50) = System_User
-	DECLARE @Update_Timestamp datetime =  GETDATE()
 
 	DECLARE @InterestRateSurface TABLE(
 	[FileName] [varchar](100) NOT NULL,
@@ -50,20 +49,20 @@ BEGIN TRY
 	
 	UPDATE @InterestRateSurface 
 	SET Error =  Error +
-	  CASE WHEN LEN(RTRIM(LTRIM([Expiry]))) > 10 THEN 'The Expiry value ''' + ISNULL([Expiry], '') + ''' is invalid.' else '' end
-	+ CASE WHEN LEN(RTRIM(LTRIM([Tenor]))) > 10 THEN 'The Tenor value ''' + ISNULL([Tenor], '') + ''' is invalid.' else '' end
-	+ CASE WHEN TRY_CONVERT(decimal(22,6), [Surface]) IS NULL THEN 'The Surface value ''' + ISNULL([Surface], '') + ''' is invalid.' else '' end
-	+ CASE WHEN TRY_CONVERT(datetime, [Date]) IS NULL THEN 'The Date value ''' + ISNULL([Date], '') + ''' is invalid.' else '' end
+	  CASE WHEN ([Expiry] IS NOT NULL AND RTRIM(LTRIM([Expiry])) != space(0)) AND LEN(RTRIM(LTRIM([Expiry]))) > 10  THEN 'The Expiry value ''' + ISNULL([Expiry], '') + ''' is invalid.' else '' end
+	+ CASE WHEN ([Tenor] IS NOT NULL AND RTRIM(LTRIM([Tenor])) != space(0)) AND LEN(RTRIM(LTRIM([Tenor]))) > 10  THEN 'The Tenor value ''' + ISNULL([Tenor], '') + ''' is invalid.' else '' end
+	+ CASE WHEN ([Surface] IS NOT NULL AND RTRIM(LTRIM([Surface])) != SPACE(0) AND TRY_CONVERT(decimal(22,6), [Surface]) IS NULL) THEN 'The surface value ''' + ISNULL([Surface], '') + ''' is invalid.' else '' end
+	+ CASE WHEN ([Date] IS NOT NULL AND RTRIM(LTRIM([Date])) != space(0)) AND TRY_CONVERT(datetime, [Date], 105) IS NULL THEN 'The Valuation Date value ''' + ISNULL([Date], '') + ''' is invalid.' else '' end
 	
-	WHERE LEN(RTRIM(LTRIM([Expiry]))) > 10
-	OR LEN(RTRIM(LTRIM([Tenor]))) > 10
-	OR TRY_CONVERT(decimal(22,6), [Surface]) IS NULL
-	OR TRY_CONVERT(datetime, [Date]) IS NULL
+	WHERE ([Expiry] IS NOT NULL AND RTRIM(LTRIM([Expiry])) != space(0)) AND LEN(RTRIM(LTRIM([Expiry]))) > 10
+	OR ([Tenor] IS NOT NULL AND RTRIM(LTRIM([Tenor])) != space(0)) AND LEN(RTRIM(LTRIM([Tenor]))) > 10
+	OR ([Surface] IS NOT NULL AND RTRIM(LTRIM([Surface])) != SPACE(0) AND TRY_CONVERT(decimal(22,6), [Surface]) IS NULL)
+	OR ([Date] IS NOT NULL AND RTRIM(LTRIM([Date])) != space(0)) AND TRY_CONVERT(datetime, [Date], 105) IS NULL
 	
 
 	;WITH tblTemp AS
 	(
-	   SELECT ROW_NUMBER() Over(PARTITION BY [BBID],[Name], [Date], [Expiry], [Tenor], [Surface]  ORDER BY [BBID])
+	   SELECT ROW_NUMBER() Over(PARTITION BY [BBID], [Date], [CreatedDate] ORDER BY [CreatedDate] DESC)
 			As RowNumber,* FROM @InterestRateSurface
 	)
 	UPDATE tblTemp SET Error = Error + ' Duplicate Record.' WHERE RowNumber > 1	

@@ -13,8 +13,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Pkg_Tresalia_Excel_Stg_Rating"
   DTS:PackageType="5"
-  DTS:VersionBuild="269"
-  DTS:VersionGUID="{1E2CE4B5-155A-47FE-B9DF-335E447D521C}">
+  DTS:VersionBuild="271"
+  DTS:VersionGUID="{1F63BE20-E47B-4A1B-B759-C2F52FC898C4}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -38,16 +38,16 @@
         DTS:Name="ExcelFilePath">@[User::SourceFolderPath] + @[User::SourceFileName_Rating]</DTS:PropertyExpression>
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=D:\Tresalia\Anupam\Tresalia_ETL\Source\20140405 - Ratings.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Piyush\Tresalia_ETL\Source\20140405 - Ratings.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
   <DTS:Configurations>
     <DTS:Configuration
-      DTS:ConfigurationString="D:\Tresalia\Anupam\Tresalia_ETL\Config\Tresalia_ConnectionStrings.dtsConfig"
+      DTS:ConfigurationString="C:\Piyush\Tresalia_ETL\Config\Tresalia_ConnectionStrings.dtsConfig"
       DTS:ConfigurationType="1"
       DTS:CreationName=""
-      DTS:DTSID="{01E4A3DA-FBC4-433D-BA2A-70B9D6BC3B62}"
+      DTS:DTSID="{079CDB24-1557-4067-AD5C-53A6036789C6}"
       DTS:ObjectName="Configuration 1" />
   </DTS:Configurations>
   <DTS:PackageParameters>
@@ -69,7 +69,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="ArchiveFolderPath">
       <DTS:VariableValue
-        DTS:DataType="8">D:\Tresalia\Anupam\Tresalia_ETL\Archive\</DTS:VariableValue>
+        DTS:DataType="8">C:\Piyush\Tresalia_ETL\Archive\</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -96,7 +96,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="ErrorFolderPath">
       <DTS:VariableValue
-        DTS:DataType="8">D:\Tresalia\Anupam\Tresalia_ETL\Error\</DTS:VariableValue>
+        DTS:DataType="8">C:\Piyush\Tresalia_ETL\Error\</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -114,7 +114,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="InputFolderPath_Rating">
       <DTS:VariableValue
-        DTS:DataType="8">D:\Tresalia\Anupam\Tresalia_ETL\Input\</DTS:VariableValue>
+        DTS:DataType="8">C:\Piyush\Tresalia_ETL\Input\</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -215,7 +215,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="SourceFolderPath">
       <DTS:VariableValue
-        DTS:DataType="8">D:\Tresalia\Anupam\Tresalia_ETL\Source\</DTS:VariableValue>
+        DTS:DataType="8">C:\Piyush\Tresalia_ETL\Source\</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -331,14 +331,35 @@
               Language="CSharp"
               ReadOnlyVariables="User::ArchiveFolderPath,User::SourceFileName_Rating,User::SourceFolderPath">
               <ProjectItem
-                Name="Properties\Settings.settings"
-                Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
-</SettingsFile>]]></ProjectItem>
+                Name="Properties\AssemblyInfo.cs"
+                Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_d6ecf0d93a91432f8027c3d38ab0de7b")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_d6ecf0d93a91432f8027c3d38ab0de7b")]
+[assembly: AssemblyCopyright("Copyright @  2016")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
               <ProjectItem
                 Name="Properties\Resources.resx"
                 Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
@@ -746,35 +767,14 @@ namespace ST_d6ecf0d93a91432f8027c3d38ab0de7b.Properties {
     }
 }]]></ProjectItem>
               <ProjectItem
-                Name="Properties\AssemblyInfo.cs"
-                Encoding="UTF8"><![CDATA[using System.Reflection;
-using System.Runtime.CompilerServices;
-
-//
-// General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
-//
-[assembly: AssemblyTitle("ST_d6ecf0d93a91432f8027c3d38ab0de7b")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ST_d6ecf0d93a91432f8027c3d38ab0de7b")]
-[assembly: AssemblyCopyright("Copyright @  2016")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-//
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Revision and Build Numbers 
-// by using the '*' as shown below:
-
-[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+                Name="Properties\Settings.settings"
+                Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
               <ProjectItem
                 Name="Properties\Resources.Designer.cs"
                 Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
@@ -1114,6 +1114,15 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
                       Language="CSharp"
                       ReadOnlyVariables="User::ErrorFolderPath,User::SourceFileName_Rating,User::SourceFolderPath">
                       <ProjectItem
+                        Name="Properties\Settings.settings"
+                        Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
+                      <ProjectItem
                         Name="Properties\Resources.resx"
                         Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
 <root>
@@ -1325,35 +1334,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
   </ProjectExtensions>
 </Project>]]></ProjectItem>
                       <ProjectItem
-                        Name="Properties\Settings.Designer.cs"
-                        Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
-// <auto-generated>
-//     This code was generated by a tool.
-//
-//     Changes to this file may cause incorrect behavior and will be lost if
-//     the code is regenerated.
-// </auto-generated>
-//------------------------------------------------------------------------------
-
-[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_4bd9f5c573664b1cb557ffa7a5842369.Properties.Settings.get_Default():ST_4bd9f5c573664b1cb557ffa7a5842369.Properties.Sett" +
-    "ings")]
-
-namespace ST_4bd9f5c573664b1cb557ffa7a5842369.Properties {
-    
-    
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
-        
-        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-        private static Settings defaultInstance = new Settings();
-        
-        public static Settings Default {
-            get {
-                return defaultInstance;
-            }
-        }
-    }
-}]]></ProjectItem>
-                      <ProjectItem
                         Name="ScriptMain.cs"
                         Encoding="UTF8"><![CDATA[#region Help:  Introduction to the script task
 /* The Script Task allows you to perform virtually any operation that can be accomplished in
@@ -1501,6 +1481,35 @@ namespace ST_4bd9f5c573664b1cb557ffa7a5842369
 	</msb:ItemGroup>
 </c:Project>]]></ProjectItem>
                       <ProjectItem
+                        Name="Properties\Settings.Designer.cs"
+                        Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_4bd9f5c573664b1cb557ffa7a5842369.Properties.Settings.get_Default():ST_4bd9f5c573664b1cb557ffa7a5842369.Properties.Sett" +
+    "ings")]
+
+namespace ST_4bd9f5c573664b1cb557ffa7a5842369.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
+                      <ProjectItem
                         Name="Properties\AssemblyInfo.cs"
                         Encoding="UTF8"><![CDATA[using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -1530,15 +1539,6 @@ using System.Runtime.CompilerServices;
 // by using the '*' as shown below:
 
 [assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
-                      <ProjectItem
-                        Name="Properties\Settings.settings"
-                        Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
-</SettingsFile>]]></ProjectItem>
                       <ProjectItem
                         Name="Properties\Resources.Designer.cs"
                         Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
@@ -2268,7 +2268,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          length="5000"
+                          length="100"
                           lineageId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Error Data Conversion.Outputs[Data Conversion Output].Columns[Moody's LT]"
                           name="Moody's LT"
                           truncationRowDisposition="FailComponent">
@@ -2563,7 +2563,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                           refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Error OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Moody's LT]"
                           cachedCodepage="1252"
                           cachedDataType="str"
-                          cachedLength="5000"
+                          cachedLength="100"
                           cachedName="Moody's LT"
                           externalMetadataColumnId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Error OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Moody's LT]"
                           lineageId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Error Data Conversion.Outputs[Data Conversion Output].Columns[Moody's LT]" />
@@ -2597,14 +2597,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                           cachedName="BatchDate"
                           externalMetadataColumnId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Error OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BatchDate]"
                           lineageId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Error Data Conversion.Outputs[Data Conversion Output].Columns[BatchDate]" />
-                        <inputColumn
-                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Error OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ErrorCode]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="100"
-                          cachedName="ErrorCode"
-                          externalMetadataColumnId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Error OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ErrorMessage]"
-                          lineageId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Error Data Conversion.Outputs[Data Conversion Output].Columns[ErrorCode]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -2630,7 +2622,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                           refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Error OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Moody's LT]"
                           codePage="1252"
                           dataType="str"
-                          length="5000"
+                          length="100"
                           name="Moody's LT" />
                         <externalMetadataColumn
                           refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Error OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[S&amp;P LT]"
@@ -2665,16 +2657,22 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                           dataType="dbDate"
                           name="BatchDate" />
                         <externalMetadataColumn
-                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Error OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ErrorMessage]"
-                          codePage="1252"
-                          dataType="text"
-                          name="ErrorMessage" />
-                        <externalMetadataColumn
-                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Error OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RecordModified]"
+                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Error OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ErrorId]"
                           codePage="1252"
                           dataType="str"
                           length="100"
-                          name="RecordModified" />
+                          name="ErrorId" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Error OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ErrorDescription]"
+                          codePage="1252"
+                          dataType="text"
+                          name="ErrorDescription" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Loading Excel Sheet Data To Table\Error OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IsRecordModified]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="IsRecordModified" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -3259,14 +3257,35 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           ReadOnlyVariables="User::FileMask_Rating,User::InputFolderPath_Rating,User::SourceFileName_Rating,User::SourceFolderPath,User::StartDate,User::TabName_Rating"
           ReadWriteVariables="User::SourceFileList">
           <ProjectItem
-            Name="Properties\Settings.settings"
-            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
-</SettingsFile>]]></ProjectItem>
+            Name="Properties\AssemblyInfo.cs"
+            Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_ed70569289ad4647a95d2ded4b348c76")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_ed70569289ad4647a95d2ded4b348c76")]
+[assembly: AssemblyCopyright("Copyright @  2016")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
           <ProjectItem
             Name="Properties\Resources.resx"
             Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
@@ -3757,35 +3776,14 @@ namespace ST_ed70569289ad4647a95d2ded4b348c76.Properties {
     }
 }]]></ProjectItem>
           <ProjectItem
-            Name="Properties\AssemblyInfo.cs"
-            Encoding="UTF8"><![CDATA[using System.Reflection;
-using System.Runtime.CompilerServices;
-
-//
-// General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
-//
-[assembly: AssemblyTitle("ST_ed70569289ad4647a95d2ded4b348c76")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ST_ed70569289ad4647a95d2ded4b348c76")]
-[assembly: AssemblyCopyright("Copyright @  2016")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-//
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Revision and Build Numbers 
-// by using the '*' as shown below:
-
-[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
           <ProjectItem
             Name="Properties\Resources.Designer.cs"
             Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------

@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Pkg_Tresalia_Excel_Stg_PortfolioMaster"
   DTS:PackageType="5"
-  DTS:VersionBuild="206"
-  DTS:VersionGUID="{987272DB-D4CF-4DAB-B09B-355661C21942}">
+  DTS:VersionBuild="215"
+  DTS:VersionGUID="{B22A6CF9-B91A-42D7-B2C3-23153C83119E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -39,16 +39,16 @@
         DTS:Name="ExcelFilePath">@[User::SourceFolderPath] + @[User::SourceFileName_PortfolioMaster]</DTS:PropertyExpression>
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=D:\Tresalia\Anupam\Tresalia_ETL\Source\20160320 - Portfolio Master.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Pawan\Source\20160320 - Portfolio Master.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
   <DTS:Configurations>
     <DTS:Configuration
-      DTS:ConfigurationString="D:\Tresalia\Anupam\Tresalia_ETL\Config\Tresalia_ConnectionStrings.dtsConfig"
+      DTS:ConfigurationString="C:\Pawan\Config\Tresalia_ConnectionStrings.dtsConfig"
       DTS:ConfigurationType="1"
       DTS:CreationName=""
-      DTS:DTSID="{DB5E138B-3E76-4474-B6C5-A1040CD65FFE}"
+      DTS:DTSID="{55EB6A63-6975-4124-AA82-6D3651E64518}"
       DTS:ObjectName="Configuration 1" />
   </DTS:Configurations>
   <DTS:Variables>
@@ -59,7 +59,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="ArchiveFolderPath">
       <DTS:VariableValue
-        DTS:DataType="8">D:\Tresalia\Anupam\Tresalia_ETL\Archive\</DTS:VariableValue>
+        DTS:DataType="8">C:\Pawan\Other\</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -97,7 +97,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="FullFilePathSource">
       <DTS:VariableValue
-        DTS:DataType="8">D:\Tresalia\Anupam\Tresalia_ETL\Source\\20160320 - Portfolio Master.xlsx</DTS:VariableValue>
+        DTS:DataType="8">C:\Pawan\Source\\20160320 - Portfolio Master.xlsx</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -106,7 +106,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="InputFolderPath_PortfolioMaster">
       <DTS:VariableValue
-        DTS:DataType="8">D:\Tresalia\Anupam\Tresalia_ETL\Input\</DTS:VariableValue>
+        DTS:DataType="8">C:\Pawan\Input\</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -126,7 +126,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="Query_PortfolioMaster">
       <DTS:VariableValue
-        DTS:DataType="8">Select * from [Sheet1$A:Z]</DTS:VariableValue>
+        DTS:DataType="8">Select * from [Sheet1$A:AB]</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -135,7 +135,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="SelectedColumnRange_PortfolioMaster">
       <DTS:VariableValue
-        DTS:DataType="8">A:Z</DTS:VariableValue>
+        DTS:DataType="8">A:AB</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -180,7 +180,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="SourceFolderPath">
       <DTS:VariableValue
-        DTS:DataType="8">D:\Tresalia\Anupam\Tresalia_ETL\Source\</DTS:VariableValue>
+        DTS:DataType="8">C:\Pawan\Source\</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -286,7 +286,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Archive File"
           DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2016 RC0; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <FileSystemData
@@ -511,12 +511,6 @@
                           cachedName="Mask 4"
                           lineageId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Excel Source.Outputs[Excel Source Output].Columns[Mask 4]" />
                         <inputColumn
-                          refId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Data Conversion.Inputs[Data Conversion Input].Columns[Mask 5]"
-                          cachedDataType="wstr"
-                          cachedLength="255"
-                          cachedName="Mask 5"
-                          lineageId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Excel Source.Outputs[Excel Source Output].Columns[Mask 5]" />
-                        <inputColumn
                           refId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Data Conversion.Inputs[Data Conversion Input].Columns[Pooled]"
                           cachedDataType="wstr"
                           cachedLength="255"
@@ -572,6 +566,24 @@
                           cachedDataType="date"
                           cachedName="BatchDate"
                           lineageId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Derived Column.Outputs[Derived Column Output].Columns[BatchDate]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Data Conversion.Inputs[Data Conversion Input].Columns[Bench_ID]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Bench_ID"
+                          lineageId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Excel Source.Outputs[Excel Source Output].Columns[Bench_ID]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Data Conversion.Inputs[Data Conversion Input].Columns[Asset_Manager]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Asset_Manager"
+                          lineageId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Excel Source.Outputs[Excel Source Output].Columns[Asset_Manager]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Data Conversion.Inputs[Data Conversion Input].Columns[ACCOUNT_NAME_LONG]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="ACCOUNT_NAME_LONG"
+                          lineageId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Excel Source.Outputs[Excel Source Output].Columns[ACCOUNT_NAME_LONG]" />
                       </inputColumns>
                       <externalMetadataColumns />
                     </input>
@@ -1024,28 +1036,6 @@
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Mask 5]"
-                          codePage="1252"
-                          dataType="str"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          length="100"
-                          lineageId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Mask 5]"
-                          name="Copy of Mask 5"
-                          truncationRowDisposition="FailComponent">
-                          <properties>
-                            <property
-                              containsID="true"
-                              dataType="System.Int32"
-                              description="Specifies the input column used as the source of data for the conversion."
-                              name="SourceInputColumnLineageID">#{Package\Foreach Loop Container\Load Portfolio Master Into Staging\Excel Source.Outputs[Excel Source Output].Columns[Mask 5]}</property>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                              name="FastParse">false</property>
-                          </properties>
-                        </outputColumn>
-                        <outputColumn
                           refId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Pooled]"
                           codePage="1252"
                           dataType="str"
@@ -1241,6 +1231,72 @@
                               name="FastParse">false</property>
                           </properties>
                         </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Bench_ID]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="100"
+                          lineageId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Bench_ID]"
+                          name="Copy of Bench_ID"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Foreach Loop Container\Load Portfolio Master Into Staging\Excel Source.Outputs[Excel Source Output].Columns[Bench_ID]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Asset_Manager]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="100"
+                          lineageId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Asset_Manager]"
+                          name="Copy of Asset_Manager"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Foreach Loop Container\Load Portfolio Master Into Staging\Excel Source.Outputs[Excel Source Output].Columns[Asset_Manager]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ACCOUNT_NAME_LONG]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="100"
+                          lineageId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ACCOUNT_NAME_LONG]"
+                          name="Copy of ACCOUNT_NAME_LONG"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Foreach Loop Container\Load Portfolio Master Into Staging\Excel Source.Outputs[Excel Source Output].Columns[ACCOUNT_NAME_LONG]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
                       </outputColumns>
                       <externalMetadataColumns />
                     </output>
@@ -1429,7 +1485,7 @@
                     <property
                       dataType="System.String"
                       description="Specifies the name of the database object used to open a rowset."
-                      name="OpenRowset">Master$</property>
+                      name="OpenRowset">Sheet1$</property>
                     <property
                       dataType="System.String"
                       description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -1667,16 +1723,6 @@
                           name="Mask 4"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
-                          refId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Excel Source.Outputs[Excel Source Output].Columns[Mask 5]"
-                          dataType="wstr"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Excel Source.Outputs[Excel Source Output].ExternalColumns[Mask 5]"
-                          length="255"
-                          lineageId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Excel Source.Outputs[Excel Source Output].Columns[Mask 5]"
-                          name="Mask 5"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
                           refId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Excel Source.Outputs[Excel Source Output].Columns[Pooled]"
                           dataType="wstr"
                           errorOrTruncationOperation="Conversion"
@@ -1705,6 +1751,36 @@
                           length="255"
                           lineageId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Excel Source.Outputs[Excel Source Output].Columns[Strat_Inception_Date]"
                           name="Strat_Inception_Date"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Excel Source.Outputs[Excel Source Output].Columns[Bench_ID]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Excel Source.Outputs[Excel Source Output].ExternalColumns[Bench_ID]"
+                          length="255"
+                          lineageId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Excel Source.Outputs[Excel Source Output].Columns[Bench_ID]"
+                          name="Bench_ID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Excel Source.Outputs[Excel Source Output].Columns[Asset_Manager]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Excel Source.Outputs[Excel Source Output].ExternalColumns[Asset_Manager]"
+                          length="255"
+                          lineageId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Excel Source.Outputs[Excel Source Output].Columns[Asset_Manager]"
+                          name="Asset_Manager"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Excel Source.Outputs[Excel Source Output].Columns[ACCOUNT_NAME_LONG]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Excel Source.Outputs[Excel Source Output].ExternalColumns[ACCOUNT_NAME_LONG]"
+                          length="255"
+                          lineageId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Excel Source.Outputs[Excel Source Output].Columns[ACCOUNT_NAME_LONG]"
+                          name="ACCOUNT_NAME_LONG"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
                           refId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Excel Source.Outputs[Excel Source Output].Columns[Calc_Pref]"
@@ -1830,11 +1906,6 @@
                           length="255"
                           name="Mask 4" />
                         <externalMetadataColumn
-                          refId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Excel Source.Outputs[Excel Source Output].ExternalColumns[Mask 5]"
-                          dataType="wstr"
-                          length="255"
-                          name="Mask 5" />
-                        <externalMetadataColumn
                           refId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Excel Source.Outputs[Excel Source Output].ExternalColumns[Pooled]"
                           dataType="wstr"
                           length="255"
@@ -1849,6 +1920,21 @@
                           dataType="wstr"
                           length="255"
                           name="Strat_Inception_Date" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Excel Source.Outputs[Excel Source Output].ExternalColumns[Bench_ID]"
+                          dataType="wstr"
+                          length="255"
+                          name="Bench_ID" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Excel Source.Outputs[Excel Source Output].ExternalColumns[Asset_Manager]"
+                          dataType="wstr"
+                          length="255"
+                          name="Asset_Manager" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Excel Source.Outputs[Excel Source Output].ExternalColumns[ACCOUNT_NAME_LONG]"
+                          dataType="wstr"
+                          length="255"
+                          name="ACCOUNT_NAME_LONG" />
                         <externalMetadataColumn
                           refId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Excel Source.Outputs[Excel Source Output].ExternalColumns[Calc_Pref]"
                           dataType="wstr"
@@ -1879,6 +1965,12 @@
                           lineageId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Excel Source.Outputs[Excel Source Error Output].Columns[ACCOUNT_NAME]"
                           name="ACCOUNT_NAME" />
                         <outputColumn
+                          refId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Excel Source.Outputs[Excel Source Error Output].Columns[ACCOUNT_NAME_LONG]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Excel Source.Outputs[Excel Source Error Output].Columns[ACCOUNT_NAME_LONG]"
+                          name="ACCOUNT_NAME_LONG" />
+                        <outputColumn
                           refId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Excel Source.Outputs[Excel Source Error Output].Columns[LEVEL_1]"
                           dataType="wstr"
                           length="255"
@@ -1908,6 +2000,12 @@
                           length="255"
                           lineageId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Excel Source.Outputs[Excel Source Error Output].Columns[LEVEL_5]"
                           name="LEVEL_5" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Excel Source.Outputs[Excel Source Error Output].Columns[Bench_ID]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Excel Source.Outputs[Excel Source Error Output].Columns[Bench_ID]"
+                          name="Bench_ID" />
                         <outputColumn
                           refId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Excel Source.Outputs[Excel Source Error Output].Columns[FEE_1_PROXY]"
                           dataType="wstr"
@@ -1987,11 +2085,11 @@
                           lineageId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Excel Source.Outputs[Excel Source Error Output].Columns[Mask 4]"
                           name="Mask 4" />
                         <outputColumn
-                          refId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Excel Source.Outputs[Excel Source Error Output].Columns[Mask 5]"
+                          refId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Excel Source.Outputs[Excel Source Error Output].Columns[Asset_Manager]"
                           dataType="wstr"
                           length="255"
-                          lineageId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Excel Source.Outputs[Excel Source Error Output].Columns[Mask 5]"
-                          name="Mask 5" />
+                          lineageId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Excel Source.Outputs[Excel Source Error Output].Columns[Asset_Manager]"
+                          name="Asset_Manager" />
                         <outputColumn
                           refId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Excel Source.Outputs[Excel Source Error Output].Columns[Pooled]"
                           dataType="wstr"
@@ -2296,14 +2394,6 @@
                           externalMetadataColumnId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Mask 4]"
                           lineageId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Mask 4]" />
                         <inputColumn
-                          refId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Mask 5]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="100"
-                          cachedName="Copy of Mask 5"
-                          externalMetadataColumnId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Mask 5]"
-                          lineageId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Mask 5]" />
-                        <inputColumn
                           refId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Pooled]"
                           cachedCodepage="1252"
                           cachedDataType="str"
@@ -2349,6 +2439,30 @@
                           cachedName="Copy of BatchDate"
                           externalMetadataColumnId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BatchDate]"
                           lineageId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of BatchDate]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of ACCOUNT_NAME_LONG]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="Copy of ACCOUNT_NAME_LONG"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ACCOUNT_NAME_Long]"
+                          lineageId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ACCOUNT_NAME_LONG]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Bench_ID]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="Copy of Bench_ID"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Bench_ID]"
+                          lineageId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Bench_ID]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Asset_Manager]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="Copy of Asset_Manager"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Asset_Manager]"
+                          lineageId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Asset_Manager]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -2505,12 +2619,6 @@
                           length="100"
                           name="Mask 4" />
                         <externalMetadataColumn
-                          refId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Mask 5]"
-                          codePage="1252"
-                          dataType="str"
-                          length="100"
-                          name="Mask 5" />
-                        <externalMetadataColumn
                           refId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Pooled]"
                           codePage="1252"
                           dataType="str"
@@ -2540,6 +2648,24 @@
                           dataType="str"
                           length="100"
                           name="Entity_Type" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ACCOUNT_NAME_Long]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="ACCOUNT_NAME_Long" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Bench_ID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="Bench_ID" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Load Portfolio Master Into Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Asset_Manager]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="Asset_Manager" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -2632,7 +2758,7 @@
           DTS:ExecutableType="Microsoft.ScriptTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Logging Error"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <ScriptProject
@@ -2651,7 +2777,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Update FileHistory"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -3222,19 +3348,30 @@ namespace ST_7721423477fc4545a532e65ca4c75477
             Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
 <c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="3.0" schemaVersion="1.0">
 	<msb:PropertyGroup>
-		<msb:CodeName>ST_7721423477fc4545a532e65ca4c75477</msb:CodeName>
 		<msb:Language>msBuild</msb:Language>
+		<msb:CodeName>ST_7721423477fc4545a532e65ca4c75477</msb:CodeName>
 		<msb:DisplayName>ST_7721423477fc4545a532e65ca4c75477</msb:DisplayName>
 		<msb:ProjectId>{A29548AC-F996-4F01-9711-4336629FDA3F}</msb:ProjectId>
 	</msb:PropertyGroup>
 	<msb:ItemGroup>
 		<msb:Project Include="ST_7721423477fc4545a532e65ca4c75477.csproj"/>
-		<msb:File Include="Properties\AssemblyInfo.cs"/>
 		<msb:File Include="Properties\Settings.settings"/>
+		<msb:File Include="Properties\AssemblyInfo.cs"/>
 		<msb:File Include="Properties\Resources.resx"/>
 		<msb:File Include="Properties\Resources.Designer.cs"/>
 		<msb:File Include="Properties\Settings.Designer.cs"/>
 		<msb:File Include="ScriptMain.cs"/>
+		<msb:Breakpoint Include="2382553b4f5b4212ae27611b5dd1472a">
+			<msb:FileName>ScriptMain.cs</msb:FileName>
+			<msb:ColumnNumber>13</msb:ColumnNumber>
+			<msb:Enabled>True</msb:Enabled>
+			<msb:LineNumber>102</msb:LineNumber>
+			<msb:Condition></msb:Condition>
+			<msb:ConditionType>1</msb:ConditionType>
+			<msb:Language>C#</msb:Language>
+			<msb:HitCountType>1</msb:HitCountType>
+			<msb:HitCountTarget>1</msb:HitCountTarget>
+		</msb:Breakpoint>
 	</msb:ItemGroup>
 </c:Project>]]></ProjectItem>
           <ProjectItem
@@ -3347,13 +3484,13 @@ namespace ST_7721423477fc4545a532e65ca4c75477.Properties {
           <BinaryItem
             Name="ST_7721423477fc4545a532e65ca4c75477.dll">TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
-ZGUuDQ0KJAAAAAAAAABQRQAATAEDAEjp/FYAAAAAAAAAAOAAAiELAQsAABgAAAAGAAAAAAAArjYA
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAP9G/1YAAAAAAAAAAOAAAiELAQsAABgAAAAIAAAAAAAArjYA
 AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAEAAAAAAAAAACAAAAAAgAAAAAAAAMAQIUAABAA
-ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAFw2AABPAAAAAEAAAAAEAAAAAAAAAAAAAAAAAAAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAFw2AABPAAAAAEAAAAgEAAAAAAAAAAAAAAAAAAAA
 AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAtBYAAAAgAAAAGAAAAAIA
-AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAAAEAAAAQAAAAAQAAAAaAAAAAAAAAAAAAAAAAABAAABA
-LnJlbG9jAAAMAAAAAGAAAAACAAAAHgAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAACQ
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAAgEAAAAQAAAAAYAAAAaAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAIAAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAACQ
 NgAAAAAAAEgAAAACAAUAuCQAAKQRAAABAAAAAAAAAAAkAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4CKA4AAAoqEzACAC0AAAABAAARfgEAAAQtIHIBAABw0AIA
 AAIoDwAACm8QAAAKcxEAAAoKBoABAAAEfgEAAAQqGn4CAAAEKh4CgAIAAAQqGn4DAAAEKi5zBgAA
@@ -3398,7 +3535,7 @@ ABMHMQEMACIHOQEMADQHQQE5AXUHTQEUAHwHGwAMAJEHbAEBAZwHfAHxAKYHgQAMALwBGwAZALwB
 GwAOABAASgAOABQATQAOABgAUAAIACgAcgAIACwAdwApAJMApAAuABsADwIuACMADwIuAGMANQIu
 AAsAngEuABMA5gEuADMA5gEuACsADwIuADsAFQIuAEMADwIuAFsALAJDAGsAdwBJAJMApABhAJsA
 dwCDAKsAdwCZANAA8QCBAQIAAQADAAMAAABvAS8AAADuATQAAAASAkIAAgACAAMAAgADAAUAAQAE
-AAUAAgAFAAcABgFkAQSAAAABAAAALhckCAAAAAAAAH8AAAAEAAAAAAAAAAAAAAABALEAAAAAAAQA
+AAUAAgAFAAcABgFkAQSAAAABAAAALxc/jgAAAAAAAH8AAAAEAAAAAAAAAAAAAAABALEAAAAAAAQA
 AAAAAAAAAAAAAAEAugAAAAAADAAAAAAAAAAAAAAACgD1AAAAAAAMAAAAAAAAAAAAAAAKAOEFAAAA
 AAQAAAAAAAAAAAAAAAEAPQcAAAAAAAAAAAEAAAC/BwAABQAEAGEAXwFhAHgBAAAAAAA8TW9kdWxl
 PgBTVF83NzIxNDIzNDc3ZmM0NTQ1YTUzMmU2NWNhNGM3NTQ3Ny5kbGwAUmVzb3VyY2VzAFNUXzc3
@@ -3443,7 +3580,7 @@ cgA6ADoASQBuAHAAdQB0AEYAbwBsAGQAZQByAFAAYQB0AGgAXwBQAG8AcgB0AGYAbwBsAGkAbwBN
 AGEAcwB0AGUAcgAALVUAcwBlAHIAOgA6AFMAbwB1AHIAYwBlAEYAbwBsAGQAZQByAFAAYQB0AGgA
 AD1VAHMAZQByADoAOgBGAGkAbABlAE0AYQBzAGsAXwBQAG8AcgB0AGYAbwBsAGkAbwBNAGEAcwB0
 AGUAcgAAH1UAcwBlAHIAOgA6AFMAdABhAHIAdABEAGEAdABlAAADKgAAA34AAAMtAAEpVQBzAGUA
-cgA6ADoAUwBvAHUAcgBjAGUARgBpAGwAZQBMAGkAcwB0AAAAAABiQQ90PYBSS4K4UPH+U0U/AAi3
+cgA6ADoAUwBvAHUAcgBjAGUARgBpAGwAZQBMAGkAcwB0AAAAAAAvpJ+GAW+iTb1lH74ZP11CAAi3
 elxWGTTgiQiJhF3NgIDMkQMGEhUDBhIZAyAAAQQAABIVBAAAEhkFAAEBEhkECAASFQQIABIZAwYS
 DAQAABIMBAgAEgwCBg4CLQACfgACKgAIBhUSHQIRIQ4GIAMBDg4OByADAQ4OESECBggDBhEUBAAA
 AAAEAQAAAAQgAQEOBCABAQgGAAESWRFdBCAAEmEGIAIBDhJhBAcBEhUFIAEBEWkIAQACAAAAAAAD
@@ -3463,23 +3600,23 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAEAEAAAABgAAIAAAAAAAAAAAAAAAAAAAAEAAQAAADAAAIAAAAAAAAAAAAAAAAAAAAEAAAAAAEgA
-AABYQAAApAMAAAAAAAAAAAAApAM0AAAAVgBTAF8AVgBFAFIAUwBJAE8ATgBfAEkATgBGAE8AAAAA
-AL0E7/4AAAEAAAABACQILhcAAAEAJAguFz8AAAAAAAAABAAAAAIAAAAAAAAAAAAAAAAAAABEAAAA
+AABYQAAAsAMAAAAAAAAAAAAAsAM0AAAAVgBTAF8AVgBFAFIAUwBJAE8ATgBfAEkATgBGAE8AAAAA
+AL0E7/4AAAEAAAABAD+OLxcAAAEAP44vFz8AAAAAAAAABAAAAAIAAAAAAAAAAAAAAAAAAABEAAAA
 AQBWAGEAcgBGAGkAbABlAEkAbgBmAG8AAAAAACQABAAAAFQAcgBhAG4AcwBsAGEAdABpAG8AbgAA
-AAAAAACwBAQDAAABAFMAdAByAGkAbgBnAEYAaQBsAGUASQBuAGYAbwAAAOACAAABADAAMAAwADAA
+AAAAAACwBBADAAABAFMAdAByAGkAbgBnAEYAaQBsAGUASQBuAGYAbwAAAOwCAAABADAAMAAwADAA
 MAA0AGIAMAAAAHAAJAABAEYAaQBsAGUARABlAHMAYwByAGkAcAB0AGkAbwBuAAAAAABTAFQAXwA3
 ADcAMgAxADQAMgAzADQANwA3AGYAYwA0ADUANAA1AGEANQAzADIAZQA2ADUAYwBhADQAYwA3ADUA
-NAA3ADcAAAA8AA4AAQBGAGkAbABlAFYAZQByAHMAaQBvAG4AAAAAADEALgAwAC4ANQA5ADMANAAu
-ADIAMAA4ADQAAABwACgAAQBJAG4AdABlAHIAbgBhAGwATgBhAG0AZQAAAFMAVABfADcANwAyADEA
-NAAyADMANAA3ADcAZgBjADQANQA0ADUAYQA1ADMAMgBlADYANQBjAGEANABjADcANQA0ADcANwAu
-AGQAbABsAAAASAASAAEATABlAGcAYQBsAEMAbwBwAHkAcgBpAGcAaAB0AAAAQwBvAHAAeQByAGkA
-ZwBoAHQAIABAACAAIAAyADAAMQA2AAAAeAAoAAEATwByAGkAZwBpAG4AYQBsAEYAaQBsAGUAbgBh
-AG0AZQAAAFMAVABfADcANwAyADEANAAyADMANAA3ADcAZgBjADQANQA0ADUAYQA1ADMAMgBlADYA
-NQBjAGEANABjADcANQA0ADcANwAuAGQAbABsAAAAaAAkAAEAUAByAG8AZAB1AGMAdABOAGEAbQBl
-AAAAAABTAFQAXwA3ADcAMgAxADQAMgAzADQANwA3AGYAYwA0ADUANAA1AGEANQAzADIAZQA2ADUA
-YwBhADQAYwA3ADUANAA3ADcAAABAAA4AAQBQAHIAbwBkAHUAYwB0AFYAZQByAHMAaQBvAG4AAAAx
-AC4AMAAuADUAOQAzADQALgAyADAAOAA0AAAARAAOAAEAQQBzAHMAZQBtAGIAbAB5ACAAVgBlAHIA
-cwBpAG8AbgAAADEALgAwAC4ANQA5ADMANAAuADIAMAA4ADQAAAAAAAAAADAAAAwAAACwNgAAAAAA
+NAA3ADcAAABAAA8AAQBGAGkAbABlAFYAZQByAHMAaQBvAG4AAAAAADEALgAwAC4ANQA5ADMANQAu
+ADMANgA0ADEANQAAAAAAcAAoAAEASQBuAHQAZQByAG4AYQBsAE4AYQBtAGUAAABTAFQAXwA3ADcA
+MgAxADQAMgAzADQANwA3AGYAYwA0ADUANAA1AGEANQAzADIAZQA2ADUAYwBhADQAYwA3ADUANAA3
+ADcALgBkAGwAbAAAAEgAEgABAEwAZQBnAGEAbABDAG8AcAB5AHIAaQBnAGgAdAAAAEMAbwBwAHkA
+cgBpAGcAaAB0ACAAQAAgACAAMgAwADEANgAAAHgAKAABAE8AcgBpAGcAaQBuAGEAbABGAGkAbABl
+AG4AYQBtAGUAAABTAFQAXwA3ADcAMgAxADQAMgAzADQANwA3AGYAYwA0ADUANAA1AGEANQAzADIA
+ZQA2ADUAYwBhADQAYwA3ADUANAA3ADcALgBkAGwAbAAAAGgAJAABAFAAcgBvAGQAdQBjAHQATgBh
+AG0AZQAAAAAAUwBUAF8ANwA3ADIAMQA0ADIAMwA0ADcANwBmAGMANAA1ADQANQBhADUAMwAyAGUA
+NgA1AGMAYQA0AGMANwA1ADQANwA3AAAARAAPAAEAUAByAG8AZAB1AGMAdABWAGUAcgBzAGkAbwBu
+AAAAMQAuADAALgA1ADkAMwA1AC4AMwA2ADQAMQA1AAAAAABIAA8AAQBBAHMAcwBlAG0AYgBsAHkA
+IABWAGUAcgBzAGkAbwBuAAAAMQAuADAALgA1ADkAMwA1AC4AMwA2ADQAMQA1AAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -3488,7 +3625,21 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAADAAAALA2AAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
+          <Breakpoint
+            Enabled="True"
+            File="ScriptMain.cs"
+            Line="102"
+            Column="13" />
         </ScriptProject>
       </DTS:ObjectData>
     </DTS:Executable>
@@ -3641,20 +3792,32 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       </DTS:Variables>
       <DTS:Executables>
         <DTS:Executable
-          DTS:refId="Package.EventHandlers[OnError]\Error HandellingTask"
-          DTS:CreationName="Microsoft.ScriptTask"
-          DTS:Description="Script Task"
-          DTS:DTSID="{6383BE75-A424-4E00-B52D-8ABD6F3EEE80}"
-          DTS:ExecutableType="Microsoft.ScriptTask"
+          DTS:refId="Package.EventHandlers[OnError]\Update TresaliaJobLog"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{3500356d-e0c2-4294-8c34-311b46395f08}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
-          DTS:ObjectName="Error HandellingTask">
+          DTS:ObjectName="Update TresaliaJobLog"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
           <DTS:Variables />
           <DTS:ObjectData>
-            <ScriptProject
-              Name="ST_b85007caef504e09a7646d40be47d584"
-              VSTAMajorVersion="3"
-              VSTAMinorVersion="0"
-              Language="VisualBasic" />
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{90769ACA-E37A-411F-A4A1-54A4502DEDAC}"
+              SQLTask:SqlStatementSource="exec stg.spLogPackageExecutionHistory ?,?,'PortfolioMasterJobName','E'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@PackageID"
+                SQLTask:DtsVariableName="System::PackageID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="255" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@PackageName"
+                SQLTask:DtsVariableName="System::PackageName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="255" />
+            </SQLTask:SqlTaskData>
           </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
@@ -3979,10 +4142,152 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
           Size="NaN,NaN"
-          Id="Package.EventHandlers[OnError]\Error HandellingTask"
+          Id="Package.EventHandlers[OnError]\Update TresaliaJobLog"
           TopLeft="NaN,NaN" />
       </GraphLayout>
     </LayoutInfo>
   </DtsEventHandler>
+  <TaskHost
+    design-time-name="Package\Foreach Loop Container\Load Portfolio Master Into Staging">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Foreach Loop Container\Load Portfolio Master Into Staging\OLE DB Destination"
+          TopLeft="5.50000000000004,413.5" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Row Count"
+          TopLeft="26,107.5" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Data Conversion"
+          TopLeft="13,311.5" />
+        <NodeLayout
+          Size="139,42"
+          Id="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Excel Source"
+          TopLeft="21.5,5.5" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Derived Column"
+          TopLeft="14,209.5" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\Load Portfolio Master Into Staging.Paths[Row Count Output 1]"
+          TopLeft="91,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\Load Portfolio Master Into Staging.Paths[Excel Source Output]"
+          TopLeft="91,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\Load Portfolio Master Into Staging.Paths[Derived Column Output]"
+          TopLeft="91,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\Load Portfolio Master Into Staging.Paths[Data Conversion Output]"
+          TopLeft="91,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Foreach Loop Container\Load Portfolio Master Into Staging\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Foreach Loop Container\Load Portfolio Master Into Staging\Excel Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>

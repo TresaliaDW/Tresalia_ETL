@@ -29,7 +29,6 @@ BEGIN TRY
 
 	DECLARE @errorDetail NVARCHAR(max) = ''
 	DECLARE @User_ID VARCHAR(50) = System_User
-	DECLARE @Update_Timestamp datetime =  GETDATE()
 
 	DECLARE @SwapCurve TABLE(
 	[FileName] [varchar](100) NOT NULL,
@@ -43,26 +42,25 @@ BEGIN TRY
 	[CreatedDate] [datetime] NOT NULL,
 	[CreatedBy] [varchar](50) NOT NULL,
 	[BatchDate] [date] NOT NULL,
-	[Error] Varchar(max))
+	[Error] VARCHAR(MAX))
 	
 	INSERT INTO @SwapCurve SELECT *, @errorDetail AS Error FROM [Stg].[SwapCurve] ACT WITH (NOLOCK)
 	
 	UPDATE @SwapCurve 
 	SET Error =  Error +
-	  CASE WHEN LEN(RTRIM(LTRIM([Name]))) > 50 THEN 'The Name value ''' + ISNULL([Name], '') + ''' is invalid.' else '' end
-	+ CASE WHEN LEN(RTRIM(LTRIM([Tenor]))) > 10 THEN 'The Tenor value ''' + ISNULL([Tenor], '') + ''' is invalid.' else '' end
-	+ CASE WHEN TRY_CONVERT(decimal(22,6), [Value]) IS NULL THEN 'The value ''' + ISNULL([Value], '') + ''' is invalid.' else '' end
-	+ CASE WHEN TRY_CONVERT(datetime, [Date]) IS NULL THEN 'The Valuation Date value ''' + ISNULL([Date], '') + ''' is invalid.' else '' end
+	  CASE WHEN (([Name] IS NOT NULL AND RTRIM(LTRIM([Name])) != space(0)) AND (LEN(RTRIM(LTRIM([Name]))) > 50 OR [Name] = '#NAME?')) THEN 'The Name value ''' + ISNULL([Name], '') + ''' is invalid.' else '' end
+	+ CASE WHEN ([Tenor] IS NOT NULL AND RTRIM(LTRIM([Tenor])) != space(0)) AND LEN(RTRIM(LTRIM([Tenor]))) > 10  THEN 'The Tenor value ''' + ISNULL([Name], '') + ''' is invalid.' else '' end
+	+ CASE WHEN ([Value] IS NOT NULL AND RTRIM(LTRIM([Value])) != SPACE(0) AND TRY_CONVERT(decimal(22,6), [Value]) IS NULL) THEN 'The value ''' + ISNULL([Value], '') + ''' is invalid.' else '' end
+	+ CASE WHEN ([Date] IS NOT NULL AND RTRIM(LTRIM([Date])) != space(0)) AND TRY_CONVERT(datetime, [Date], 105) IS NULL THEN 'The Valuation Date value ''' + ISNULL([Date], '') + ''' is invalid.' else '' end
 	
-	WHERE LEN(RTRIM(LTRIM([Name]))) > 50 
-	OR LEN(RTRIM(LTRIM([Tenor]))) > 10
-	OR TRY_CONVERT(decimal(22,6), [Value]) IS NULL
-	OR TRY_CONVERT(datetime, [Date]) IS NULL
-	
+	WHERE (([Name] IS NOT NULL AND RTRIM(LTRIM([Name])) != space(0)) AND (LEN(RTRIM(LTRIM([Name]))) > 50 OR [Name] = '#NAME?'))
+	OR ([Tenor] IS NOT NULL AND RTRIM(LTRIM([Tenor])) != SPACE(0) AND LEN(RTRIM(LTRIM([Tenor]))) > 10)
+	OR ([Value] IS NOT NULL AND RTRIM(LTRIM([Value])) != SPACE(0) AND TRY_CONVERT(decimal(22,6), [Value]) IS NULL)
+	OR ([Date] IS NOT NULL AND RTRIM(LTRIM([Date])) != SPACE(0) AND TRY_CONVERT(datetime, [Date], 105) IS NULL)
 
 	;WITH tblTemp AS
 	(
-	   SELECT ROW_NUMBER() Over(PARTITION BY [Tenor],[Name], [security_Id], [Date], [Value]  ORDER BY [Tenor])
+	   SELECT ROW_NUMBER() Over(PARTITION BY [security_Id], [Date], [CreatedDate]  ORDER BY [CreatedDate] DESC)
 			As RowNumber,* FROM @SwapCurve
 	)
 	UPDATE tblTemp SET Error = Error + ' Duplicate Record.' WHERE RowNumber > 1	
